@@ -15,7 +15,7 @@ router = express.Router()
 
 
 //APP CONFIG
-mongoose.connect("mongodb://localhost/scholarbucks_store_app", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://heroku_1m4wfqkn:sa7n0ksoa4pcie7m60lrln744k@ds211875.mlab.com:11875/heroku_1m4wfqkn", {useNewUrlParser: true, useUnifiedTopology: true});
 var app = express();
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended : true}));
