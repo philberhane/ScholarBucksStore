@@ -5,7 +5,7 @@ var prizeSchema = new mongoose.Schema({
 	prizepoints: String,
 	invamount: String,
 	prizeimage: String,
-	quantity: [String]
+	quantity: String
 });
 
 
