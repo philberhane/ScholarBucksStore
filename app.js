@@ -584,11 +584,12 @@ app.get("/students/:id/edit", isLoggedIn, function(req, res){
 })
 
 app.get("/prizes/:id/edit", isLoggedIn, function(req, res){
+	console.log(req.params)
     Prize.findById(req.params.id, function(err, foundPrize){
         if(err){
             res.redirect("/prizes");
         } else {
-            res.render("editprize", {prize: foundPrize});
+            res.render("editprize", {prize: foundPrize, accounttype:req.user.accounttype});
         }
     });
 })
