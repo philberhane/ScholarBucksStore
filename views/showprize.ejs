@@ -1,0 +1,21 @@
+<% include ./partials/header %>
+<div class="ui main text container segment">
+    <div class="ui huge header"><%= prize.prizename %></div>
+	<div class="ui top attached ">
+	<div class = "item">
+		<div class = "content">
+			<ul>
+			<li><strong>Prize Points:</strong> <%=prize.prizepoints%></li>
+			<li><strong>Amount In Inventory:</strong> <%=prize.invamount%></li>
+			<li><strong>Prize Image:</strong> <%=prize.prizeimage%></li>
+			
+			</ul>
+			</div>
+		 <a class="ui tiny primary button" href="/prizes/<%= prize._id %>/edit">Edit</a>
+            <form id="delete" action="/prizes/<%= prize._id %>?_method=DELETE" method="POST">
+                <button class="ui tiny red button">Delete</button>
+            </form>
+		</div>
+	</div>
+	
+	<% include ./partials/footer %>

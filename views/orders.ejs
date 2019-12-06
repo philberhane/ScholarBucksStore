@@ -1,0 +1,23 @@
+<% include ./partials/header %>
+<div id = "body" class = "ui container">
+	<h1>
+		Orders (quantity)
+	</h1>
+	<table id="studenttable" class="ui sortable celled table">
+  <thead>
+    <tr><th>Prize Name</th>
+    <th>Quantity Ordered</th>
+  </tr></thead>
+  <tbody>
+	  <%prizes.forEach(function(prize){ console.log(prize.quantity)%>
+    <tr>
+      <td data-label="Prize Name"><%= prize.prizename %></td>
+		<td data-label="Quantity"><%=prize.quantity%></td>
+		</tr>
+		  <% }) %> 
+  
+  </tbody>
+</table>
+</div>	
+<script>console.log("<{{ prizes }}")</script>
+<% include ./partials/footer %>

@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title>ScholarBucks Order Page</title>
+		<link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/app.css">
+		</head>
+	<body>
+		<div id = prizeorder class="ui container">
+	 <div class="ui right visible sidebar">
+   <h2 class="ui icon header">
+  
+	   <i class="shopping cart icon"></i>
+  <div class="content">
+    Account Settings
+    <div class="sub header">Manage your account settings and set e-mail preferences.</div>
+  </div>
+</h2>
+  </div>
+  <div class="pusher">
+    <% prizes.forEach(function(prize){ %>
+	<div class="ui grid container">
+		
+		<div class="column">
+			
+			<div class="ui divided items">
+				
+  				<div class="item">
+					
+    				<div class="image">
+      				<img src="<%=prize.prizeimage%>">
+    				</div>
+    				<div class="content">
+      				<a class="header"><%=prize.prizename%></a>
+      				<div class="meta">
+        			<span class="cinema"><%=prize.prizepoints%>Points</span>
+      				</div>
+      				<div class="extra">
+        			<div class="ui label"><%=prize.invamount%> 						Left</div>
+						<div class="ui buttons">
+  <button class="ui primary button">Update</button>
+  <div class="or"></div>
+  <button class="ui red button">Delete</button>
+</div>
+       
+    				</div>
+  				</div>
+ 
+    		</div>
+  		</div>
+		
+	 </div>
+		
+</div>
+	  
+<hr> 
+<% }) %> 
+  </div>
+			<!-- </div> -->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		</body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>ScholarBucks App</title>
+		<link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/app.css">
+		<link href="https://fonts.googleapis.com/css?family=Irish+Grover&display=swap" rel="stylesheet">
+		</head>
+	<body>
+		<div class = "ui fixed inverted menu">
+			<div class = "ui container">
+				<div class = "header item"><i class="lightbulb outline icon"></i>ScholarBucks Store</div>
+				<a href="/" class="item">Home</a>
+				<a href="/students" class="item">Student Roster</a>
+				<a href="/students/new" class="item">New Student</a>
+				<% if (accounttype !== 'teacher') {%>
+				<a href="/prizes" class="item">Prize Grid</a>
+				<a href="/prizes/new" class="item">New Prize</a>
+				<a href="/orders" class="item">Orders</a>
+				<%}%>
+				<a href="/logout" class="item">Logout</a>
+				
+			</div>
+			
+			
+		</div>
+	

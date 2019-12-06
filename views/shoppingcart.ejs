@@ -1,0 +1,90 @@
+<% include ./partials/studentheader %>
+<body class = "ui container">
+	<%if (typeof  error !== 'undefined') {%>
+	<div style="margin-top: 100px" id="alert" class="alert alert-danger" role="alert">
+  Error: <%= error%>
+</div>
+	<h4 >
+		You have
+		<% if (totalpts === '') { %>
+				0
+				<%} else { %>
+				<%=totalpts%>
+				<% } %>
+		points
+	</h4>
+	<%} else {%>
+	<h4 style="margin-top: 100px">
+		You have
+		<% if (totalpts === '') { %>
+				0
+				<%} else { %>
+				<%=totalpts%>
+				<% } %>
+		points
+	</h4>
+	<%}%>
+	<div class="row">
+	<% var count = 1 %>
+	<% shoppingCart.forEach(function(item){ %>
+		<div class="col-md-4 col-sm-6 col-xs-12" style="text-align: center">
+				<div style="margin-top: 20px">
+				<img style="height: 100px" src="<%= item.prizeimage%>"/>
+				<p>
+					<%= item.prizeName%>
+				</p>
+					<p>
+					<%= item.price%> Points
+				</p>
+					
+				<div class="row">
+				<div class="col-sm-4 col-xs-2">
+				<a href="/decreaseQuantity/<%= item.id%>" class="btn btn-secondary" >
+					-
+				</a>
+					</div>
+					<div class="col-sm-4 col-xs-2">
+				<p>
+					<%= item.quantity%>
+				</p>
+					</div>
+					<div class="col-sm-4 col-xs-2">
+				<a href="/increaseQuantity/<%= item.id%>" class="btn btn-secondary">
+					+
+				</a>
+				</div>
+					</div>
+					</div>
+			</div>
+		<% if (count%3 === 0) { %>
+		</div><div class="row">
+		<% } %>
+	
+		<% count = count+1 %>
+				<% }) %>
+	</div>
+	<h5 style="margin-top:50px">
+					Total Cost: 
+					<% var totalcost=0; %>
+				<% shoppingCart.forEach(function(item){totalcost += parseInt(item.price)*item.quantity}) %>
+					<%= totalcost%> Points
+				</h5>
+	<% if (shoppingCart.length>0) {%>
+	<a href="/orderPrizes" class="btn btn-primary">
+		Order Now
+	</a>
+	<%} %>
+	
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js">
+</script>
+	<script>
+	if (document.getElementById('alert')) {
+		setTimeout(function() { document.getElementById('alert').className = 'alert alert-warning alert-dismissible fade'}, 5000);
+	}
+	</script>
+	
+</body>

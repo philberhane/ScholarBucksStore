@@ -1,0 +1,18 @@
+<% include ./partials/studentheader %>
+	<body class = "ui container">
+		<h1 style="margin-top: 100px">
+			Hello <%=firstname%>!
+		</h1>
+		<h4>
+			You have 
+			<% if (totalpts === '') { %>
+				0
+				<%} else { %>
+				<%=totalpts%>
+				<% } %>
+			points!
+		</h4>
+		<a class="ui primary button" href="https://testjerald.run.goorm.io/shop">Start Shopping</a>
+		
+	</body>
+</html>

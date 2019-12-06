@@ -1,0 +1,55 @@
+<% include ./partials/header %>
+
+<div class = "ui main text container segment">
+	<div class = "ui huge header">New Student</div>
+	<form class = "ui form" action = "/students" method = "POST">
+		<div class = "field">
+			<label>Student ID</label>
+			<input type = "text" name = "student[studentid]" placeholder = "ID">
+		</div>
+		<div class = "field">
+			<label>Username</label>
+			<input type = "text" name = "student[username]" placeholder = "Username">
+		</div>
+		<div class = "field">
+			<label>First Name</label>
+			<input type = "text" name = "student[firstname]" placeholder = "First Name">
+		</div>
+			<div class = "field">
+			<label>Last Name</label>
+			<input type = "text" name = "student[lastname]" placeholder = "Last Name">
+		</div>
+			
+			<div class = "field">
+			<label>Pass Code</label>
+			<input type = "text" name = "student[password]" placeholder = "Passcode">
+		</div>
+			<div class = "field">
+			<label>Math Points</label>
+			<input type = "text" name = "student[mathpts]" placeholder = "Math Points">
+		</div>
+			<div class = "field">
+			<label>Reading Points</label>
+			<input type = "text" name = "student[readingpts]" placeholder = "Reading Points">
+		</div>
+			<div class = "field">
+			<label>School</label>
+			<input type = "text" name = "student[school]" placeholder = "School">
+		</div>
+			<div class = "field">
+			<label>Grade</label>
+			<input type = "text" name = "student[grade]" placeholder = "Grade">
+		</div>
+			<div class = "field">
+			<label>Math Teacher</label>
+			<input type = "text" name = "student[mathteacher]" placeholder = "Math Teacher">
+		</div>
+			<div class = "field">
+			<label>Reading Teacher</label>
+			<input type = "text" name = "student[readingteacher]" placeholder = "Reading Teacher">
+		</div>
+		<input class="ui primary button" type = "submit"  >
+	</form>
+</div>
+
+<% include ./partials/footer %>

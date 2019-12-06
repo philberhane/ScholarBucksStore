@@ -1,0 +1,104 @@
+.ui.header {
+    border: none;
+    margin: calc(2rem - .14285714em) 0 1rem;
+    padding: 0 0;
+ 
+}
+
+
+#please, .ui container {
+	  background-image: url("black-girl-in-elementary-school-sized.jpg"); 
+    background-repeat: no-repeat; 
+    background-size: cover;
+	height:auto;
+	margin-top:40px;
+	max-width:100%;
+	background-size: cover;
+}
+
+#please h1{
+	margin-top: 550px;
+	font-family:'Irish Grover', cursive;
+	color:white;
+	font-size: 4.5em;
+	text-shadow: 2px 2px 4px #000000;
+	
+}
+                         
+#please h2{
+	color:white;
+	font-size: 1.75em;
+	text-shadow: 2px 2px 4px #000000;
+	margin-top:-26px;
+	
+}
+
+.ui.inverted.segment, .ui.primary.inverted.segment {
+ background: #8CC63E;
+	
+    
+}
+
+#third{
+	
+	height:40%;
+	background: #2185D0;
+	
+}
+
+#second{
+	
+	height: 70%;
+	background: #91C848;
+	width:auto;
+	/* height:100vh; */
+	padding-top:100px;
+  
+	
+	
+}
+
+#videoblock{
+	background:#ffffff;
+}
+
+#logospace{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+	
+#secondtext{
+	text-align:center;
+	line-height: 1.3em;
+	/* margin-top: 100px; */
+	/* font-family: 'Monofett', cursive; */
+	/* font-family: 'Gruppo', cursive; */
+font-family: 'Happy Monkey', cursive;
+/*font-family: 'Glass Antiqua', cursive;
+font-family: 'Monofett', cursive;
+font-family: 'Raleway', sans-serif;
+font-family: 'Sulphur Point', sans-serif; */
+	font-size: 2em;
+	width:100%;
+}
+
+#secondtext h1{
+	
+	padding-top: 200px;
+}
+
+#threecolcontainer{
+	margin-top:40px;
+	margin-bottom:40px;
+	
+	
+}
+.ui text container{
+	min-width: 1600px;
+}
+
+.card{
+  margin-top: 40px;
+  min-height: 490px;
+}
+

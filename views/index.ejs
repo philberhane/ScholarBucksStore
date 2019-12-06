@@ -1,0 +1,83 @@
+<% include ./partials/header %>
+<div id = "body" class = "ui container">
+	<h1>
+			   <%= firstname%> <%= lastname%> 
+		 Student Roster
+	</h1>
+	<!-- <input class="ui primary button" value="Quick Add">
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Candidates</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div id="modalBody" class="modal-body" style="text-align: center">
+					<form>
+                  <input placeholder="username"/>
+					</form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+<table id="studenttable" class="ui sortable celled table">
+  <thead>
+    <tr><th>Name</th>
+    
+    <th>Passcode</th>
+		<th>Math Pts.</th>
+		<th>Reading Pts.</th>
+		<th>School</th>
+		<th>Grade</th>
+		<th>Math Teacher</th>
+		<th>Reading Teacher</th>
+		<th>Total Pts.</th>
+		<th>Orders</th>
+		<th>Update-Delete</th>
+  </tr></thead>
+  <tbody>
+	  <% students.forEach(function(student){ %>
+    <tr>
+		<form action="/edittable" method="POST">
+      <td data-label="Name"><%=student.firstname%> <%=student.lastname%></td>
+      <input name="username" value="<%= student.username%>" type="hidden">
+      <td data-label="Passcode"><%=student.password%></td>
+		<td data-label="Math Points"><input name="mathpts" style="width: 50%" value="<%=student.mathpts%>" ></td>
+		<td data-label="Reading Points"><input name="readingpts" style="width: 50%" value="<%=student.readingpts%>" ></td>
+		<td data-label="School"><%=student.school%></td>
+		<td data-label="Grade"><%=student.grade%></td>
+		<td data-label="Math Teacher"><%=student.mathteacher%></td>
+		<td data-label="Reading Teacher"><%=student.readingteacher%></td>
+		<td data-label="Total Points">
+			<% if (student.totalpts === ''){%>
+			<%=Number(student.mathpts) + Number(student.readingpts)%>
+			<%} else {%>
+			<%= student.totalpts%>
+			<%}%>
+		</td>
+		<td data-label="Orders" style="width: 100%;">
+			<% student.prizes.forEach(function(prize){ %>
+			(<%=prize.quantity%>) <%=prize.prizeName%>
+			<br>
+			<%})%>
+		</td>
+		<td data-label="Update-Delete"><a class="ui floated tiny primary button" href="/students/<%= student._id %>">
+                                 Update/Delete
+                                 
+                             </a>
+			<button type="submit" class="ui floated tiny orange button">Save Changes</button>
+		</td>
+			</form>
+		</tr>
+		  <% }) %> 
+  
+  </tbody>
+</table>
+</div>
+<% include ./partials/footer %>
+

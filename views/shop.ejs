@@ -1,0 +1,202 @@
+<% include ./partials/studentheader %>
+<body class = "ui container">
+	<div id = "jumb" class = "jumbotron">
+<h1>ScholarBucks Store</h1>
+
+</div>
+	<h4 style="margin-top: 100px">
+		You have
+		<% if (totalpts === '') { %>
+				0
+				<%} else { %>
+				<%=totalpts%>
+				<% } %>
+		points
+	</h4>
+	<div class="row">
+	<% var count = 1 %>
+	<% prizes.forEach(function(prize){ %>
+	<div class="col-md-4 col-sm-6 col-xs-12">
+	<div class="card" style="width: 18rem;">
+  <img src="<%=prize.prizeimage%>" class="card-img-top" alt="...">
+  <div class="card-body" style="text-align: center">
+    <h5 class="card-title"><%=prize.prizename%></h5>
+    <div class="meta">
+        			<span class="cinema"><%=prize.prizepoints%> Points</span>
+      				</div>
+      				<div class="extra">
+        			<div style="margin-top: 15px;" class="ui label"><%=prize.invamount%> 						Left
+						</div>
+    <button id="<%=prize._id%>" onclick="addToCart(this.id)" class="btn btn-primary">Add To Shopping Cart</button>
+  </div>
+</div>
+	</div>
+	</div>
+		<% if (count%3 === 0) { %>
+		</div><div class="row">
+		<% } %>
+	
+		<% count = count+1 %>
+	<% }) %> 
+	
+	
+	<!-- Jerald added -->
+	
+	<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+      <img src="./stylesheets/Franklin Grip-rite football official jr size SKU1076645 (2).jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Franklin Grip-rite Football</h5>
+        <p class="card-text">20 Points</p>
+        <a href="#" class="btn btn-primary btn-block">Add To Shopping Cart</a>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+      <img src="./stylesheets/blue unicorn hooded wearable blanket SKU3187960.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Blue Unicorn Hooded Wearable Blanket</h5>
+        <p class="card-text">20 Points</p>
+        <a href="#" class="btn btn-primary btn-block">Add To Shopping Cart</a>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+      <img src="./stylesheets/Baden Scribble Soccer Ball SKU3116829 Size3.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Baden Scribble Soccer Ball</h5>
+        <p class="card-text">20 Points</p>
+        <a href="#" class="btn btn-primary btn-block">Add To Shopping Cart</a>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+      <img src="./stylesheets/bluetooth orb wireless speaker SKU.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Bluetooth® Orb Wireless Speaker</h5>
+        <p class="card-text">20 Points</p>
+        <a href="#" class="btn btn-primary btn-block">Add To Shopping Cart</a>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+      <img src="./stylesheets/color change magic sequin diary w lock SKU3097979 (2).jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Color Change Magic Sequin Diary With Lock</h5>
+        <p class="card-text">20 Points</p>
+        <a href="#" class="btn btn-primary btn-block">Add To Shopping Cart</a>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+      <img src="./stylesheets/Country Team Soccer Balls SKU3136512.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Country Team Soccer Balls</p>
+          <p class="card-text">20 Points</p>
+        <a href="#" class="btn btn-primary btn-block">Add To Shopping Cart</a>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+      <img src="./stylesheets/cra-z-slimy glitter slime 4-pack SKU3177326.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Cra-Z-Slimy Glitter Slime 4-pack</h5>
+        <p class="card-text">20 Points</p>
+        <a href="#" class="btn btn-primary btn-block">Add To Shopping Cart</a>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+      <img src="./stylesheets/led beam wireless speaker SKU3098019.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Led Beam Wireless Speaker</h5>
+        <p class="card-text">20 Points</p>
+        <a href="#" class="btn btn-primary btn-block">Add To Shopping Cart</a>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+      <img src="./stylesheets/meteor LED heli ball SKU3019106.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Meteor LED Heli Ball</p>
+          <p class="card-text">20 Points</p>
+        <a href="#" class="btn btn-primary btn-block">Add To Shopping Cart</a>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+      <img src="./stylesheets/the rescue crew remote control pet pup SKU.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">The Rescue Crew Remote Control Pet Pup</h5>
+        <p class="card-text">20 Points</p>
+        <a href="#" class="btn btn-primary btn-block">Add To Shopping Cart</a>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+      <img src="./stylesheets/Puzzle Cube Book and Kit SKU2559193 (2).jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Puzzle Cube Book and Kit</h5>
+        <p class="card-text">20 Points</p>
+        <a href="#" class="btn btn-primary btn-block">Add To Shopping Cart</a>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+      <img src="./stylesheets/nba spalding basketball SKU2804177.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">NBA Spalding Basketball</h5>
+        <p class="card-text">20 Points</p>
+        <a href="#" class="btn btn-primary btn-block">Add To Shopping Cart</a>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+	
+	
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js">
+</script>
+	
+	
+	<script>
+
+		var cart = []
+		function addToCart(_id) {
+			var input = {
+				id: _id
+			}
+			console.log(input)
+			fetch('/addToCart', {
+        	method: 'POST',
+        	body: JSON.stringify(input),
+        	headers: { "Content-Type": "application/json"}
+    		}).then(function(response) {
+        		return response.json();
+    		}).then(function(data) {
+        		location.reload();
+				// document.getElementById('cart').innerHTML = '<i class="fa fa-shopping-cart" style="font-size:24px;color:white"></i>' + data.newQuantity;
+    		})
+		}
+	</script>
+	
+	
+	</body>
+</html>

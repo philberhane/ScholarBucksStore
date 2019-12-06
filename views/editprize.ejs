@@ -1,0 +1,29 @@
+<% include ./partials/header %>
+
+<div class = "ui main text container segment">
+	<div class = "ui huge header">Edit <%= prize.prizename %></div>
+	<form class = "ui form" action = "/prizes/<%= prize._id %>?_method=PUT" method = "POST">
+		<div class = "field">
+			<label>Prize Name</label>
+			<input type = "text" name = "prize[prizename]" value = "<%= prize.prizename %>">
+		</div>
+			<div class = "field">
+			<label>Prize Points</label>
+			<input type = "text" name = "prize[prizepoints]" value = "<%= prize.prizepoints %>">
+		</div>
+			
+			<div class = "field">
+			<label>Amout In Inventory</label>
+			<input type = "text" name = "prize[invamount]" value = "<%= prize.invamount %>">
+		</div>
+			<div class = "field">
+			<label>Prize Image</label>
+			<input type = "text" name = "prize[prizeimage]" value = "<%= prize.prizeimage %>">
+		</div>
+		<input type="hidden" name="prize[purchasequantity]" value="0">
+			
+		<input class="ui primary button" type = "submit"  >
+	</form>
+</div>
+
+<% include ./partials/footer %>

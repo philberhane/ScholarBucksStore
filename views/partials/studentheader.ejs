@@ -1,0 +1,91 @@
+<html>
+	<head>
+		<title>ScholarBucks App</title>
+		<link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/app.css">
+		<link href="https://fonts.googleapis.com/css?family=Irish+Grover&display=swap" rel="stylesheet">
+		<style>
+@import url('https://fonts.googleapis.com/css?family=Glass+Antiqua|Gruppo|Happy+Monkey|Irish+Grover|Monofett|Raleway|Sulphur+Point:300&display=swap');
+</style>
+		</head>
+	<body id="bodyDiv">
+		<div class = "ui fixed inverted menu">
+			<div class = "ui container">
+				<div class = "header item"><i class="lightbulb outline icon"></i>ScholarBucks Store</div>			
+				<a href="/logout" class="item">Logout</a>
+				<a href="/shop" class="item">Shop</a>
+				<% if (shoppingCart.length === 0) { %>
+				<a href="/shoppingcart" class="item" id="cart" ><i class="fa fa-shopping-cart" style="font-size:24px;color:white"></i></a>
+				<%} else { console.log(shoppingCart) %>
+				<% var itemCount=0; %>
+				<% shoppingCart.forEach(function(cart){itemCount +=cart.quantity}) %>
+				<a href="/shoppingcart" style="border: none" id="cart" class="item" ><i class="fa fa-shopping-cart" style="font-size:24px;color:white"></i> (<%= itemCount%>)</a>
+				<%}%>
+				
+			</div>
+			
+			
+		</div>
+		
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="color: rgb(81, 53, 26);">Shopping Cart - You have <% if (totalpts === '') { %>
+				0
+				<%} else { %>
+				<%=totalpts%>
+				<% } %>
+		points</h5>
+              <button type="button" class="close" onclick="modalDown()" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="text-align: center">
+              <% shoppingCart.forEach(function(cart){ %>
+				<div style="margin-top: 20px">
+				<img style="width: 100px" src="<%= cart.prizeimage%>"/>
+				<p>
+					<%= cart.prizeName%>
+				</p>
+					<p>
+					<%= cart.price%> Points
+				</p>
+					
+				<div class="row">
+				<div class="col-sm-4 col-xs-2">
+				<button value="<%= cart.id%>" class="btn btn-secondary" onclick="decreaseQuantity(this.value)">
+					-
+				</button>
+					</div>
+					<div class="col-sm-4 col-xs-2">
+				<p>
+					<%= cart.quantity%>
+				</p>
+					</div>
+					<div class="col-sm-4 col-xs-2">
+				<button value="<%= cart.id%>" class="btn btn-secondary" onclick="increaseQuantity(this.value)">
+					+
+				</button>
+				</div>
+					</div>
+					</div>
+				<% }) %>
+				
+            </div>
+            <div class="modal-footer">
+				<h5>
+					Total Cost: 
+					<% var totalcost=0; %>
+				<% shoppingCart.forEach(function(cart){totalcost += parseInt(cart.price)*cart.quantity}) %>
+					<%= totalcost%> Points
+				</h5>
+              <button type="button" class="btn btn-secondary" onclick="modalDown()" data-dismiss="modal">Close</button>
+              <button style="color: white" id="completeOrder" class="btn btn-primary" data-dismiss="modal">Complete Order</button>
+            </div>
+          </div>
+        </div>
+      </div>

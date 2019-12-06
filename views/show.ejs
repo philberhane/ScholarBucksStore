@@ -1,0 +1,32 @@
+<% include ./partials/header %>
+<div class="ui main text container segment">
+    <div class="ui huge header"><%= student.firstname %> <%= student.lastname %></div>
+	<div class="ui top attached ">
+	<div class = "item">
+		<div class = "content">
+			<ul>
+			<li><strong>Username:</strong> <%=student.username%></li>
+			<li><strong>Passcode:</strong> <%=student.password%></li>
+			<li><strong>Math Points:</strong> <%=student.mathpts%></li>
+			<li><strong>Reading Points:</strong> <%=student.readingpts%></li>
+			<li><strong>School:</strong> <%=student.school%></li>
+			<li><strong>Grade:</strong> <%=student.grade%></li>
+			<li><strong>Math Teacher: </strong><%=student.mathteacher%></li>
+			<li><strong>Reading Teacher: </strong><%=student.readingteacher%></li>
+				<li><strong>Total Points: </strong>
+					<% if (student.totalpts === ''){%>
+			<%=Number(student.mathpts) + Number(student.readingpts)%>
+			<%} else {%>
+			<%= student.totalpts%>
+			<%}%>
+				</li>
+			</ul>
+			</div>
+		 <a class="ui tiny primary button" href="/students/<%= student._id %>/edit">Edit</a>
+            <form id="delete" action="/students/<%= student._id %>?_method=DELETE" method="POST">
+                <button class="ui tiny red button">Delete</button>
+            </form>
+		</div>
+	</div>
+	
+	<% include ./partials/footer %>

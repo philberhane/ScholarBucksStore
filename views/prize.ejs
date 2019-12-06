@@ -1,0 +1,59 @@
+<% include ./partials/header %>
+<h1>PRIZE PAGE!!</h1>
+ <% prizes.forEach(function(prize){ %>
+<%console.log(prize)%>
+	<div class="ui four column doubling stackable grid container">
+		
+		<div class="column">
+			
+			<div class="ui divided items">
+				
+  				<div class="item">
+					
+    				<div class="image">
+      				<img src="<%=prize.prizeimage%>">
+    				</div>
+    				<div class="content">
+      				<a class="header"><%=prize.prizename%></a>
+      				<div class="meta">
+        			<span class="cinema"><%=prize.prizepoints%>Points</span>
+      				</div>
+      				<div class="extra">
+        			<div class="ui label"><%=prize.invamount%> 						Left</div>
+						<div class="ui buttons">
+  					<!-- <button class="ui primary button">Update</button> -->
+					<a class="ui primary button" href="/prizes/<%= prize._id %>">
+                                 Update
+                                 
+                             </a>
+							
+							
+  					<div class="or"></div>
+  					<button class="ui red button">Delete</button>
+</div>
+       
+    				</div>
+  				</div>
+					
+			
+ 
+    		</div>
+  		</div>
+			
+			
+			
+		
+	 </div>
+		
+</div>
+<hr> 
+
+<% }) %> 
+
+
+
+
+<% include ./partials/footer %>
+
+
+    
