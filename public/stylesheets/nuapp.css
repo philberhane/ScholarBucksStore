@@ -51,7 +51,7 @@
 	/* height: 100%; */
 	background: #91C848;
 	width:auto;
-	height:100vh;
+	/* height:100vh; */
 	padding-top:100px;
 	padding-bottom:100px;
   
@@ -95,6 +95,11 @@ font-family: 'Sulphur Point', sans-serif; */
 	margin-bottom:40px;
 	
 	
+}
+
+.videotext{
+	
+	font-family: 'Happy Monkey', cursive;
 }
 .ui.text.container{
 	/* min-width: 1600px; */
