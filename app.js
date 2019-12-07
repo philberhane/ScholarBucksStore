@@ -141,6 +141,10 @@ app.get("/studentlogin", function(req, res){
    res.render("studentlogin"); 
 });
 
+app.get("/innovativescholars", function(req, res){
+   res.render("innovativescholars"); 
+});
+
 app.post("/test", function(req, res){
    console.log(req.user)
 });
