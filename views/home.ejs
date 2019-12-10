@@ -3,8 +3,8 @@
 	<head>
 		<title>ScholarBucks App</title>
 		<link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-		<!-- <link rel = "stylesheet" type = "text/css" href = "stylesheets/app.css"> -->
 		<link rel = "stylesheet" type = "text/css" href = "stylesheets/nuapp.css">
+		
 		<link href="https://fonts.googleapis.com/css?family=Irish+Grover&display=swap" rel="stylesheet">
 		<style>
 @import url('https://fonts.googleapis.com/css?family=Glass+Antiqua|Gruppo|Happy+Monkey|Irish+Grover|Monofett|Raleway|Sulphur+Point:300&display=swap');
@@ -20,14 +20,54 @@
 	
 		  <img src="./stylesheets/InnovativeLogo.png" alt="Logo" width="350" height="84">
 		  
-    
+   
+  
     <div class="right menu">
+		  <!-- <a href = "/"  class="item">Home</a> -->
+		
+		 <a class="item">
+    Home
+  </a>
+  <div class="ui pointing dropdown link item">
+    <span class="text">About</span>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="header">Categories</div>
       <div class="item">
-        <a href="/login" class="ui button">Log in</a>
+        <i class="dropdown icon"></i>
+        <span class="text">Clothing</span>
+        <div class="menu">
+          <div class="header">Mens</div>
+          <div class="item">Shirts</div>
+          <div class="item">Pants</div>
+          <div class="item">Jeans</div>
+          <div class="item">Shoes</div>
+          <div class="divider"></div>
+          <div class="header">Womens</div>
+          <div class="item">Dresses</div>
+          <div class="item">Shoes</div>
+          <div class="item">Bags</div>
+        </div>
+      </div>
+      <div class="item">Home Goods</div>
+      <div class="item">Bedroom</div>
+      <div class="divider"></div>
+      <div class="header">Order</div>
+      <div class="item">Status</div>
+      <div class="item">Cancellations</div>
+    </div>
+  </div>
+ 
+</div>
+	  
+		
+		
+      <div class="item">
+        <a href="/login" class="item">Log in</a>
 		 
       </div>
       <div class="item">
-        <a href="/register" class="ui primary button">Sign Up</a>
+        <a href="/register" class="item">Sign Up</a>
       </div>
     </div>
   </div>
@@ -182,7 +222,20 @@
 
 
 
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.semanticui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#studenttable').DataTable();
+} );
+</script>
 
 
+ <a class="gotopbtn" href="#"> <i class="arrow circle up">up</i> </a>
+</body>
+</html>
 
-<% include ./partials/footer %>
+
+<!-- <% include ./partials/footer %> -->

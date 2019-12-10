@@ -234,7 +234,19 @@ app.get('/orders', isLoggedIn, function(req, res) {
 })
 
 app.post('/edittable', isLoggedIn, function(req, res) {
-	var totalpts = parseInt(req.body.mathpts) + parseInt(req.body.readingpts) 
+	var mathpts
+	var readingpts
+	if (req.body.mathpts === '') {
+		mathpts = 0
+	} else {
+		mathpts === parseInt(req.body.mathpts)
+	}
+	if (req.body.readingpts === '') {
+		readingpts = 0
+	} else {
+		readingpts === parseInt(req.body.readingpts)
+	}
+	var totalpts = readingpts + mathpts
 	Student.findOneAndUpdate({ "username": req.body.username }, { "$set": { "mathpts": req.body.mathpts, "readingpts": 		req.body.readingpts, "totalpts": totalpts.toString()}}, function(err, book){
             res.redirect('/students')
 })
