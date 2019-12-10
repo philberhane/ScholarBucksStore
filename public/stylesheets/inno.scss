@@ -41,6 +41,8 @@ section {
 	height: calc(100vh);
 	 color: white;
 	scroll-snap-align: start;
+	max-height: 1000px;
+	
 	
 
 }
@@ -69,13 +71,22 @@ section {
 	display: block;
   margin-left: auto;
   margin-right: auto;
+	margin-top: 50px;
 	
 	
 }
 #logospace{
 	
-	Width:100%;
+	// Width:100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	
+	
+}
+
+#two{
+	
+	Width:100%;
 }
 
 @media only screen and (min-width: 2000px) {
@@ -85,5 +96,9 @@ section {
 	height:800px;
 }
 
+	.toplogo{
+		margin-left: 100px;
+		
+	}
 
 

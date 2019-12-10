@@ -145,6 +145,11 @@ app.get("/innovativescholars", function(req, res){
    res.render("innovativescholars"); 
 });
 
+app.get("/resources", function(req, res){
+   res.render("resources"); 
+});
+
+
 app.post("/test", function(req, res){
    console.log(req.user)
 });

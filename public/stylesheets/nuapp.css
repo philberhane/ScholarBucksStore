@@ -81,7 +81,7 @@ font-family: 'Raleway', sans-serif;
 font-family: 'Sulphur Point', sans-serif; */
 	font-size: 2em;
 	width:100%;
-	color: black;
+	color: white;
 }
 
 #secondtext h1{
@@ -130,6 +130,83 @@ html{
   color: white;
   font-size: 22px;
 }
+
+section {
+	padding: 7em;
+	height: calc(100vh);
+	 color: white;
+	scroll-snap-align: start;
+	max-height: 1000px;
+	
+	
+
+}
+
+
+	section:nth-of-type(1) {
+		background: #91C848;
+		padding-top: 100px;
+		
+	}	
+	section:nth-of-type(2) {
+		background: #2185D1;
+		
+	}	
+	
+
+#two{
+	
+	Width:100%;
+}
+.squitem{
+	background: white;
+	width:400px;
+	height:400px;
+	
+	border-radius: 50%;
+	
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+	margin-top: 50px;
+	
+	
+}
+
+.resolink {
+	color: #91C848;
+	text-decoration: underline;
+	
+}
+
+.resolink:hover {
+  color: yellow;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @charset "UTF-8";
 
