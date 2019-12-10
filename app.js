@@ -27,14 +27,14 @@ app.use(require("express-session")({
 app.use(bodyParser.json());
 
 //var Student = mongoose.model("Student", studentSchema);
-var upload=multer({dest:"uploads/"});
+// var upload=multer({dest:"uploads/"});
 
-var prizeSchema = new mongoose.Schema({
-	prizename: String,
-	prizepoints: String,
-	invamount: String,
-	prizeimage: String
-});
+// var prizeSchema = new mongoose.Schema({
+// 	prizename: String,
+// 	prizepoints: String,
+// 	invamount: String,
+// 	prizeimage: String
+// });
 
 
 
@@ -234,20 +234,22 @@ app.get('/orders', isLoggedIn, function(req, res) {
 })
 
 app.post('/edittable', isLoggedIn, function(req, res) {
+	console.log(req.body.mathpts)
 	var mathpts
 	var readingpts
-	if (req.body.mathpts === '') {
+	console.log(req.body.readingpts)
+	if (req.body.mathpts === '' || isNaN(req.body.mathpts) ) {
 		mathpts = 0
 	} else {
-		mathpts === parseInt(req.body.mathpts)
+		mathpts = parseInt(req.body.mathpts)
 	}
-	if (req.body.readingpts === '') {
+	if (req.body.readingpts === '' || isNaN(req.body.readingpts) ) {
 		readingpts = 0
 	} else {
-		readingpts === parseInt(req.body.readingpts)
+		readingpts = parseInt(req.body.readingpts)
 	}
 	var totalpts = readingpts + mathpts
-	Student.findOneAndUpdate({ "username": req.body.username }, { "$set": { "mathpts": req.body.mathpts, "readingpts": 		req.body.readingpts, "totalpts": totalpts.toString()}}, function(err, book){
+	Student.findOneAndUpdate({ "username": req.body.username }, { "$set": { "mathpts": req.body.mathpts, "readingpts": req.body.readingpts, "totalpts": totalpts.toString()}}, function(err, book){
             res.redirect('/students')
 })
 })
@@ -407,25 +409,27 @@ app.get("/orderPrizes", isLoggedIn, function(req,res){
 					}
 		})
 		 })
-		console.log(foundUser.totalpts)
 		if (parseInt(foundUser.totalpts) >= totalcost) {
 			//proceed
 			// foundUser.totalpts = (parseInt(foundUser.totalpts) - totalcost).toString()
 	
 			foundUser.shoppingCart.forEach(function(item, index){
 				Prize.findOne({_id: item.id}, function(err, prize){
-					console.log(prize.quantity)
-						prize.invamount = (parseInt(prize.invamount) - item.quantity).toString()
-						prize.quantity = (parseInt(prize.quantity) + item.quantity).toString()
-						foundUser.prizes.push(item)
-						// do math down here
-						foundUser.totalpts = (parseInt(foundUser.totalpts) - parseInt(prize.prizepoints)).toString()
+						prize.invamount = (parseInt(prize.invamount) - item.quantity).toString();
+						prize.quantity = (parseInt(prize.quantity) + item.quantity).toString();
 						prize.save()
-						foundUser.save()
+						foundUser.prizes.push(item);
+						foundUser.totalpts = (parseInt(foundUser.totalpts) - parseInt(prize.prizepoints)).toString();
+						Student.update({username: req.user.username}, {
+							prizes: foundUser.prizes, 
+							totalpts: foundUser.totalpts
+						}, function(err, numberAffected, rawResponse) {
+						   //handle it
+						})
 				})
 			})
 			foundUser.shoppingCart = []
-			foundUser.save()
+			foundUser.save();
 
 			res.redirect('/orderconfirmed')
 		} else {
