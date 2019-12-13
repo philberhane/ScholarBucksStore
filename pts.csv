@@ -1,0 +1,988 @@
+studentid,lastname,firstname,school,grade,readingteacher,readingpts,mathteacher,mathpts,totalpts,username,passcode
+200116682,Cabrera,Andrea,Grace Christian Academy,1,Brunette Howard,6,,0,6,andrca041113,scholars20
+200116687,Gonzalez,Francisco,Grace Christian Academy,1,Brunette Howard,4,Brunette Howard,1,5,frango070613,scholars20
+200116701,Pineda,Sebastian,Grace Christian Academy,1,Brunette Howard,6,Brunette Howard,4,10,sebapi050813,scholars20
+200116708,Serrano,Luis,Grace Christian Academy,1,Brunette Howard,5,Brunette Howard,3,8,luisse010713,scholars20
+200116685,Estrada,Tyanna,Grace Christian Academy,2,Brunette Howard,6,Brunette Howard,4,10,tyanes101311,scholars20
+200116690,Jara,Luis,Grace Christian Academy,2,Brunette Howard,3,Brunette Howard,1,4,luisja021212,scholars20
+200116702,Quintero,Cristian,Grace Christian Academy,2,Brunette Howard,5,Brunette Howard,3,8,crisqu070812,scholars20
+200116705,Sanchez,Andy,Grace Christian Academy,2,Brunette Howard,5,Brunette Howard,2,7,andysa042912,scholars20
+200116688,Gonzalez,Esmeralda,Grace Christian Academy,3,Brunette Howard,2,Thomas Denneen,,2,esmego082311,scholars20
+200201108,Mora,Annahi,Grace Christian Academy,3,Brunette Howard,1,Brunette Howard,0,1,annamo033010,scholars20
+200116693,Ortiz,Cain,Grace Christian Academy,3,Brunette Howard,4,Thomas Denneen,,4,cainor061811,scholars20
+200116694,Ortiz,Matteo,Grace Christian Academy,3,Brunette Howard,5,,0,5,mattor061811,scholars20
+200201110,Rosario,Geniah,Grace Christian Academy,3,Brunette Howard,6,Thomas Denneen,,6,geniro060711,scholars20
+200116706,Sanchez,Regina,Grace Christian Academy,3,Brunette Howard,3,Thomas Denneen,,3,regisa032311,scholars20
+200116689,Hall,Julian,Grace Christian Academy,4,Brunette Howard,1,Thomas Denneen,,1,juliha110810,scholars20
+200201111,Medina,Jessey,Grace Christian Academy,4,Brunette Howard,2,Thomas Denneen,,2,jessme111408,scholars20
+200116703,Ramirez,Elijah,Grace Christian Academy,4,Brunette Howard,5,Thomas Denneen,,5,elijra012609,scholars20
+200116707,Sanchez,Adan,Grace Christian Academy,5,Brunette Howard,2,Thomas Denneen,,2,adansa080108,scholars20
+200201114,Garcia,Zenayda,Grace Christian Academy,6,Brunette Howard,1,Thomas Denneen,,1,zenaga082707,scholars20
+200116686,Gomez,Kevin,Grace Christian Academy,6,Brunette Howard,1,Thomas Denneen,,1,kevigo030508,scholars20
+200116691,Lopez,Esteban,Grace Christian Academy,6,Brunette Howard,2,Thomas Denneen,,2,estelo010808,scholars20
+200116681,Ambriz,Francisco,Grace Christian Academy,7,Brunette Howard,3,Thomas Denneen,,3,franam092806,scholars20
+200116695,Ortiz,Aiden,Grace Christian Academy,7,Brunette Howard,4,Thomas Denneen,,4,aideor091707,scholars20
+200116711,Varela,Alexcia,Grace Christian Academy,7,Brunette Howard,3,Thomas Denneen,,3,alexva103106,scholars20
+200116696,Ortiz,Natalie,Grace Christian Academy,8,Brunette Howard,0,Thomas Denneen,,0,nataor120605,scholars20
+200116709,Steele,Kaleb,Grace Christian Academy,8,Brunette Howard,6,Thomas Denneen,,6,kalest121605,scholars20
+200116710,Valdivia,Miguel,Grace Christian Academy,8,Brunette Howard,3,Thomas Denneen,,3,miguva042606,scholars20
+200201119,Carillo,Brandon,Grace Christian Academy,K,Brunette Howard,4,,0,4,branca032414,scholars20
+200201117,Gonzalez,Francisco,Grace Christian Academy,K,Brunette Howard,3,,0,3,frango032114,scholars20
+200116718,Brown,Austin,Holy Family Lutheran,1,Jasmine Wardlaw,,Taneaze Needham,11,11,austbr080313,scholars20
+200116721,Coleman,Christian,Holy Family Lutheran,1,Jasmine Wardlaw,,Taneaze Needham,12,12,chrico060113,scholars20
+200200997,Daniels,Damarius,Holy Family Lutheran,1,Jasmine Wardlaw,,,0,0,damada040213,scholars20
+200201001,Flores,Jeremiah,Holy Family Lutheran,1,Jasmine Wardlaw,,Taneaze Needham,5,5,jerefl091912,scholars20
+200116739,Hunter,London,Holy Family Lutheran,1,Jasmine Wardlaw,,Taneaze Needham,14,14,londhu121312,scholars20
+200201002,Lewis,Caytlan,Holy Family Lutheran,1,Jasmine Wardlaw,,Taneaze Needham,4,4,caytle071113,scholars20
+200116760,Munoz,Ka'lel,Holy Family Lutheran,1,Jasmine Wardlaw,,Taneaze Needham,11,11,kalemu041313,scholars20
+200116778,Russell,Jamel,Holy Family Lutheran,1,Jasmine Wardlaw,,Taneaze Needham,13,13,jameru052913,scholars20
+200116783,Smith,Kenneth,Holy Family Lutheran,1,Jasmine Wardlaw,,Taneaze Needham,12,12,kemmsm030713,scholars20
+200116786,Stafford,Caitline,Holy Family Lutheran,1,Jasmine Wardlaw,,Taneaze Needham,13,13,caitst010713,scholars20
+200116790,Thomas,Ayden,Holy Family Lutheran,1,Jasmine Wardlaw,,Taneaze Needham,16,16,aydeth062213,scholars20
+200201007,Allen,Kingston,Holy Family Lutheran,2,Eboni Tankersley,20,Eboni Tankersley,20,40,kingal112011,scholars20
+200116716,BROOKS,KARYS,Holy Family Lutheran,2,Jasmine Wardlaw,,,0,0,karybr090611,scholars20
+200201009,Dearing,Ceyaan,Holy Family Lutheran,2,,0,Taneaze Needham,7,7,ceyade010912,scholars20
+200116731,GOUDY,NYERA,Holy Family Lutheran,2,Eboni Tankersley,22,Eboni Tankersley,22,44,nyergo053112,scholars20
+200116748,Lewis,Chloe,Holy Family Lutheran,2,Eboni Tankersley,25,Eboni Tankersley,22,47,chlole082112,scholars20
+200201005,McConico,Me'Kai,Holy Family Lutheran,2,Jasmine Wardlaw,,Taneaze Needham,5,5,mekamc110411,scholars20
+200116761,MUNOZ,DENISE,Holy Family Lutheran,2,Eboni Tankersley,25,Taneaze Needham,10,35,denimu030212,scholars20
+200116765,PARSON,LONDON,Holy Family Lutheran,2,Jasmine Wardlaw,,Taneaze Needham,15,15,londpa081812,scholars20
+200116776,Robinson,Danielle,Holy Family Lutheran,2,Jasmine Wardlaw,,Taneaze Needham,10,10,daniro092412,scholars20
+200116777,RUSSEL,MASON,Holy Family Lutheran,2,Jasmine Wardlaw,,Eboni Tankersley,50,50,masoru062412,scholars20
+200116779,Scott,Kevin,Holy Family Lutheran,2,Jasmine Wardlaw,,Taneaze Needham,16,16,kevisc010412,scholars20
+200115069,TAYLOR,JAIDEN,Holy Family Lutheran,2,Eboni Tankersley,20,Eboni Tankersley,15,35,jaidta020112,scholars20
+200201010,Hardy,Ga'briel,Holy Family Lutheran,3,Jasmine Wardlaw,,Taneaze Needham,8,8,gabrha100110,scholars20
+200116734,Harris,Nia,Holy Family Lutheran,3,Jasmine Wardlaw,,Taneaze Needham,11,11,niaha101811,scholars20
+200116736,HAYWOOD-CARR,SERENITY,Holy Family Lutheran,3,Jasmine Wardlaw,,Taneaze Needham,13,13,sereha091211,scholars20
+200116767,Plummer,Noah,Holy Family Lutheran,3,Jasmine Wardlaw,,Taneaze Needham,13,13,noahpl041011,scholars20
+200116780,Scott,Asia,Holy Family Lutheran,3,Jasmine Wardlaw,,Taneaze Needham,11,11,asiasc021111,scholars20
+200116795,WEST,LONDON,Holy Family Lutheran,3,Jasmine Wardlaw,,Taneaze Needham,11,11,londwe100610,scholars20
+200201014,Allen,Arianna,Holy Family Lutheran,4,,0,Taneaze Needham,13,13,ariaal111109,scholars20
+200116715,BARKSDALE,CAMARION,Holy Family Lutheran,4,Eboni Tankersley,55,,0,55,camaba040710,scholars20
+200116725,DUNNING,DEMARION,Holy Family Lutheran,4,Eboni Tankersley,43,Taneaze Needham,8,51,demadu090210,scholars20
+200116727,ELLIS,NAIMA,Holy Family Lutheran,4,Jasmine Wardlaw,,,0,0,naimel032510,scholars20
+200116726,ELLIS,NAOMI,Holy Family Lutheran,4,Jasmine Wardlaw,,Taneaze Needham,10,10,naomel032510,scholars20
+200116728,EXSON,KASHMERE,Holy Family Lutheran,4,Eboni Tankersley,20,Taneaze Needham,8,28,kashex082910,scholars20
+200116747,Larry,Chiaris,Holy Family Lutheran,4,Eboni Tankersley,56,Taneaze Needham,12,68,chiala091908,scholars20
+200116749,LEWIS,DONALD,Holy Family Lutheran,4,Jasmine Wardlaw,,,0,0,donale112509,scholars20
+200116751,Little,Ke'yonna,Holy Family Lutheran,4,Eboni Tankersley,59,Taneaze Needham,12,71,keyoli070809,scholars20
+200116758,MILES,NASHYLAH,Holy Family Lutheran,4,,0,Taneaze Needham,13,13,nashmi052710,scholars20
+200201013,Petty,Jon'nyria,Holy Family Lutheran,4,,0,Taneaze Needham,8,8,jonnpe120109,scholars20
+200116775,Rivas,Jadan,Holy Family Lutheran,4,Jasmine Wardlaw,,,0,0,jadari041310,scholars20
+200116785,Spencer,Khayden,Holy Family Lutheran,4,Eboni Tankersley,25,Taneaze Needham,9,34,khaysp042109,scholars20
+200116797,Wheat,Rashod,Holy Family Lutheran,4,Jasmine Wardlaw,,Taneaze Needham,8,8,rashwh121209,scholars20
+200116799,WILLIAMS,OMARI,Holy Family Lutheran,4,Jasmine Wardlaw,,Taneaze Needham,8,8,omarwi123009,scholars20
+200116719,Chandler,Fred,Holy Family Lutheran,7,,0,Eboni Tankersley,39,39,fredch062306,scholars20
+200201021,Evans,Sankyo,Holy Family Lutheran,5,Jasmine Wardlaw,,,0,0,sankev090508,scholars20
+200201023,Dobbey,Dimitri,Holy Family Lutheran,5,,0,Eboni Tankersley,27,27,dimido092108,scholars20
+200116738,Howery,Nashua,Holy Family Lutheran,5,Jasmine Wardlaw,,,0,0,nashho100710,scholars20
+200116732,GREYER,KA'MANI,Holy Family Lutheran,6,Jasmine Wardlaw,,Eboni Tankersley,0,0,kamagr081408,scholars20
+200116735,HARRIS,D'MARI,Holy Family Lutheran,5,Jasmine Wardlaw,,Eboni Tankersley,40,40,dmarha062309,scholars20
+200116759,Mitchell,James,Holy Family Lutheran,5,Jasmine Wardlaw,,,0,0,jamemi022209,scholars20
+200116740,Hunter,TyJuan,Holy Family Lutheran,6,Jasmine Wardlaw,,Eboni Tankersley,0,0,tyjuhu012608,scholars20
+200201018,Sowell,Mia,Holy Family Lutheran,5,Jasmine Wardlaw,,,0,0,miasow090808,scholars20
+200116741,Ingram,Trai,Holy Family Lutheran,7,Jasmine Wardlaw,,Eboni Tankersley,48,48,traiin060207,scholars20
+200116742,IVY,KHALIA,Holy Family Lutheran,5,,0,Eboni Tankersley,63,63,khaliv042608,scholars20
+200201019,Winston,Maliha,Holy Family Lutheran,5,Jasmine Wardlaw,,,0,0,maliwi072008,scholars20
+200201028,Curry-Livingston,Daion,Holy Family Lutheran,6,Jasmine Wardlaw,,,0,0,daiocu110707,scholars20
+200201029,Ervin,Jhonae,Holy Family Lutheran,6,Jasmine Wardlaw,,,0,0,jhoner021108,scholars20
+200116746,Johnson,Terrence,Holy Family Lutheran,8,Jasmine Wardlaw,,Eboni Tankersley,,0,terrjo040105,scholars20
+200201026,Hunter,Camila,Holy Family Lutheran,6,Jasmine Wardlaw,,,0,0,camihu010108,scholars20
+200116750,LINDSEY,RAYVELL,Holy Family Lutheran,6,Jasmine Wardlaw,,Eboni Tankersley,33,33,rayvli011108,scholars20
+200116744,JAMISON,KAMARAH,Holy Family Lutheran,6,Jasmine Wardlaw,,,0,0,kamaja040808,scholars20
+200116756,MCGEE,NYASIA,Holy Family Lutheran,6,Eboni Tankersley,16,Eboni Tankersley,,16,nyasmc121007,scholars20
+200116757,MEEKS,ANASHA,Holy Family Lutheran,5,Jasmine Wardlaw,,Eboni Tankersley,,0,anasme020908,scholars20
+200116762,Oliver,Michael,Holy Family Lutheran,6,Jasmine Wardlaw,,Eboni Tankersley,,0,michol101507,scholars20
+200116784,SMITH,MORGAN,Holy Family Lutheran,6,Eboni Tankersley,35,Eboni Tankersley,30,65,morgsm082507,scholars20
+200116763,PAIGE,MCKENNA,Holy Family Lutheran,5,Jasmine Wardlaw,,Eboni Tankersley,30,30,mckepa021009,scholars20
+200116793,VANTREASE,ROMELL,Holy Family Lutheran,6,Jasmine Wardlaw,,,0,0,romeva110307,scholars20
+200116794,WATKINS,BRANDON,Holy Family Lutheran,6,Eboni Tankersley,16,Eboni Tankersley,16,32,branwa060908,scholars20
+200116800,WILLIAMS,EMARI,Holy Family Lutheran,6,Eboni Tankersley,33,Eboni Tankersley,33,66,emarwi110207,scholars20
+200116766,Pickett,Taniyah,Holy Family Lutheran,7,Jasmine Wardlaw,,Eboni Tankersley,17,17,tanipi102006,scholars20
+200116804,Younger,Jaelyn,Holy Family Lutheran,6,Eboni Tankersley,25,Eboni Tankersley,20,45,jaelyo081808,scholars20
+200116772,PRESTON,HEAVEN,Holy Family Lutheran,8,Jasmine Wardlaw,,Eboni Tankersley,,0,heavpr042005,scholars20
+200116787,Stevenson,Drania,Holy Family Lutheran,5,Jasmine Wardlaw,,Eboni Tankersley,63,63,dranst032209,scholars20
+200116789,TAYLOR,TERREON,Holy Family Lutheran,7,Jasmine Wardlaw,,Eboni Tankersley,36,36,terrta080807,scholars20
+200116791,Tucker,Timia,Holy Family Lutheran,6,Jasmine Wardlaw,,Eboni Tankersley,,0,timitu113007,scholars20
+200201030,Williams,Kendaria,Holy Family Lutheran,6,,0,Eboni Tankersley,,0,kendwi010108,scholars20
+200116801,WILLIAMS,SYRIANNA,Holy Family Lutheran,8,,0,Eboni Tankersley,75,75,syriwi072006,scholars20
+200116803,Wilson,Autumn,Holy Family Lutheran,5,,0,Eboni Tankersley,53,53,autuwi013009,scholars20
+200201039,Barksdale,Christian,Holy Family Lutheran,K,Jasmine Wardlaw,,,0,0,chriba041114,scholars20
+200201044,Bassett,Aria,Holy Family Lutheran,K,Jasmine Wardlaw,,,0,0,ariaba071412,scholars20
+200201045,Givens,Jazari,Holy Family Lutheran,K,Jasmine Wardlaw,,,0,0,jazagi120813,scholars20
+200201040,Grayer,Joshua,Holy Family Lutheran,K,Jasmine Wardlaw,,,0,0,joshgr101713,scholars20
+200201033,Jackson,Jayden,Holy Family Lutheran,K,Jasmine Wardlaw,,,0,0,jaydja022514,scholars20
+200201041,Thomas,Anthony,Holy Family Lutheran,K,Jasmine Wardlaw,,,0,0,anthth050914,scholars20
+200116807,Hyland,Brenna,Pope Francis Global Academy North,2,,0,,0,0,brenhy022412,scholars20
+200116808,Kalotihos,Nathan,Pope Francis Global Academy North,2,,0,Robert Budron,,0,nathka031512,scholars20
+200116811,Sanchez,Jared,Pope Francis Global Academy North,2,,0,Robert Budron,,0,jaresa041311,scholars20
+200116815,Surgess,Clark,Pope Francis Global Academy North,2,,0,,0,0,clarsu071712,scholars20
+200116816,Walsh,Francis,Pope Francis Global Academy North,7,,0,,0,0,franwa042007,scholars20
+200116810,Riley,Nora,Pope Francis Global Academy North,8,,0,Robert Budron,,0,norari021906,scholars20
+200201052,Gonzalez-Marchany,Adelyne,Pope Francis Global Academy South,1,,0,Robert Budron,,0,adelgo091412,scholars20
+200201050,Johnson,Jack,Pope Francis Global Academy South,1,,0,Robert Budron,,0,jackjo021213,scholars20
+200201048,Johnson,Mia,Pope Francis Global Academy South,1,,0,Robert Budron,,0,miajoh092512,scholars20
+200201047,Males,Sayeli,Pope Francis Global Academy South,1,,0,Robert Budron,,0,sayema012213,scholars20
+200201051,Nguyen,Kristine,Pope Francis Global Academy South,1,,0,Robert Budron,,0,krisng100512,scholars20
+200201053,Santillan,Jacob,Pope Francis Global Academy South,1,,0,Robert Budron,,0,jacosa111812,scholars20
+200201056,Dias,Violet,Pope Francis Global Academy South,2,,0,Robert Budron,,0,violdi041112,scholars20
+200201058,King,Kegan,Pope Francis Global Academy South,2,,0,Robert Budron,,0,kegaki090811,scholars20
+200201057,Onal,David,Pope Francis Global Academy South,2,,0,Robert Budron,,0,davion012112,scholars20
+200201054,Zander,Kallas,Pope Francis Global Academy South,2,,0,Robert Budron,,0,kallaza112311,scholars20
+200116826,Hidalgo,Mira,Pope Francis Global Academy South,3,,0,Robert Budron,,0,mirahi052811,scholars20
+200116829,Morrison,Mya,Pope Francis Global Academy South,3,,0,Robert Budron,,0,myamor082911,scholars20
+200116837,Rodriguez-Lopez,Mariana,Pope Francis Global Academy South,3,,0,,0,0,mariro010911,scholars20
+200116839,Santillan,Jeremy,Pope Francis Global Academy South,3,,0,Robert Budron,,0,jeresa061311,scholars20
+200116825,Guadalupe,Alejandro,Pope Francis Global Academy South,4,,0,Robert Budron,,0,alejgu030410,scholars20
+200116824,Grey,Olivia,Pope Francis Global Academy South,5,,0,Robert Budron,,0,olivgr051509,scholars20
+200116827,Keene,Michael,Pope Francis Global Academy South,5,,0,,0,0,michke040709,scholars20
+200116831,Petitt,Alex,Pope Francis Global Academy South,5,,0,,0,0,alexpe021809,scholars20
+200116818,Baban,Stefan,Pope Francis Global Academy South,6,,0,Robert Budron,,0,stefba102307,scholars20
+200116822,Diaz,Isabella,Pope Francis Global Academy South,6,,0,Robert Budron,,0,isabdi092607,scholars20
+200116828,Krawczynski,Gregory,Pope Francis Global Academy South,6,,0,,0,0,gregkr012908,scholars20
+200116830,Ordinario,Daphne,Pope Francis Global Academy South,6,,0,Robert Budron,,0,daphor110207,scholars20
+200118454,Portocarrero,Dayana,Pope Francis Global Academy South,6,,0,Robert Budron,,0,dayapo040808,scholars
+200116833,Resendez,Emmanuel,Pope Francis Global Academy South,6,,0,Robert Budron,,0,emmare072508,scholars20
+200116838,Rubeo,Elise,Pope Francis Global Academy South,6,,0,Robert Budron,,0,elisru051208,scholars20
+200116819,Baez,Isabella,Pope Francis Global Academy South,7,,0,Robert Budron,,0,isabba101506,scholars20
+200116820,Canchola,Xavier,Pope Francis Global Academy South,7,,0,Robert Budron,,0,xavica021507,scholars20
+200116823,Gomez,Edna,Pope Francis Global Academy South,7,,0,Robert Budron,,0,ednago083007,scholars20
+200116832,Portocarrero,Edwin,Pope Francis Global Academy South,7,,0,Robert Budron,,0,edwipo110706,scholars20
+200116834,Resendez,Eric,Pope Francis Global Academy South,7,,0,Robert Budron,,0,ericre020507,scholars20
+200116840,Sheridan,Aisling,Pope Francis Global Academy South,7,,0,Robert Budron,,0,aislsh100506,scholars20
+200201062,Curcio,Mia,Pope Francis Global Academy South,K,,0,Robert Budron,,0,miacur061614,scholars20
+200116843,Alfred,Mathew,Providence - St. Mel School,3,Brunette Howard,0,,0,0,mathal111610,scholars20
+200116854,Miller,Seth,Providence - St. Mel School,3,Brunette Howard,1,,0,1,sethmi050810,scholars20
+200116855,Moore,Demonja,Providence - St. Mel School,3,Brunette Howard,0,Lakia Boyd,0,0,demomo110210,scholars20
+200116844,Allen,Justice,Providence - St. Mel School,4,,0,Lakia Boyd,2,2,justal060410,scholars20
+200116853,Mason,Shavell,Providence - St. Mel School,4,Brunette Howard,0,Lakia Boyd,2,2,shavma102809,scholars20
+200116846,Coleman,Cashmere,Providence - St. Mel School,5,,0,Lakia Boyd,4,4,cashco061609,scholars20
+200116847,Coleman,Jada,Providence - St. Mel School,6,,0,Lakia Boyd,0,0,jadaco122907,scholars20
+200116869,Little,Abria,Pui Tak Christian School,1,Rona House,21,,0,21,abrili100213,scholars20
+200116870,Liu,Caroline,Pui Tak Christian School,1,Rona House,20,,0,20,caroli070913,scholars20
+200116867,Liang,Selina,Pui Tak Christian School,3,Rachel Brenan,43,,0,43,selili051511,scholars20
+200116871,Liu,William,Pui Tak Christian School,3,Rachel Brenan,47,,0,47,willli080110,scholars20
+200116873,Minor,Ryan,Pui Tak Christian School,3,Rachel Brenan,39,,0,39,ryanmi032911,scholars20
+200111180,NIETO,JESSE,Pui Tak Christian School,3,Rachel Brenan,12,Rona House,10,22,jessni070410,scholars20
+200116864,Li,Bernice,Pui Tak Christian School,4,Rachel Brenan,40,Rona House,25,65,bernli010910,scholars20
+200116859,Chang,Jorge,Pui Tak Christian School,6,Rona House,13,Rona House,5,18,jorgch100507,scholars20
+200116868,Liang,Mei Ying,Pui Tak Christian School,6,Rona House,15,Rona House,26,41,meiyli062708,scholars20
+200116863,Howard,Allyson,Pui Tak Christian School,7,Rona House,16,Rona House,10,26,allyho122706,scholars20
+200116861,Hardin,Kendell,Pui Tak Christian School,8,,0,Rona House,33,33,kendha042106,scholars20
+200201070,Chio,Natalie,Pui Tak Christian School,K,Rachel Brenan,28,,0,28,natach091214,scholars20
+200201068,Li,Toby,Pui Tak Christian School,K,Rachel Brenan,28,,0,28,tobyli031714,scholars20
+200201069,Yu,Eunice,Pui Tak Christian School,K,Rachel Brenan,20,,0,20,euniyu121913,scholars20
+200201071,Zhang,Lily,Pui Tak Christian School,K,Rachel Brenan,20,,0,20,lilyzh022114,scholars20
+200201074,Botchway,Jamal,St. Ailbe Catholic School,1,Schreece Jones,5,Mary Ann Snyder,20,25,jamabo060613,scholars20
+200201072,Bullard,Hope,St. Ailbe Catholic School,1,Schreece Jones,0,Mary Ann Snyder,20,20,hopebu052713,scholars20
+200116907,McDonald,Jorian,St. Ailbe Catholic School,1,Schreece Jones,10,,0,10,jorimc012413,scholars20
+200201073,Tuolee,Alveena,St. Ailbe Catholic School,1,Schreece Jones,10,Mary Ann Snyder,20,30,alvetu102212,scholars20
+200116900,Johnson,Maya,St. Ailbe Catholic School,2,Schreece Jones,15,,0,15,mayajo042412,scholars20
+200116903,Lacy,Jayden,St. Ailbe Catholic School,2,Schreece Jones,10,Mary Ann Snyder,10,20,jaydla081320,scholars20
+200116910,Munoz,Norberto,St. Ailbe Catholic School,2,Schreece Jones,5,Mary Ann Snyder,25,30,norbmu030112,scholars20
+200201076,Borders,Aiden,St. Ailbe Catholic School,3,Schreece Jones,20,Mary Ann Snyder,25,45,aidebo081111,scholars20
+200116909,MOORE,TAJ,St. Ailbe Catholic School,3,Schreece Jones,0,Mary Ann Snyder,0,0,tajmoo060111,scholars20
+200116916,SMITH,LAILA,St. Ailbe Catholic School,3,Schreece Jones,15,Mary Ann Snyder,20,35,lailsm080810,scholars20
+200116920,WEAVER,MADISON,St. Ailbe Catholic School,3,Schreece Jones,15,Mary Ann Snyder,25,40,madiwe062911,scholars20
+200116886,BROWN,LAILA,St. Ailbe Catholic School,4,Schreece Jones,20,Mary Ann Snyder,25,45,lailbr062910,scholars20
+200116888,Buchanan,Meiko,St. Ailbe Catholic School,4,Adriane Ward,36,Mary Ann Snyder,15,51,meikbu100810,scholars20
+200116889,COX,BRENNAN,St. Ailbe Catholic School,4,Schreece Jones,20,,0,20,brenco051110,scholars20
+200116901,Kamate,Bathio,St. Ailbe Catholic School,4,Adriane Ward,36,Mary Ann Snyder,10,46,bathka040110,scholars20
+200116912,ROLAND,AVA,St. Ailbe Catholic School,4,Schreece Jones,25,Mary Ann Snyder,25,50,avarol050710,scholars20
+200116917,Smith,Mathew,St. Ailbe Catholic School,4,Adriane Ward,36,Mary Ann Snyder,20,56,mathsm082410,scholars20
+200116923,WILSON,LEAH,St. Ailbe Catholic School,4,,0,Mary Ann Snyder,25,25,leahwi122809,scholars20
+200116885,BOTCHWAY,JAYDON,St. Ailbe Catholic School,5,Adriane Ward,36,,0,36,jaydbo091308,scholars20
+200116887,BROWN,TAYLOR,St. Ailbe Catholic School,5,Adriane Ward,36,Mary Ann Snyder,30,66,taylbr090909,scholars20
+200116914,SENECAL,DAVID,St. Ailbe Catholic School,5,Adriane Ward,36,Mary Ann Snyder,25,61,davise040508,scholars20
+200116922,Williams,Trayvon,St. Ailbe Catholic School,5,,0,Mary Ann Snyder,25,25,traywi022208,scholars20
+200201078,Amo-Hoyte,Nkrumah,St. Ailbe Catholic School,6,Adriane Ward,36,Mary Ann Snyder,25,61,nkruam081508,scholars20
+200201079,Rucker,De'Andre,St. Ailbe Catholic School,6,Adriane Ward,36,Mary Ann Snyder,25,61,deanru010408,scholars20
+200116919,WATKINS,ANWAR,St. Ailbe Catholic School,6,Adriane Ward,36,Mary Ann Snyder,25,61,anwawa040308,scholars20
+200201077,West,Kwincy,St. Ailbe Catholic School,6,Adriane Ward,25,,0,25,kwinwe102408,scholars20
+200116890,COX,BRIAN,St. Ailbe Catholic School,7,Adriane Ward,36,Mary Ann Snyder,25,61,briaco070906,scholars20
+200116892,FITZPATRICK,DEMARLO,St. Ailbe Catholic School,7,Adriane Ward,36,Mary Ann Snyder,15,51,demafi112706,scholars20
+200116897,HARRIS,BROOKE,St. Ailbe Catholic School,7,Adriane Ward,36,Mary Ann Snyder,20,56,brooha060307,scholars20
+200201081,Jones,Samahj,St. Ailbe Catholic School,7,Adriane Ward,35,Mary Ann Snyder,15,50,samajo101206,scholars20
+200116911,O'BANNER,ALLEN,St. Ailbe Catholic School,7,Adriane Ward,36,Mary Ann Snyder,20,56,alleob111006,scholars20
+200116921,WELLS,KORY,St. Ailbe Catholic School,7,Adriane Ward,36,Mary Ann Snyder,25,61,korywe060907,scholars20
+200116879,Alexander,Kendall,St. Ailbe Catholic School,8,Adriane Ward,36,Mary Ann Snyder,25,61,kendal091505,scholars20
+200116894,FOSTER-VAVAL,DARRIEN,St. Ailbe Catholic School,8,Adriane Ward,36,Mary Ann Snyder,25,61,darrfo091405,scholars20
+200201082,Jackson,Cydney,St. Ailbe Catholic School,8,Adriane Ward,26,Mary Ann Snyder,10,36,cydnja060506,scholars20
+200116908,MCDOUGLE,MORGAN,St. Ailbe Catholic School,8,,0,Mary Ann Snyder,20,20,morgmc041906,scholars20
+200116915,SIMPSON,ANIYAH,St. Ailbe Catholic School,8,Adriane Ward,36,Mary Ann Snyder,25,61,aniysi080806,scholars20
+200201083,Dufachaurd,David,St. Ailbe Catholic School,K,Schreece Jones,10,Mary Ann Snyder,20,30,davidu042214,scholars20
+200201086,Gutter,Alexandria,St. Ailbe Catholic School,K,Schreece Jones,25,Mary Ann Snyder,25,50,alexgu082514,scholars20
+200201085,Johnson,Albert,St. Ailbe Catholic School,K,Schreece Jones,10,Mary Ann Snyder,25,35,albejo050814,scholars20
+200116938,Rosales,Joseph,St. Francis Borgia,3,,0,,0,0,josero080511,scholars20
+200116924,Barsoum,Julia,St. Francis Borgia,4,,0,Robert Budron,,0,juliba050210,scholars20
+200116926,Bogacka,Apollonia,St. Francis Borgia,4,,0,Robert Budron,,0,apolbo042210,scholars20
+200116937,Mugaini,Esmerada,St. Francis Borgia,4,,0,Robert Budron,,0,esmemu061310,scholars20
+200201091,Rivera,Evol,St. Francis Borgia,4,,0,Robert Budron,,0,evolri012210,scholars20
+200116930,Guziec,Gavin,St. Francis Borgia,5,,0,Robert Budron,,0,gavigu041009,scholars20
+200116944,Wynne,Mary Margaret,St. Francis Borgia,5,,0,,0,0,marywy011509,scholars20
+200116928,Corlett,Connor,St. Francis Borgia,7,,0,Robert Budron,,0,connco053107,scholars20
+200201095,Johnson,Kristopher,St. Paul Lutheran School,1,Mia O'Dell,,,0,0,krisjo061113,scholars20
+200116957,Jones,Mattiana,St. Paul Lutheran School,1,Mia O'Dell,10,Mia O'Dell,10,20,mattjo070913,scholars20
+200116974,Taylor,Trinis,St. Paul Lutheran School,1,Mia O'Dell,,,0,0,trinta011313,scholars20
+200116976,Thomas,London,St. Paul Lutheran School,1,Mia O'Dell,,,0,0,londth021113,scholars20
+200201097,Bolden,Emma,St. Paul Lutheran School,2,Mia O'Dell,5,Mia O'Dell,5,10,emmabo010912,scholars20
+200116950,Gholson,Mikiyla,St. Paul Lutheran School,2,Mia O'Dell,10,Mia O'Dell,10,20,mikigh101912,scholars20
+200116951,Green,Christiana,St. Paul Lutheran School,2,Mia O'Dell,5,Mia O'Dell,5,10,chrigr081409,scholars20
+200116954,Jackson,Chandler,St. Paul Lutheran School,2,Mia O'Dell,10,Mia O'Dell,10,20,chanja081712,scholars20
+200116953,Jackson,Paige,St. Paul Lutheran School,2,Mia O'Dell,10,Mia O'Dell,10,20,paigja091712,scholars20
+200116969,Simmons,Coriye,St. Paul Lutheran School,2,Mia O'Dell,10,Mia O'Dell,10,20,corisi110112,scholars20
+200116977,Tidmore,Miguel,St. Paul Lutheran School,2,Mia O'Dell,10,Mia O'Dell,10,20,miguti032312,scholars20
+200116958,Jones,Ethan,St. Paul Lutheran School,3,,0,Mia O'Dell,15,15,ethajo080911,scholars20
+200116959,Jones,Makayla,St. Paul Lutheran School,3,,0,Mia O'Dell,15,15,makajo081011,scholars20
+200201098,Magsby,Nariah,St. Paul Lutheran School,3,,0,Mia O'Dell,10,10,narima121510,scholars20
+200116970,Simmons,Chase,St. Paul Lutheran School,3,,0,Mia O'Dell,15,15,chassi111311,scholars20
+200116947,Cooper,Dylan,St. Paul Lutheran School,4,,0,Mia O'Dell,15,15,dylaco072710,scholars20
+200201099,Jones,Caleb,St. Paul Lutheran School,4,,0,Mia O'Dell,5,5,calejo021610,scholars20
+200116965,Moore,Maliyah,St. Paul Lutheran School,4,,0,Mia O'Dell,10,10,malimo062310,scholars20
+200201102,Byrne,Miracle,St. Paul Lutheran School,5,Cheryl Spivey-Brown,7,,0,7,miraby082608,scholars20
+200116949,Garrett,Shawn,St. Paul Lutheran School,5,Cheryl Spivey-Brown,8,Mia O'Dell,10,18,shawga070909,scholars20
+200116955,Jackson,Jalyliah,St. Paul Lutheran School,5,,0,Mia O'Dell,15,15,jalyja040709,scholars20
+200116978,Waters,DeMaria,St. Paul Lutheran School,5,Cheryl Spivey-Brown,7,Mia O'Dell,10,17,demawa121108,scholars20
+200201103,Howard,Jaemilion,St. Paul Lutheran School,6,Cheryl Spivey-Brown,0,Mia O'Dell,5,5,jaemho062707,scholars20
+200116960,Jones,Christopher,St. Paul Lutheran School,6,,0,Mia O'Dell,10,10,chrijo111207,scholars20
+200116966,Moore,Miracle,St. Paul Lutheran School,6,Cheryl Spivey-Brown,7,Mia O'Dell,10,17,miramo081108,scholars20
+200116971,Simmons,Jayden,St. Paul Lutheran School,6,Cheryl Spivey-Brown,6,Mia O'Dell,5,11,jaydsi050707,scholars20
+200116972,Smith,Travis,St. Paul Lutheran School,6,Cheryl Spivey-Brown,11,Mia O'Dell,10,21,travsm052308,scholars20
+200116975,Teague,Kennedy,St. Paul Lutheran School,6,,0,Mia O'Dell,10,10,kennte030708,scholars20
+200116878,ALEXANDER,ELIJAH,St. Paul Lutheran School,7,,0,Mia O'Dell,5,5,elijal070806,scholars20
+200116952,Hill,Keva,St. Paul Lutheran School,7,Cheryl Spivey-Brown,4,Mia O'Dell,5,9,kevahi032707,scholars20
+200116961,Jones,Nicole,St. Paul Lutheran School,7,,0,Mia O'Dell,10,10,nicojo080907,scholars20
+200116963,Magsby,Timothy,St. Paul Lutheran School,7,Cheryl Spivey-Brown,10,Mia O'Dell,10,20,timoma102606,scholars20
+200116964,McClendon,Matthew,St. Paul Lutheran School,7,Cheryl Spivey-Brown,8,Mia O'Dell,10,18,mattmc080606,scholars20
+200201106,Means,Markell,St. Paul Lutheran School,7,Cheryl Spivey-Brown,0,Mia O'Dell,5,5,markme010806,scholars20
+200116973,Solola,Emmanuel,St. Paul Lutheran School,7,Cheryl Spivey-Brown,10,Mia O'Dell,10,20,emmaso110312,scholars20
+200116980,Williams,Amari,St. Paul Lutheran School,7,Cheryl Spivey-Brown,8,Mia O'Dell,10,18,amarwi020107,scholars20
+200116962,Jones,Jonathan,St. Paul Lutheran School,8,Cheryl Spivey-Brown,6,Mia O'Dell,10,16,jonajo081806,scholars20
+200116967,Parham,Anthony,St. Paul Lutheran School,8,,0,Mia O'Dell,10,10,anthpa060906,scholars20
+200201093,Green,Christopher,St. Paul Lutheran School,K,,0,Mia O'Dell,5,5,chrigr121713,scholars20
+200201094,Jackson,Jamia,St. Paul Lutheran School,K,,0,Mia O'Dell,5,5,jamija082314,scholars20
+200201092,Oliver,Charles,St. Paul Lutheran School,K,,0,Mia O'Dell,5,5,charol110613,scholars20
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,

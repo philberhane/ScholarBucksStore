@@ -287,6 +287,7 @@ app.get("/students", isLoggedIn, function(req, res){
 app.get("/shop", isLoggedIn, function(req, res){
 
 			Prize.find({}, function(err, prizes){
+			prizes.sort((a, b) => (a.prizepoints < b.prizepoints) ? 1 : -1)	
 			res.render("shop", {prizes:prizes, totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart});
 	});
 		
