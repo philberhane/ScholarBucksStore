@@ -64,9 +64,9 @@ Following Menu -->
 	</section>	
 	<section>
 		<img class="squitem" src="./stylesheets/classR.jpg" alt="Logo" width="400" height="400">
-			<h1 style = "text-align: center; font-size: 1.7em;">Our mission is to help create more equitable learning opportunities for students by empowering educators and helping students reach their maximum potential socially, emotionally and academically. Through individualized learning, collaboration, and a blended learning environment we strive to provide a personalized learning experience for all students. We provide a safe and nurturing environment for children and families of all communities where we can help close the achievement gap.</h1>
-		
-		
+			<h1 style = "text-align: center; font-size: 1.7em;">Our mission is to help create more equitable learning opportunities for students by empowering educators and helping students reach their maximum potential socially, emotionally and academically. </h1>
+<a class="gotopbtn" href="#"> <i class="arrow circle up">up</i> </a>		
+	
 	</section>	
 
 	</div> 
@@ -75,11 +75,9 @@ Following Menu -->
 	
  
 
-<!-- FOOTER SECTION -->
-
-<div class="ui inverted vertical footer segment">
+ <div class="ui inverted vertical footer segment">
     <div class="ui container">
-    <div class="ui stackable inverted divided equal height stackable grid">
+      <!-- <div class="ui stackable inverted divided equal height stackable grid">
         <div class="three wide column">
           <h4 class="ui inverted header">About</h4>
           <div class="ui inverted link list">
@@ -98,15 +96,34 @@ Following Menu -->
             <a href="#" class="item">Favorite X-Men</a>
           </div>
         </div> -->
-       <div class="seven wide column">
+        <div class="seven wide column">
           <h4 class="ui inverted header">Innovative Scholars ScholarBucks Store</h4>
           <img src="./stylesheets/InnoSchwhite.png" alt="Logo" width="200" height="49">
 			<img src="./stylesheets/CPS logo.png" alt="Logo" width="75" height="72">
+			  
         </div>
       </div>
+	
     </div>
-  </div>	
-	
-	
-</body> 
+  
 
+
+ 	 <script> 
+     $(document).ready(function(){
+          $('.ui.dropdown') .dropdown();
+    });
+    </script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.semanticui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#studenttable').DataTable();
+} );
+</script>
+
+
+
+</body>
+</html>

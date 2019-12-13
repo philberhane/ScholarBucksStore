@@ -1,9 +1,16 @@
 <% include ./partials/studentheader %>
-	<body class = "ui container">
-		<h1 style="margin-top: 100px">
+
+	<body >
+		<div class = "ui container">
+			<div id = "storegraphtop"></div>
+			<div class = "storetext">
+				<h1 class = "storetext">
 			Hello <%=firstname%>!
 		</h1>
-		<h4>
+		
+				
+				
+				<h4 class = "lowerstoretext">
 			You have 
 			<% if (totalpts === '') { %>
 				0
@@ -12,7 +19,10 @@
 				<% } %>
 			points!
 		</h4>
-		<a class="ui primary button" href="/shop">Start Shopping</a>
-		
+				
+		<a style = "margin-top:20px;" class="ui big ui blue button" href="/shop">Start Shopping</a>
+			</div>
+		<div id = "storegraph"></div>
+		</div>
 	</body>
 </html>

@@ -149,6 +149,10 @@ app.get("/resources", function(req, res){
    res.render("resources"); 
 });
 
+app.get("/scholarbuckspage", function(req, res){
+   res.render("scholarbuckspage"); 
+});
+
 
 app.post("/test", function(req, res){
    console.log(req.user)
