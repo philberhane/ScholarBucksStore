@@ -48,11 +48,11 @@
 
 #second{
 	
-	height: 7%; 
+	height: 110px; 
 	background: #91C848;
 	width:auto;
 	/* height:100vh; */
-	padding-top:00px;
+	padding-top:10px;
 	padding-bottom:0px;
   
 	
@@ -199,6 +199,7 @@ section {
 
 #growthblock{
 	background: #3EB14A;
+	color: white;
 }
 
 
