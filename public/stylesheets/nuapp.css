@@ -1,3 +1,6 @@
+
+
+
 .ui.header {
     border: none;
     margin: calc(2rem - .14285714em) 0 1rem;
@@ -49,7 +52,7 @@
 #second{
 	
 	height: 110px; 
-	background: #91C848;
+	/* background: #3EB14A; */
 	width:auto;
 	/* height:100vh; */
 	padding-top:10px;
@@ -95,6 +98,7 @@
 #threecolcontainer{
 	margin-top:40px;
 	margin-bottom:40px;
+	/* background: #91c848; */
 	
 	
 }
@@ -147,6 +151,7 @@ section {
 
 	section:nth-of-type(1) {
 		background: #91C848;
+		background: black;
 		padding-top: 100px;
 		
 	}	
@@ -158,12 +163,12 @@ section {
 
 #two{
 	
-	Width:100%;
+	Width:50%;
 }
 .squitem{
 	background: white;
-	width:400px;
-	height:400px;
+	/* width:400px;
+	height:400px; */
 	
 	border-radius: 50%;
 	
@@ -186,7 +191,7 @@ section {
 }
 
 
-
+/* 
 @media only screen and (min-width: 2000px) {
 	
 	color:white;
@@ -194,7 +199,7 @@ section {
 	text-shadow: 2px 2px 4px #000000;
 	margin-top:-26px;
 	
-}
+} */
   
 
 #growthblock{
@@ -205,7 +210,47 @@ section {
 
 
 
+@media screen and (max-width: 2560px) {
+  	#please, .ui container {
+	  background-image: url("black-girl-in-elementary-school-sized.jpg"); 
+    background-repeat: no-repeat; 
+    /* background-size: cover; */
+	/* height:auto; */
+	margin-top:20px;
+	max-width:100%;
+	background-size: cover;
+		height:1000px
+}
+}
 
+@media screen and (max-width: 1920px) {
+	#please, .ui container {
+	  background-image: url("black-girl-in-elementary-school-sized.jpg"); 
+    background-repeat: no-repeat; 
+    /* background-size: cover; */
+	/* height:auto; */
+	margin-top:20px;
+	max-width:100%;
+	background-size: cover;
+		height:700px
+}
+  	
+	
+}
+
+@media screen and (max-width: 1350px) {
+	#please, .ui container {
+	  background-image: url("black-girl-in-elementary-school-sized.jpg"); 
+    background-repeat: no-repeat; 
+    /* background-size: cover; */
+	/* height:auto; */
+	margin-top:20px;
+	max-width:100%;
+	background-size: cover;
+		height:650px
+}
+  	
+}
 
 
 

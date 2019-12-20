@@ -1,0 +1,210 @@
+body{
+	margin: 0 auto;
+	// scroll-snap-type: y mandatory;
+	overflow-y: scroll;
+}
+
+section {
+	padding: 7em;
+	// height: calc(100vh);
+	 color: white;
+	// scroll-snap-align: start;
+	// max-height: 1000px;
+	
+	
+
+}
+	section:nth-of-type(1) {
+		background: #91C848;
+		padding-top: 100px;
+		height: 600px;
+		
+	}	
+	section:nth-of-type(2) {
+		background: #2185D1;
+		
+	}	
+	section:nth-of-type(3) {
+		background: #D12F3F;
+		
+		
+	}	
+
+
+#logospace{
+	
+	// Width:100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	
+	
+}
+
+#two{
+	
+	Width:100%;
+}
+
+#twoinno{
+	Width:100%;
+}
+
+.squitem{
+	background: white;
+	width:700px;
+	height:700px;
+	
+	border-radius: 50%;
+	
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+	margin-top: 50px;
+	
+	
+}
+
+.resolink {
+	color: #91C848;
+	text-decoration: underline;
+	
+}
+
+.resolink:hover {
+  color: yellow;
+}
+
+
+	.toplogo{
+		margin-left: 100px;
+		
+	}
+	
+	.gotopbtn{
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background: #2085D0;
+  bottom: 40px;
+  right: 50px;
+
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+  color: white;
+  font-size: 22px;
+}
+
+////////////////////////////////////////////////////Media Queries
+
+@media screen and (max-width: 2560px) {
+  	.squitem{
+	width:600px;
+	height:600px;
+	}
+section:nth-of-type(1) {
+		background: #91C848;
+		padding-top: 100px;
+		height: 900px;
+		
+	}	
+	section:nth-of-type(2) {
+		
+		height: 900px;
+		
+	}	
+	.textsection{
+		
+		padding:0 40em 0 40em;
+		
+	}
+}
+
+@media screen and (max-width: 1920px) {
+  	.squitem{
+	width:475px;
+	height:475px;
+	}
+	section:nth-of-type(1) {
+		background: #91C848;
+		padding-top: 100px;
+		height: 800px;
+		
+	}	
+	
+		section:nth-of-type(2) {
+		
+		height: 1500px;
+		
+	}	
+	.textsection{
+		
+		padding:0 10em 0 10em;
+	}
+	
+}
+
+@media screen and (max-width: 1350px) {
+  	.squitem{
+	width:300px;
+	height:300px;
+	}
+	section:nth-of-type(1) {
+		background: #91C848;
+		padding-top: 100px;
+		height: 600px;
+		
+	}	
+}
+
+// @media screen and (max-width: 1024px) {
+//   	.squitem{
+// 	width:450px;
+// 	height:450px;
+// 	}
+// }
+
+// @media screen and (max-width: 1024px) {
+//   	.squitem{
+// 	width:450px;
+// 	height:450px;
+// 	}
+// }
+
+@media screen and (max-width: 375px) {
+  	.squitem{
+	width:150px;
+	height:150px;
+	}
+	
+	section:nth-of-type(1) {
+		background: #91C848;
+		padding-top: 100px;
+		max-height: 400px;
+		
+		
+	}
+	
+}
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+

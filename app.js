@@ -410,10 +410,16 @@ app.get("/decreaseQuantity/:id", isLoggedIn, function(req,res) {
 
 app.get("/orderPrizes", isLoggedIn, function(req,res){
 	Student.findOne({username: req.user.username}, function(err, foundUser){
+		if (err) {
+			res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
+		}
 		// calculate total cost
 		var totalcost = 0
 		foundUser.shoppingCart.forEach(function(item){totalcost += parseInt(item.price)*item.quantity
 		Prize.findOne({_id: item.id}, function(err, prize){
+					if (err) {
+			res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
+		}
 					if (item.quantity > parseInt(prize.invamount)) {
 						res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "You are ordering more "+prize.invamount+" than what is available. Please reduce the quantity and try again."})
 					}
@@ -425,6 +431,9 @@ app.get("/orderPrizes", isLoggedIn, function(req,res){
 	
 			foundUser.shoppingCart.forEach(function(item, index){
 				Prize.findOne({_id: item.id}, function(err, prize){
+					if (err) {
+			res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
+		}
 						prize.invamount = (parseInt(prize.invamount) - item.quantity).toString();
 						prize.quantity = (parseInt(prize.quantity) + item.quantity).toString();
 						prize.save()
