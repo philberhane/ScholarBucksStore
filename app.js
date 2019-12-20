@@ -443,7 +443,9 @@ app.get("/orderPrizes", isLoggedIn, function(req,res){
 							prizes: foundUser.prizes, 
 							totalpts: foundUser.totalpts
 						}, function(err, numberAffected, rawResponse) {
-						   //handle it
+						   if (err) {
+							   res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
+						   }
 						})
 				})
 			})
