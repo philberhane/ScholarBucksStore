@@ -5,10 +5,10 @@ h2 {
   font-size: 3.0vh;
 }
 p {
-  font-size: 2vmin;
+  font-size: 2vw;
 }
 li{
-	font-size: 2vmin;
+	font-size: 2vw;
 	
 }
 
@@ -124,7 +124,8 @@ section {
 		section:nth-of-type(1) {
 			background: #91C848;
 			padding-top: 150px;
-			height: calc(100vh);
+			
+			text-align: center;
 		}	
 		
 		section:nth-of-type(2){
@@ -153,8 +154,8 @@ section {
 {
 		
 		.squitem{
-			width:450px;
-			height:450px;
+			width:400px;
+			height:400px;
 		}
 		
 		
@@ -162,6 +163,7 @@ section {
 			background: #91C848;
 			padding-top: 100px;
 			height: calc(100vh);
+			text-align: center;
 		}	
 		
 	  	section:nth-of-type(2) {
@@ -172,8 +174,19 @@ section {
 			color: white;
 		
 		}
-		p {
-  			font-size: 3vmin;
+		h1{
+			font-size: 6.9vw;
+		}
+		
+		h2{
+			font-size: 5.0vh;
+			position: relative;
+			top:-2.5em;
+		}
+		p{
+			font-size: 1.5vw;
+			
+			
 		}
 		li{
 			font-size: 3vmin;
@@ -189,10 +202,53 @@ and (min-device-width : 768px)
 and (max-device-width : 1024px) 
  {  
    
-	   	.squitem{
-			width:275px;
-			height:275px;
+	   	 .squitem{
+			width:800px;
+			height:800px;
 		}
+	  
+	  section:nth-of-type(1) {
+			background: #91C848;
+			padding-top: 100px;
+			height: calc(100vh);
+			text-align: center;
+		}	
+	  section:nth-of-type(2) {
+		  padding-top: 100px;
+			height: calc(100vh);
+			padding-top: 50%;
+			text-align: center;
+			padding: 5em 5em;
+		}
+		h1{
+			font-size: 6.9vw;
+		}
+		
+		h2{
+			font-size: 3.0vh;
+			position: relative;
+			top:-1.5em;
+		}
+		p{
+			font-size: 2.5vw;
+			
+			
+			text-align: left;
+			
+			
+		}
+		li{
+			font-size: 2vw;
+			text-align: left;
+	
+		}
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 }
 	
 
@@ -212,20 +268,44 @@ and (max-device-width : 1024px)
 		}
 		
 		.squitem{
-			width:275px;
-			height:275px;
+			width:575px;
+			height:575px;
+		}
+		
+		section:nth-of-type(1) {
+			background: #91C848;
+			padding-top: 40%;
+			text-align: center;
+			
+		}
+		section:nth-of-type(2) {
+			height: 150vh;
+			padding-top: 4em;
+			text-align: center;
+			padding: 5em 5em;
+			
 		}
 		
 		p {
-  			font-size: 3vmin;
-			text-align: justify;
+  			font-size: 4vw;
+			text-align: left;
 		}
 		
-		ul{
-			font-size: 3vmin;
+		li{
+			font-size: 3.5vw;
 			line-height: 1.5em;
+			text-align: left;
 		}
-		
+		h1{
+			font-size: 7.0vw;
+		}
+		h2{
+			font-size: 2.5vh;
+			
+			position: relative;
+			top:-1.5em;
+			
+		}
 	
 
 }

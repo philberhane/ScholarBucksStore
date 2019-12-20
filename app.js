@@ -300,6 +300,13 @@ app.get("/shoppingcart", isLoggedIn, function(req, res){
 		
 	})
 
+app.get("/shoppingcartquantity", isLoggedIn, function(req, res){
+			Prize.find({}, function(err, prizes){
+			res.render("shoppingcartquantity", {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart});
+	});
+		
+	})
+
 app.post("/addToCart", isLoggedIn, function(req,res) {
 	// console.log(req.body)
 	// console.log(req.user)
@@ -411,28 +418,28 @@ app.get("/decreaseQuantity/:id", isLoggedIn, function(req,res) {
 app.get("/orderPrizes", isLoggedIn, function(req,res){
 	Student.findOne({username: req.user.username}, function(err, foundUser){
 		if (err) {
-			res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
+			return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
 		}
 		// calculate total cost
 		var totalcost = 0
 		foundUser.shoppingCart.forEach(function(item){totalcost += parseInt(item.price)*item.quantity
 		Prize.findOne({_id: item.id}, function(err, prize){
 					if (err) {
-			res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
+			return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
 		}
 					if (item.quantity > parseInt(prize.invamount)) {
-						res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "You are ordering more "+prize.invamount+" than what is available. Please reduce the quantity and try again."})
+						return res.redirect('/shoppingcartquantity')
 					}
 		})
 		 })
 		if (parseInt(foundUser.totalpts) >= totalcost) {
 			//proceed
 			// foundUser.totalpts = (parseInt(foundUser.totalpts) - totalcost).toString()
-	
+			var shoppingCart = foundUser.shoppingCart
 			foundUser.shoppingCart.forEach(function(item, index){
 				Prize.findOne({_id: item.id}, function(err, prize){
 					if (err) {
-			res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
+			return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
 		}
 						prize.invamount = (parseInt(prize.invamount) - item.quantity).toString();
 						prize.quantity = (parseInt(prize.quantity) + item.quantity).toString();
@@ -444,19 +451,25 @@ app.get("/orderPrizes", isLoggedIn, function(req,res){
 							totalpts: foundUser.totalpts
 						}, function(err, numberAffected, rawResponse) {
 						   if (err) {
-							   res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
+							   return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
 						   }
 						})
 				})
 			})
-			foundUser.shoppingCart = []
-			foundUser.save();
 
-			res.redirect('/orderconfirmed')
 		} else {
-			res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: 'You do not have enough points for all of these prizes!'})
+			return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: 'You do not have enough points for all of these prizes!'})
 		}
 	})
+	
+	Student.update({username: req.user.username}, {
+							shoppingCart: []
+						}, function(err, numberAffected, rawResponse) {
+						   if (err) {
+							   return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
+						   }
+					res.redirect('/orderconfirmed')
+						})
 	// deduct cost from total points
 	// empty shopping cart
 	// deduct quantities from prize objects
@@ -465,7 +478,7 @@ app.get("/orderPrizes", isLoggedIn, function(req,res){
 })
 
 app.get('/orderconfirmed', isLoggedIn, function(req, res) {
-	res.render("orderconfirmed", {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart})
+	return res.render("orderconfirmed", {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart})
 })
 	
 

@@ -9,10 +9,10 @@
 }
 
 
-#please, .ui container {
+ #please, .ui container {
 	  background-image: url("black-girl-in-elementary-school-sized.jpg"); 
     background-repeat: no-repeat; 
-    /* background-size: cover; */
+    background-size: cover;
 	height:auto;
 	margin-top:20px;
 	max-width:100%;
@@ -26,7 +26,7 @@
 	font-size: 4.5em;
 	text-shadow: 2px 2px 4px #000000;
 	
-}
+} 
                          
 #please h2{
 	color:white;
@@ -52,9 +52,9 @@
 #second{
 	
 	height: 110px; 
-	/* background: #3EB14A; */
+	
 	width:auto;
-	/* height:100vh; */
+	
 	padding-top:10px;
 	padding-bottom:0px;
   
@@ -98,10 +98,9 @@
 #threecolcontainer{
 	margin-top:40px;
 	margin-bottom:40px;
-	/* background: #91c848; */
+	background: #ffffff;
 	
-	
-}
+	} 
 
 .videotext{
 	
@@ -210,25 +209,23 @@ section {
 
 
 
-@media screen and (max-width: 2560px) {
+/* @media screen and (max-width: 2560px) {
   	#please, .ui container {
 	  background-image: url("black-girl-in-elementary-school-sized.jpg"); 
     background-repeat: no-repeat; 
-    /* background-size: cover; */
-	/* height:auto; */
+ 
 	margin-top:20px;
 	max-width:100%;
 	background-size: cover;
 		height:1000px
 }
 }
-
-@media screen and (max-width: 1920px) {
+ */
+/* @media screen and (max-width: 1920px) {
 	#please, .ui container {
 	  background-image: url("black-girl-in-elementary-school-sized.jpg"); 
     background-repeat: no-repeat; 
-    /* background-size: cover; */
-	/* height:auto; */
+ 
 	margin-top:20px;
 	max-width:100%;
 	background-size: cover;
@@ -236,21 +233,25 @@ section {
 }
   	
 	
-}
+} */
 
-@media screen and (max-width: 1350px) {
+ /* @media screen and (max-width: 1350px) {  */
+
+	/* @media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
 	#please, .ui container {
 	  background-image: url("black-girl-in-elementary-school-sized.jpg"); 
     background-repeat: no-repeat; 
-    /* background-size: cover; */
-	/* height:auto; */
-	margin-top:20px;
+   
+	margin-top:10px;
 	max-width:100%;
 	background-size: cover;
 		height:650px
 }
   	
-}
+} */
 
 
 
@@ -265,7 +266,7 @@ section {
 
 
 
-@charset "UTF-8";
+/* @charset "UTF-8"; */
 
 
 

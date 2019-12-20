@@ -16,6 +16,7 @@
 	<div class="row">
 	<% var count = 1 %>
 	<% prizes.forEach(function(prize){ %>
+		<% if (parseInt(prize.invamount) > 0) { %>
 	<div class="col-md-4 col-sm-6 col-xs-12">
 	<div class="card" style="width: 18rem;">
   <img src="<%=prize.prizeimage%>" class="card-img-top" alt="...">
@@ -36,6 +37,7 @@
 		<% } %>
 	
 		<% count = count+1 %>
+	<% } %>
 	<% }) %> 
 	
 	
