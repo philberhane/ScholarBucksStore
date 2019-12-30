@@ -704,6 +704,33 @@ app.delete("/students/:id", function(req, res){
    //redirect somewhere
 });
 
+app.get("/prizes/:id/delete", function(req, res){
+   //destroy blog
+   Prize.findByIdAndRemove(req.params.id, function(err){
+	   console.log('deleted')
+       if(err){
+           res.redirect("/prizes");
+       } else {
+           res.redirect("/prizes");
+       }
+   })
+   //redirect somewhere
+});
+
+app.get("/students/:id/delete", function(req, res){
+   //destroy blog
+   Student.findByIdAndRemove(req.params.id, function(err){
+	   console.log('deleted')
+       if(err){
+           res.redirect("/students");
+       } else {
+           res.redirect("/students");
+       }
+   })
+   //redirect somewhere
+});
+
+
 app.get("/logout", function(req, res){
     req.logout();
     res.redirect("/");

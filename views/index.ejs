@@ -24,33 +24,38 @@
               </div>
             </div>
           </div> -->
+	<div style="padding-bottom: 25px">
+	<button class="saveAsExcel ui floated tiny button" onclick="sessionAndReload()">
+		Export Data
+	</button>
+		</div>
 
 <table id="studenttable" class="ui sortable celled table">
   <thead>
-    <tr><th>Name</th>
+    <tr><th class="th">Name</th>
     
     <th>Passcode</th>
 		<th>Math Pts.</th>
 		<th>Reading Pts.</th>
-		<th>School</th>
-		<th>Grade</th>
+		<th class="th">School</th>
+		<th class="th">Grade</th>
 		<th>Math Teacher</th>
 		<th>Reading Teacher</th>
 		<th>Total Pts.</th>
-		<th>Orders</th>
+		<th class="th">Orders</th>
 		<th>Update-Delete</th>
   </tr></thead>
   <tbody>
 	  <% students.forEach(function(student){ %>
     <tr>
 		<form action="/edittable" method="POST">
-      <td data-label="Name"><%=student.firstname%> <%=student.lastname%></td>
+      <td data-label="Name" class="td"><%=student.firstname%> <%=student.lastname%></td>
       <input name="username" value="<%= student.username%>" type="hidden">
       <td data-label="Passcode"><%=student.password%></td>
 		<td data-label="Math Points"><input name="mathpts" style="width: 50%" value="<%=student.mathpts%>" ></td>
 		<td data-label="Reading Points"><input name="readingpts" style="width: 50%" value="<%=student.readingpts%>" ></td>
-		<td data-label="School"><%=student.school%></td>
-		<td data-label="Grade"><%=student.grade%></td>
+		<td data-label="School" class="td"><%=student.school%></td>
+		<td data-label="Grade" class="td"><%=student.grade%></td>
 		<td data-label="Math Teacher"><%=student.mathteacher%></td>
 		<td data-label="Reading Teacher"><%=student.readingteacher%></td>
 		<td data-label="Total Points">
@@ -60,10 +65,9 @@
 			<%= student.totalpts%>
 			<%}%>
 		</td>
-		<td data-label="Orders" style="width: 100%;">
+		<td data-label="Orders" class="td" style="width: 100%;">
 			<% student.prizes.forEach(function(prize){ %>
 			(<%=prize.quantity%>) <%=prize.prizeName%>
-			<br>
 			<%})%>
 		</td>
 		<td data-label="Update-Delete"><a class="ui floated tiny primary button" href="/students/<%= student._id %>">
@@ -79,5 +83,70 @@
   </tbody>
 </table>
 </div>
+<script>
+	if (typeof sessionStorage.download === 'undefined') {
+		$(document).ready(function() {
+    $('#studenttable').DataTable();
+} );
+} else {
+	$(document).ready(function() {
+    $('#studenttable').DataTable({
+		"paging": false
+	});
+} );
+	exportTableToCSV('orders.csv')
+	sessionStorage.removeItem('download')
+}
+		
+		
+	function sessionAndReload() {
+		sessionStorage.download = 'download'
+		location.reload()
+	}
+	
+function downloadCSV(csv, filename) {
+    var csvFile;
+    var downloadLink;
+
+    // CSV file
+    csvFile = new Blob([csv], {type: "text/csv"});
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // Create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Hide download link
+    downloadLink.style.display = "none";
+
+    // Add the link to DOM
+    document.body.appendChild(downloadLink);
+
+    // Click download link
+    downloadLink.click();
+}	
+	
+function exportTableToCSV(filename) {
+    var csv = [];
+    var rows = document.querySelectorAll("#studenttable tr");
+    
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll(".td, .th");
+        
+        for (var j = 0; j < cols.length; j++) 
+            row.push(cols[j].innerText);
+        
+        csv.push(row.join(","));        
+    }
+
+    // Download CSV file
+    downloadCSV(csv.join("\n"), filename);
+}
+
+</script>
 <% include ./partials/footer %>
 
