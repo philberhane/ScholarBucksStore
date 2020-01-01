@@ -18,6 +18,10 @@ li{
 	 
 	
 }
+ol{
+	margin-top:0px;
+	padding-top:0px;
+}
 
 section {
 	padding: 7em;
@@ -48,6 +52,7 @@ section {
 		text-align: left;
 		width: 100%;
 		color: white;
+		height: calc(100vh);
 		
 	}	
 	section:nth-of-type(3) {
@@ -121,54 +126,116 @@ section {
   font-size: 22px;
 }
 
-////////////////////////////////////////////////////Media Queries
-
-@media screen and (max-width: 2560px) {
-  	.squitem{
-	width:600px;
-	height:600px;
-	}
-section:nth-of-type(1) {
-		background: #91C848;
-		padding-top: 100px;
-		height: 900px;
+@media only screen
+	and (min-device-width : 2551px) 
+    {
+   		
+	   .squitem{
+			width:775px;
+			height:775px;
+		}
 		
-	}	
-	section:nth-of-type(2) {
+		section:nth-of-type(1) {
+			
+			padding-top: 150px;
+			text-align: center;
+			
+		}	
 		
-		height: 900px;
+		section:nth-of-type(2){
+			padding: 1em 25em 0em 25em;
+			text-align: left;
+			
+		}
 		
-	}	
-	.textsection{
+		section:nth-of-type(3){
+			padding: 0em 35em 0em 35em;
+			text-align: center;
 		
-		padding:0 40em 0 40em;
+			
+		}
+		h2{
+			font-size: 2.5vw;
+			
+		}
 		
-	}
+		p{
+			font-size: 4.2em;
+			position: relative;
+			top:-1.0em;
+			
+		}
+		li{
+	font-size: 4vmin;
+			line-height: 8vmin;
+	 
+	
 }
-
-@media screen and (max-width: 1920px) {
-  	.squitem{
-	width:475px;
-	height:475px;
+		
+		
 	}
+
+@media only screen 
+  and (min-device-width: 1025px) 
+  and (max-device-width: 2550px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (min-resolution: 192dpi) 
+	{	
+  	
+		
+.squitem{
+	width:400px;
+	height:400px;
+	}
+		
 	section:nth-of-type(1) {
 		background: #91C848;
 		padding-top: 100px;
-		height: 800px;
+		height: calc(100vh);
+		text-align: center;
 		
 	}	
 	
 		section:nth-of-type(2) {
-		
-		height: 1500px;
+		padding: 0em 10em 0em 10em;
+		text-align: left;
+		height: calc(80vh);
+			
 		
 	}	
 	.textsection{
 		
-		padding:0 10em 0 10em;
+		padding:0 35em 0 35em;
 	}
 	
-}
+	h1{
+		font-size: 6.9vw;
+		}
+		
+	h2{
+		font-size: 5.0vh;
+		position: relative;
+		top:-2.5em;
+		}
+	section:nth-of-type(1) p{
+		font-size: 2.4em;
+		position: relative;
+		top:-.8em;
+			
+		}
+
+	
+	section:nth-of-type(2) li{
+		font-size: 1.5em;
+		line-height: 1.8em;
+		
+		}
+		
+		section:nth-of-type(2) ol{
+		padding-top:40px;
+		}
+		
+	}
 
 @media screen and (max-width: 1350px) {
   	.squitem{

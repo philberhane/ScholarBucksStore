@@ -14,7 +14,7 @@ li{
 
 
 section {
-	padding: 7em;
+	// padding: 7em;
 	
 	 color: white;
 	scroll-snap-align: start;
@@ -28,6 +28,7 @@ section {
 		padding-top: 100px;
 		
 		height: calc(100vh);
+		scroll-snap-align: start;
 		
 		
 		
@@ -42,6 +43,7 @@ section {
 		text-align: left;
 		width: 100%;
 		color: white;
+		height: calc(120vh);
 		
 	}	
 
@@ -117,25 +119,46 @@ section {
     {
    		
 	   .squitem{
-			width:875px;
-			height:875px;
+			width:775px;
+			height:775px;
 		}
 		
 		section:nth-of-type(1) {
 			background: #91C848;
 			padding-top: 150px;
 			
+  		
+
 			text-align: center;
 		}	
-		
+		section:nth-of-type(1) h2{
+			font-size: 5.0vh;
+		}
 		section:nth-of-type(2){
-			padding: 3em 35em 4em 35em;
+			padding: 3em 25em 4em 25em;
 			
 			color: white;
 			
 			
 		
 		}
+		h2{
+			font-size: 2.5vw;
+			
+		}
+		
+		section:nth-of-type(1) p{
+			font-size: 4.2em;
+			position: relative;
+			top:-1.2em;
+			
+		}
+		
+		li{
+	font-size: 2vw;
+			line-height: 1.5em;
+	
+}
 		
 		
 	}
@@ -168,9 +191,9 @@ section {
 		
 	  	section:nth-of-type(2) {
 			height: calc(100vh);
-			min-height: 1050px;
+			min-height: 1180px;
 			
-			padding:2em 15em 1em 15em;
+			padding:2em 10em 1em 10em;
 			color: white;
 		
 		}
@@ -183,11 +206,20 @@ section {
 			position: relative;
 			top:-2.5em;
 		}
-		p{
-			font-size: 1.5vw;
-			
+		section:nth-of-type(1) p{
+			font-size: 2.4em;
+			position: relative;
+			top:-1.7em;
 			
 		}
+	section:nth-of-type(2) p{
+		
+			font-size: 1.4em;
+			
+			
+		
+	}
+	
 		li{
 			font-size: 3vmin;
 	
