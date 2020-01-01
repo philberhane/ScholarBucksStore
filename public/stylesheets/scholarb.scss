@@ -135,7 +135,7 @@ section {
 			font-size: 5.0vh;
 		}
 		section:nth-of-type(2){
-			padding: 3em 25em 4em 25em;
+			padding: 3em 30em 4em 30em;
 			
 			color: white;
 			
@@ -154,8 +154,13 @@ section {
 			
 		}
 		
+		section:nth-of-type(2) p{
+			font-size: 1.6em;
+			
+		}
+		
 		li{
-	font-size: 2vw;
+	font-size: 1.6em;
 			line-height: 1.5em;
 	
 }
