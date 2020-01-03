@@ -22,20 +22,12 @@ li{
 	
 
 
-	#twoinno{
-		Width:100%;
+#twoinno{
+		width:100%;
 		
 		
 	}
-#twoinno .ui container{
-		Width:100%;
-	
- 
-		
-	
-		
-		
-	}
+
 
 	section {
 	
@@ -318,8 +310,8 @@ li{
 			
 		}
 		section:nth-of-type(3){
-			height: calc(100vh);
-			padding-top: 50%;
+			height: calc(90vh);
+			// padding-top: 50%;
 			padding: 5em 5em;
 			text-align: center;
 		
@@ -333,6 +325,7 @@ li{
 			
 		//  font-size: 3.9vw;
 		// }
+		
 		p{
 			font-size: 2.5em;
 			position: relative;
@@ -344,6 +337,10 @@ li{
 		
 		h1{
 			font-size: 8.9vw;
+		}
+		
+		#secondreso{
+			height: 300px;
 		}
 
 	}

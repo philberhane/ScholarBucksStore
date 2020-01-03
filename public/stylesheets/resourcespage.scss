@@ -27,7 +27,7 @@ section {
 	padding: 7em;
 	
 	 color: white;
-	scroll-snap-align: start;
+	
 	
 	
 	
@@ -38,6 +38,7 @@ section {
 		padding-top: 100px;
 		
 		height: calc(100vh);
+		// scroll-snap-align: start;
 		
 		
 		
@@ -53,6 +54,7 @@ section {
 		width: 100%;
 		color: white;
 		height: calc(100vh);
+		// scroll-snap-align: start;
 		
 	}	
 	section:nth-of-type(3) {
@@ -73,11 +75,11 @@ section {
 
 #two{
 	
-	Width:100%;
+	width:100%;
 }
 
 #twoinno{
-	Width:100%;
+	width:100%;
 }
 
 .squitem{
@@ -237,32 +239,68 @@ section {
 		
 	}
 
-@media screen and (max-width: 1350px) {
-  	.squitem{
-	width:300px;
-	height:300px;
-	}
-	section:nth-of-type(1) {
-		background: #91C848;
-		padding-top: 100px;
-		height: 600px;
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+  	
+	  .squitem{
+			width:800px;
+			height:800px;
+		}
+	  
+	  section:nth-of-type(1) {
+			background: #91C848;
+			padding-top: 100px;
+			height: calc(100vh);
+			text-align: center;
+		}	
+	  section:nth-of-type(2) {
+		  padding-top: 100px;
+			height: calc(100vh);
+			padding-top: 50%;
+			text-align: center;
+			padding: 5em 5em;
+		}
+		section:nth-of-type(3){
+			padding-top: 100px;
+			height: calc(100vh);
+			padding-top: 50%;
+			padding: 5em 5em;
+			text-align: center;
 		
-	}	
+			
+		}
+	  
+	  h1{
+			font-size: 6.5vw;
+		}
+	  
+	  
+	  p{
+			font-size: 2.0em;
+			position: relative;
+			top:-1.2em;
+			
+		}
+	
+	  
+	  section:nth-of-type(2) ol{
+			padding-top: 100px;
+			height: calc(100vh);
+			padding-top: 50%;
+			padding: .2em .2em;
+			text-align: left;
+		  font-size: 2.0em;
+
 }
+	  
+	    section:nth-of-type(2) li{
+		
+		  font-size: 1.0em;
+			line-height: 1.5em;
 
-// @media screen and (max-width: 1024px) {
-//   	.squitem{
-// 	width:450px;
-// 	height:450px;
-// 	}
-// }
-
-// @media screen and (max-width: 1024px) {
-//   	.squitem{
-// 	width:450px;
-// 	height:450px;
-// 	}
-// }
+}
 
 @media only screen 
     and (device-width: 414px) 
@@ -280,11 +318,24 @@ section {
 			text-align: center;
 			
 		}
+		
+		section:nth-of-type(1) p{
+			font-size: 3.8em;
+			text-align: center;
+			
+		}
 		section:nth-of-type(2) {
-			height: 150vh;
+			height: 100vh;
 			padding-top: 4em;
 			text-align: center;
-			padding: 5em 5em;
+			padding: 1em 1em;
+			font-size: 5em;
+			
+		}
+		
+		section:nth-of-type(2) li{
+			
+			font-size: .8em;
 			
 		}
 		
