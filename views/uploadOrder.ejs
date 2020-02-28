@@ -1,0 +1,116 @@
+<% include ./partials/header %>
+<div id = "body" class = "ui container">
+	<h1>
+		Upload Order
+	</h1>
+<p>
+    Please format the CSV with the following headers: Student(Username), Item Name, Quantity
+	<div id="dvImportSegments" class="fileupload ">
+            <fieldset>
+                <legend>Select the CSV file to upload</legend>
+                <input type="file" name="File Upload" id="txtFileUpload" accept=".csv" />
+            </fieldset>
+    </div>
+ </p>
+ <button id="completeOrder" onclick="submitOrder()" style="display: none">Submit Order</button>
+<p id="loading" style="display: none">
+	Loading. Please wait...
+</p>
+ <div id="results" style="width: 100%; margin-top: 15px">
+
+ </div>
+<% include ./partials/footer %>
+
+<script>
+    function submitOrder() {
+		document.getElementById('loading').style.display = 'block'
+        var input = {
+            orderArray: orderArray
+        }
+        fetch('/submitOrder', {
+        method: 'POST',
+        body: JSON.stringify(input),
+        headers: { "Content-Type": "application/json"}
+    }).then(function(response) {
+        return response.json();
+    }).then(function(data) {
+			console.log(data)
+        for (i=0;i<data.message.length;i++) {
+			if (data.message[i].includes('User Username')) {
+			} else {
+            var message = document.createElement('p')
+			//message.style.width = '100%'
+            message.innerText = data.message[i]
+			if (data.message[i].includes('Success')) {
+				message.style.color = 'green'
+			} else {
+				message.style.color = 'red'
+			}
+            document.getElementById('results').appendChild(message)
+		}
+        }
+			document.getElementById('loading').style.display = 'none'
+			$('br').remove();
+    })
+
+    }
+
+	var orderArray = []
+			// The event listener for the file upload
+		document.getElementById('txtFileUpload').addEventListener('change', upload, false);
+	
+		// Method that checks that the browser supports the HTML5 File API
+		function browserSupportFileUpload() {
+			var isCompatible = false;
+			if (window.File && window.FileReader && window.FileList && window.Blob) {
+				isCompatible = true;
+			}
+
+			return isCompatible;
+		};
+
+		function upload(evt) {
+			if (!browserSupportFileUpload()) {
+				alert('The File APIs are not fully supported in this browser!');
+			} else {
+                var data = null;
+				var file = evt.target.files[0];
+				var reader = new FileReader();
+				reader.readAsText(file);
+                reader.onload = function(event) {
+						var csvData = event.target.result; //alert(csvData);
+                        var data2 = csvData.split("\n"); //alert(data2);		
+                        var i;
+                        for (i = 0; i < data2.length; ++i) {
+                            // here's the data row separated by commas											
+                            var orderObj = {
+                            	username: data2[i].split(',')[0],
+                              itemName: data2[i].split(',')[1],
+                              quantity: data2[i].split(',')[2],
+                            }
+						if (orderObj.username !== undefined && orderObj.itemName !== undefined && orderObj.quantity !== undefined) {
+							if (orderObj.username.length !== 0 && orderObj.itemName.length !== 0 && orderObj.quantity.length !== 0) {
+                            orderArray.push(orderObj);
+						}
+						}
+                            // call your ajax and submit this one row
+                            // now wait for response
+                            // if not error:
+                            // advance progress bar, and number converted, etc in modal
+                            // else:
+                            // show error message
+                        } 
+                    
+                    if (data2 && data2.length > 0) {
+                            document.getElementById('completeOrder').style.display = 'block'
+						} else {
+							alert('No data to import!');
+						}
+					};
+					reader.onerror = function() {
+						 alert('Unable to read ' + file.fileName);
+					};
+			};
+		};
+
+</script>

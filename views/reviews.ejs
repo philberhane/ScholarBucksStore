@@ -1,0 +1,89 @@
+<% include ./partials/header %>
+<div id = "body" class = "ui container">
+	<h1>
+		Reviews
+	</h1>
+	<div style="padding-bottom: 25px">
+	<button class="saveAsExcel ui floated tiny button" onclick="download()">
+		Export Data
+	</button>
+		</div>
+	
+	<table id="reviewTable" class="ui sortable celled table">
+		<tr>
+			<th class="th">First Name</th>
+			<th class="th">Last Name</th>
+			<th class="th">The website was very easy to use!</th>
+			<th class="th">I LOVED the Scholarbucks Shopping Week!</th>
+			<th class="th">I will work hard to earn more Scholarbucks next time!</th>
+			<th class="th">Comments</th>
+		</tr>
+		<tbody>
+	  <%ratings.forEach(function(rating){ %>
+    <tr>
+		<td class="td" data-label="First Name"><%= rating.firstname %></td>
+		<td class="td" data-label="Last Name"><%= rating.lastname %></td>
+      <td class="td" data-label="Rating One"><%= rating.ratingOne %> out of 5</td>
+		<td class="td" data-label="Rating Two"><%=rating.ratingTwo%> out of 5</td>
+		<td class="td" data-label="Rating Three"><%=rating.ratingThree%> out of 5</td>
+		<td class="td" data-label="Comments"><%=rating.comment%></td>
+		</tr>
+		  <% }) %> 
+  
+  </tbody>
+	</table>
+</div>
+<script>
+	
+	function download() {
+	exportTableToCSV('reviews.csv')
+	}
+	
+	
+	function exportTableToCSV(filename) {
+    var csv = [];
+    var rows = document.querySelectorAll("#reviewTable tr");
+		console.log(rows)
+    
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll(".td, .th");
+        
+        for (var j = 0; j < cols.length; j++) 
+            row.push(cols[j].innerText);
+        
+        csv.push(row.join(","));        
+    }
+
+    // Download CSV file
+    downloadCSV(csv.join("\n"), filename);
+}
+	
+	function downloadCSV(csv, filename) {
+    var csvFile;
+    var downloadLink;
+
+    // CSV file
+    csvFile = new Blob([csv], {type: "text/csv"});
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // Create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Hide download link
+    downloadLink.style.display = "none";
+
+    // Add the link to DOM
+    document.body.appendChild(downloadLink);
+
+    // Click download link
+    downloadLink.click();
+}
+	
+</script>
+
+<% include ./partials/footer %>

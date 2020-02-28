@@ -70,10 +70,79 @@
 					<%= totalcost%> Points
 				</h5>
 	<% if (shoppingCart.length>0) {%>
-	<a href="/orderPrizes" class="btn btn-primary">
+	<button class="btn btn-primary" data-toggle="modal" data-target="#modal">
 		Order Now
-	</a>
+	</button>
 	<%} %>
+	<!-- href="/orderPrizes" -->
+	<input id="hiddenUsername" style="display: none" value="<%=username%>" />
+	
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<form action="/orderPrizes" method="POST">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">One last thing..</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		  <p>
+			  Would you mind giving us some feedback? It'll help us make improvements :)
+		  </p>
+			  <input style="display: none" name="username" value="<%=username%>" />
+		<div id="rating1">
+			The website was very easy to use!
+		  <br>
+			<div class="rating1">
+        <span onclick="rate(this)" class="fa fa-star 1" style="cursor: pointer"></span>
+		<span onclick="rate(this)" class="fa fa-star 2" style="cursor: pointer"></span>
+		  <span onclick="rate(this)" class="fa fa-star 3" style="cursor: pointer"></span>
+		  <span onclick="rate(this)" class="fa fa-star 4" style="cursor: pointer"></span>
+		  <span onclick="rate(this)" class="fa fa-star 5" style="cursor: pointer"></span>
+			</div>
+			<input id="rating1Number" name="ratingOne" style="display: none" />
+			</div>
+		  <br>
+		  <div id="rating2">
+			I LOVED the Scholarbucks Shopping Week!
+		  <br>
+			  <div class="rating2">
+        <span onclick="rate(this)" class="fa fa-star 1" style="cursor: pointer"></span>
+		<span onclick="rate(this)" class="fa fa-star 2" style="cursor: pointer"></span>
+		  <span onclick="rate(this)" class="fa fa-star 3" style="cursor: pointer"></span>
+		  <span onclick="rate(this)" class="fa fa-star 4" style="cursor: pointer"></span>
+		  <span onclick="rate(this)" class="fa fa-star 5" style="cursor: pointer"></span>
+			</div>
+			<input id="rating2Number" name="ratingTwo" style="display: none" />
+		  </div>
+		  <br>
+		  <div id="rating3">
+			I will work hard to earn more Scholarbucks next time!
+        	<br>
+			  <div class="rating3">
+        <span onclick="rate(this)" class="fa fa-star 1" style="cursor: pointer"></span>
+		<span onclick="rate(this)" class="fa fa-star 2" style="cursor: pointer"></span>
+		  <span onclick="rate(this)" class="fa fa-star 3" style="cursor: pointer"></span>
+		  <span onclick="rate(this)" class="fa fa-star 4" style="cursor: pointer"></span>
+		  <span onclick="rate(this)" class="fa fa-star 5" style="cursor: pointer"></span>
+			</div>
+			<input id="rating3Number" name="ratingThree" style="display: none" />
+		  </div>
+		  <label style="margin-top: 15px">Feel free to leave a comment</label>
+		  <textarea name="comment" placeholder="Optional" style="width: 100%; height: 150px"></textarea>
+      
+		</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="finishOrder" type="submit" class="btn btn-primary" style="display: none">Complete Order</button>
+      </div>
+    </div>
+  </div>
+			</form>
+</div>
+	<input id="ratingComplete" style="display:none" value="0" />
 	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js">
 </script>
@@ -85,6 +154,31 @@
 	if (document.getElementById('alert')) {
 		setTimeout(function() { document.getElementById('alert').className = 'alert alert-warning alert-dismissible fade'}, 5000);
 	}
+	</script>
+	<script>
+	
+	
+		function rate(element) {
+			var counter = document.getElementById('ratingComplete').value
+			counter = (parseInt(counter) + 1).toString()
+			document.getElementById('ratingComplete').value = counter
+			var ratingInput = element.parentElement.nextElementSibling
+			var starNumber = element.className.split(' ')[2]
+			var currentElement = element.parentElement.firstElementChild
+			for (i=0; i<element.parentElement.children.length; i++) {
+				if (i < starNumber) {
+				currentElement.style.color = 'orange'
+				currentElement.setAttribute('onmouseout', '')
+					} else {
+						currentElement.style.color = ''
+					}
+				currentElement = currentElement.nextElementSibling
+			}
+			ratingInput.value = starNumber
+			if (counter === '3') {
+				document.getElementById('finishOrder').style.display = 'block'
+			}
+		}
 	</script>
 	
 </body>

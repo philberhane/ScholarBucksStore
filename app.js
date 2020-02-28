@@ -8,6 +8,7 @@ express        = require("express"),
 User 	   	   = require("./models/user"),
 Student 	   	   = require("./models/student"),
 Prize 	   	   = require("./models/prize"),
+Rating 	   	   = require("./models/rating"),
 multer 			= require('multer'),
 router = express.Router()
 
@@ -130,6 +131,10 @@ app.get("/", function(req, res){
 app.get("/adminlanding",isLoggedIn, function(req, res){
 	console.log(req.user);
    res.render("adminlanding", {accounttype:req.user.accounttype}); 
+});
+
+app.get("/uploadOrder",isLoggedIn, function(req, res){
+   res.render("uploadOrder", {accounttype:req.user.accounttype}); 
 });
 
 app.get("/studentlanding", isLoggedIn, function(req, res){
@@ -295,7 +300,7 @@ app.get("/shop", isLoggedIn, function(req, res){
 
 app.get("/shoppingcart", isLoggedIn, function(req, res){
 			Prize.find({}, function(err, prizes){
-			res.render("shoppingcart", {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart});
+			res.render("shoppingcart", {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, username: req.user.username});
 	});
 		
 	})
@@ -415,11 +420,186 @@ app.get("/decreaseQuantity/:id", isLoggedIn, function(req,res) {
 	})
 	})
 
-app.get("/orderPrizes", isLoggedIn, function(req,res){
-	Student.findOne({username: req.user.username}, function(err, foundUser){
+app.get("/reviews", isLoggedIn, function(req,res){
+	Rating.find({}, function(err, ratings){
+			res.render("reviews", {ratings: ratings, username: req.user.username, accounttype: req.user.accounttype});
+	});
+})
+
+app.post("/submitOrder",isLoggedIn, function(req, res){
+    var messages = []
+    var orderArray = req.body.orderArray
+	console.log('Order Array: ' + orderArray)
+
+    orderArray.forEach(function(order, index){
+		//if (index) {
+		console.log('i is: ')
+		console.log(index)
+        var username = order.username
+        var itemName = order.itemName
+        var quantity = order.quantity
+    // var message will be an object of username and message => message will be success or error
+    // actually maybe just a string
+    // Loop through array sent from client and perform the below route's order function
+    // Replace necessary values
+    // Review the functionality: are the shopping cart shit part of the req.user or student.find?
+    // -important because the teacher won't have same session info as student
+
+    Student.findOne({username: username}, function(err, foundUser){
+		if (err) {
+            var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s). Username could not be found, please check the spelling and try again.'
+            messages.push(message)
+			if (index === orderArray.length-1) {
+         return res.status(200).send({message : messages}); 
+		}
+		} else if (foundUser === null) {
+            var message = 'Error: User ' +username+ ' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s). Username could not be found, please check the spelling and try again.'
+            messages.push(message)
+			if (index === orderArray.length-1) {
+         return res.status(200).send({message : messages}); 
+		}
+		} else {
+        
+        // STUCK HERE until i have access to internet + prize model. need to find item based on itemname
+        // ALSO if there exists a continue inside of a forEach, i've gotta figure out a way to break the forEach loop ??
+        // Some for eaches dont need to be here
+		
+		
+        var totalcost = 0
+    //    totalcost += parseInt(item.price)*item.quantity
+		Prize.findOne({prizename: itemName}, function(err, prize){
+					if (err) {
+                        var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s). This item could not be found, please check the spelling and try again!'
+                        messages.push(message)
+						if (index === orderArray.length-1) {
+         return res.status(200).send({message : messages}); 
+		}
+                    } else if (prize === null) {
+						console.log('here')
+                        var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s). This item could not be found, please check the spelling and try again!'
+                        messages.push(message)
+						console.log('second i is: ')
+						console.log(index)
+						console.log(orderArray.length)
+						if (index === orderArray.length-1) {
+         return res.status(200).send({message : messages}); 
+		}
+                 
+		// } else if (parseInt(quantity) > parseInt(prize.invamount)) {
+		// 				var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s) due to insufficient inventory amount.'
+		// messages.push(message)
+		// 				if (index === orderArray.length-1) {
+		// return res.status(200).send({message : messages}); 
+		// }
+		// 			} else {
+		
+		 
+		if (parseInt(foundUser.totalpts) >= totalcost) {
+			//proceed
+			// foundUser.totalpts = (parseInt(foundUser.totalpts) - totalcost).toString()
+			prize.invamount = (parseInt(prize.invamount) - parseInt(quantity)).toString();
+						prize.quantity = (parseInt(prize.quantity) + parseInt(quantity)).toString();
+						prize.save()
+
+			var item = {
+				quantity: quantity,
+				prizeName: itemName
+			}
+						foundUser.prizes.push(item);
+						foundUser.totalpts = (parseInt(foundUser.totalpts) - parseInt(prize.prizepoints)).toString();
+						Student.update({username: req.body.username}, {
+							prizes: foundUser.prizes, 
+                            totalpts: foundUser.totalpts,
+                            shoppingCart: []
+						}, function(err, numberAffected, rawResponse) {
+                            var orderString = ''+foundUser.firstname+' '+foundUser.lastname+' has ordered the following:'
+		
+				orderString += '\n \n \n \n Prize: '+itemName+' \n \n Quantity: '+quantity+''
+			
+		var nodemailer = require('nodemailer');
+        var transporter = nodemailer.createTransport({
+            host: "smtp-mail.outlook.com", // hostname
+            secureConnection: false, // TLS requires secureConnection to be false
+            port: 587, // port for secure SMTP
+            auth: {
+                user: "scholarbucks@outlook.com",
+                pass: "BucksScholar1"
+            },
+            tls: {
+                ciphers:'SSLv3'
+            }
+        });
+		//wecare@innovativescholars.net
+        var mailOptions = {
+            from: 'scholarbucks@outlook.com',
+            to: 'philberhane@outlook.com',
+            subject: "New ScholarBucks Order!",
+            html: orderString
+          };
+		// Dynamically render what they ordered ? How to loop
+		// and do this
+          
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+              var message = 'Success: '+foundUser.firstname+' '+foundUser.lastname+' has successfully ordered '+quantity+' item ' +itemName+ '(s)!'
+              messages.push(message)
+				if (index === orderArray.length-1) {
+         return res.status(200).send({message : messages}); 
+		}
+              //return;
+            }
+          });
+						   
+						})
+			
+		
+
+		} else {
+			var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsufficient points for '+quantity+' ' +itemName+ '(s).'
+            messages.push(message)
+			if (index === orderArray.length-1) {
+         return res.status(200).send({message : messages}); 
+		}
+        }
+    }
+	})
+
+            }
+                        })
+	//}                
+	}) 
+ });
+
+app.post("/orderPrizes", isLoggedIn, function(req,res){
+	/* Steps from here:
+	1) instead of req.user.username do req.body.username
+	2) create a model in the DB called ratings that saves the user's first name, last name, and the three questions / ratings
+	3) implement front end API call with the above info
+	4) implement a page for the admins to view the ratings and export as excel
+	*/
+	
+	var userFirstName
+	var userLastName
+	
+	Student.findOne({username: req.body.username}, function(err, foundUser){
 		if (err) {
 			return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
 		}
+		userFirstName = foundUser.firstname
+		userLastName = foundUser.lastname
+		var rating = new Rating({
+		firstname: foundUser.firstname,
+		lastname: foundUser.lastname,
+		ratingOne: req.body.ratingOne,
+		ratingTwo: req.body.ratingTwo,
+		ratingThree: req.body.ratingThree,
+		comment: req.body.comment
+	})
+	
+	rating.save()
 		// calculate total cost
 		var totalcost = 0
 		foundUser.shoppingCart.forEach(function(item){totalcost += parseInt(item.price)*item.quantity
@@ -427,9 +607,9 @@ app.get("/orderPrizes", isLoggedIn, function(req,res){
 					if (err) {
 			return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
 		}
-					if (item.quantity > parseInt(prize.invamount)) {
-						return res.redirect('/shoppingcartquantity')
-					}
+					// if (item.quantity > parseInt(prize.invamount)) {
+					// 	return res.redirect('/shoppingcartquantity')
+					// }
 		})
 		 })
 		if (parseInt(foundUser.totalpts) >= totalcost) {
@@ -446,7 +626,7 @@ app.get("/orderPrizes", isLoggedIn, function(req,res){
 						prize.save()
 						foundUser.prizes.push(item);
 						foundUser.totalpts = (parseInt(foundUser.totalpts) - parseInt(prize.prizepoints)).toString();
-						Student.update({username: req.user.username}, {
+						Student.update({username: req.body.username}, {
 							prizes: foundUser.prizes, 
 							totalpts: foundUser.totalpts
 						}, function(err, numberAffected, rawResponse) {
@@ -461,14 +641,58 @@ app.get("/orderPrizes", isLoggedIn, function(req,res){
 			return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: 'You do not have enough points for all of these prizes!'})
 		}
 	})
-	
-	Student.update({username: req.user.username}, {
+	var shoppingcart = req.user.shoppingCart
+	Student.findOneAndUpdate({username: req.user.username}, {
 							shoppingCart: []
-						}, function(err, numberAffected, rawResponse) {
+						}, function(err, foundUser) {
 						   if (err) {
 							   return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
 						   }
-					res.redirect('/orderconfirmed')
+		console.log('found user')
+		console.log(foundUser)
+		var orderString = '<div><h4>ScholarBucks Order</h4>';
+		orderString += '<p>First Name: ' + foundUser.firstname + '</p>'
+		orderString += '<p>Last Name: ' + foundUser.lastname + '</p>'
+		orderString += '<p>School: ' + foundUser.school + '</p>'
+		orderString += '<p>Grade: ' + foundUser.grade + '</p>'
+			for (i=0; i<shoppingcart.length; i++) {
+				orderString += '<p>Prize: '+shoppingcart[i].prizeName+' </p><p>Quantity: '+shoppingcart[i].quantity+'</p>'
+				if (i === shoppingcart.length-1) {
+					orderString += '</div>'
+				}
+			}
+		var nodemailer = require('nodemailer');
+        var transporter = nodemailer.createTransport({
+            host: "smtp-mail.outlook.com", // hostname
+            secureConnection: false, // TLS requires secureConnection to be false
+            port: 587, // port for secure SMTP
+            auth: {
+                user: "scholarbucks@outlook.com",
+                pass: "BucksScholar1"
+            },
+            tls: {
+                ciphers:'SSLv3'
+            }
+        });
+		//wecare@innovativescholars.net
+        var mailOptions = {
+            from: 'scholarbucks@outlook.com',
+            to: 'philberhane@outlook.com',
+            subject: "New ScholarBucks Order!",
+            html: orderString
+          };
+		// Dynamically render what they ordered ? How to loop
+		// and do this
+          
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+             return res.redirect('/orderconfirmed')
+            }
+          });
+					
 						})
 	// deduct cost from total points
 	// empty shopping cart
