@@ -41,7 +41,9 @@
 		<th class="th">Grade</th>
 		<th>Math Teacher</th>
 		<th>Reading Teacher</th>
-		<th>Total Pts.</th>
+		<th>Current Points</th>
+		<th>Starting Points</th>
+		<th>CarryOver Points</th>
 		<th class="th">Orders</th>
 		<th>Update-Delete</th>
   </tr></thead>
@@ -54,20 +56,37 @@
       <td data-label="Passcode"><%=student.password%></td>
 		<td data-label="Math Points"><input name="mathpts" style="width: 50%" value="<%=student.mathpts%>" ></td>
 		<td data-label="Reading Points"><input name="readingpts" style="width: 50%" value="<%=student.readingpts%>" ></td>
-		<td data-label="School" class="td"><%=student.school%></td>
-		<td data-label="Grade" class="td"><%=student.grade%></td>
-		<td data-label="Math Teacher"><%=student.mathteacher%></td>
-		<td data-label="Reading Teacher"><%=student.readingteacher%></td>
-		<td data-label="Total Points">
+		<td data-label="School" class="td"><input name="school" value="<%=student.school%>" ></td>
+		<td data-label="Grade" class="td"><input name="grade" style="width: 50%" value="<%=student.grade%>"/></td>
+		<td data-label="Math Teacher"><input name="mathteacher"  value="<%=student.mathteacher%>" style="width: 100%" /></td>
+		<td data-label="Reading Teacher"><input name="readingteacher" value="<%=student.readingteacher%>"/></td>
+		<td data-label="Current Points">
 			<% if (student.totalpts === ''){%>
 			<%=Number(student.mathpts) + Number(student.readingpts)%>
 			<%} else {%>
 			<%= student.totalpts%>
 			<%}%>
 		</td>
+			<td data-label="Starting Points">
+			<% if (student.startingPts === ''){%>
+			0
+			<%} else {%>
+			<%= student.startingPts%>
+			<%}%>
+		</td>
+			<td data-label="Carry Over Points">
+			<% if (student.carryOverPts === ''){%>
+			0
+			<%} else {%>
+			<%= student.carryOverPts%>
+			<%}%>
+		</td>
 		<td data-label="Orders" class="td" style="width: 100%;">
-			<% student.prizes.forEach(function(prize){ %>
+			<% student.prizes.forEach(function(prize, index){ %>
 			(<%=prize.quantity%>) <%=prize.prizeName%>
+			<%if (index !== student.prizes.length-1){%>
+				&amp;
+			<%}%>
 			<%})%>
 		</td>
 		<td data-label="Update-Delete"><a class="ui floated tiny primary button" href="/students/<%= student._id %>">
@@ -75,7 +94,8 @@
                                  
                              </a>
 			<button type="submit" class="ui floated tiny orange button">Save Changes</button>
-		</td>
+<a class="ui floated tiny red button" href="/students/reset/<%= student._id %>">Reset Order</a>
+
 			</form>
 		</tr>
 		  <% }) %> 
@@ -93,9 +113,9 @@
     $('#studenttable').DataTable({
 		"paging": false
 	});
-} );
 	exportTableToCSV('orders.csv')
 	sessionStorage.removeItem('download')
+} );
 }
 		
 		
@@ -137,9 +157,19 @@ function exportTableToCSV(filename) {
     for (var i = 0; i < rows.length; i++) {
         var row = [], cols = rows[i].querySelectorAll(".td, .th");
         
-        for (var j = 0; j < cols.length; j++) 
-            row.push(cols[j].innerText);
-        
+        for (var j = 0; j < cols.length; j++) {
+			if (cols[j].innerText.includes('(')) {
+				for (k=0; k<cols[j].innerText.split('&').length; k++) {
+					row.push(cols[j].innerText.split('&')[k]);
+				}
+			} else {
+			if (cols[j].firstElementChild) {
+					row.push(cols[j].firstElementChild.value);
+				} else {
+            	row.push(cols[j].innerText);
+			}
+		}
+	}
         csv.push(row.join(","));        
     }
 

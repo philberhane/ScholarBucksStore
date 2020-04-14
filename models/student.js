@@ -10,6 +10,8 @@ var studentSchema = new mongoose.Schema({
 	mathpts: String,
 	readingpts: String,
 	totalpts: String,
+	carryOverPts: String,
+	startingPts: String,
 	school: String,
 	grade: String,
 	mathteacher: String,

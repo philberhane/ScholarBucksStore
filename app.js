@@ -6,6 +6,7 @@ passport 	   = require("passport"),
 mongoose       = require("mongoose"),
 express        = require("express"),
 User 	   	   = require("./models/user"),
+Transaction 	   	   = require("./models/transaction"),
 Student 	   	   = require("./models/student"),
 Prize 	   	   = require("./models/prize"),
 Rating 	   	   = require("./models/rating"),
@@ -50,12 +51,9 @@ passport.use('local-student', new LocalStrategy(function(username, password, don
 
     if (err) { return done(err); }
     if (!user) { return done(null, false, { message: 'Unknown user ' + username }); }
-	  console.log(user)
 	  if (user.password === password) {
-		  console.log('successful student login')
 		  return done(null, user);
 	  } else {
-		  console.log('unsuccessful student login')
 		  return done(null, false, { message: 'Invalid password' });
 	  }
   });
@@ -129,7 +127,6 @@ app.get("/", function(req, res){
 });
 
 app.get("/adminlanding",isLoggedIn, function(req, res){
-	console.log(req.user);
    res.render("adminlanding", {accounttype:req.user.accounttype}); 
 });
 
@@ -138,7 +135,6 @@ app.get("/uploadOrder",isLoggedIn, function(req, res){
 });
 
 app.get("/studentlanding", isLoggedIn, function(req, res){
-	console.log(req.user);
    res.render("studentlanding", {firstname:req.user.firstname, totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart}); 
 });
 
@@ -160,7 +156,6 @@ app.get("/scholarbuckspage", function(req, res){
 
 
 app.post("/test", function(req, res){
-   console.log(req.user)
 });
 
 
@@ -242,16 +237,21 @@ app.post("/loginthestudent", passport.authenticate("local-student", {
 
 app.get('/orders', isLoggedIn, function(req, res) {
 	Prize.find({}, function(err, prizes){
-		console.log(prizes)
 			res.render("orders", {prizes: prizes, accounttype: req.user.accounttype});
 	});
 })
 
+app.get('/transactions', isLoggedIn, function(req, res) {
+	Transaction.find({}, function(err, transactions){
+			res.render("transactions", {transactions: transactions.reverse(), accounttype: req.user.accounttype});
+	});
+})
+
 app.post('/edittable', isLoggedIn, function(req, res) {
-	console.log(req.body.mathpts)
+	Student.findOne({username: req.body.username}, function(err, foundUser){
+	
 	var mathpts
 	var readingpts
-	console.log(req.body.readingpts)
 	if (req.body.mathpts === '' || isNaN(req.body.mathpts) ) {
 		mathpts = 0
 	} else {
@@ -262,10 +262,11 @@ app.post('/edittable', isLoggedIn, function(req, res) {
 	} else {
 		readingpts = parseInt(req.body.readingpts)
 	}
-	var totalpts = readingpts + mathpts
-	Student.findOneAndUpdate({ "username": req.body.username }, { "$set": { "mathpts": req.body.mathpts, "readingpts": req.body.readingpts, "totalpts": totalpts.toString()}}, function(err, book){
+	var totalpts = readingpts + mathpts + parseInt(foundUser.totalpts)
+	Student.findOneAndUpdate({ "username": req.body.username }, { "$set": { "mathpts": req.body.mathpts, "readingpts": req.body.readingpts, "totalpts": totalpts.toString(), "startingPts": totalpts.toString(), "carryOverPts": '0', "grade": req.body.grade,"mathteacher": req.body.mathteacher, "readingteacher": req.body.readingteacher}}, function(err, book){
             res.redirect('/students')
 })
+	})
 })
 
 app.get("/students", isLoggedIn, function(req, res){
@@ -274,7 +275,6 @@ app.get("/students", isLoggedIn, function(req, res){
 		// if(err){
 		// 	console.log("ERROR!");
 		// } else {
-			console.log(req.user)
 			res.render("index", {students:students, accounttype:req.user.accounttype, firstname: req.user.firstname, lastname: req.user.lastname});
 		//}
 	});
@@ -317,7 +317,6 @@ app.post("/addToCart", isLoggedIn, function(req,res) {
 	// console.log(req.user)
 	// res.send({message : 'Success'})
 	Prize.findOne({_id: req.body.id}, function(err, prize){
-			console.log('found prize: ' + prize.prizename)
 			Student.findOne({username: req.user.username}, function(err, foundUser){
 				if (foundUser.shoppingCart.filter(e => e.id === req.body.id).length > 0) {
 					var previousQuantity
@@ -340,7 +339,7 @@ app.post("/addToCart", isLoggedIn, function(req,res) {
 					}
 					foundUser.shoppingCart.splice(arrayIndex, 0, addedPrize);
 					foundUser.save()
-					console.log('incremented prize in cart: ' + prize.prizename)
+
 					res.send({totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, newQuantity:newQuantity})
 					// increment count
 				} else {
@@ -353,14 +352,13 @@ app.post("/addToCart", isLoggedIn, function(req,res) {
 					}
 					foundUser.shoppingCart.push(addedPrize)
 					foundUser.save()
-					console.log('added prize in cart: ' + prize.prizename)
+
 					res.send({totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, newQuantity:newQuantity})
 				}
 			});
 	});
 })
 	app.get("/increaseQuantity/:id", isLoggedIn, function(req,res) {
-		console.log('params ' +req.params.id)
 		Prize.findOne({_id: req.params.id}, function(err, prize){
 			Student.findOne({username: req.user.username}, function(err, foundUser){
 				var previousQuantity
@@ -390,7 +388,6 @@ app.post("/addToCart", isLoggedIn, function(req,res) {
 	})
 
 app.get("/decreaseQuantity/:id", isLoggedIn, function(req,res) {
-		console.log('params ' +req.params.id)
 		Prize.findOne({_id: req.params.id}, function(err, prize){
 			Student.findOne({username: req.user.username}, function(err, foundUser){
 				var previousQuantity
@@ -429,12 +426,10 @@ app.get("/reviews", isLoggedIn, function(req,res){
 app.post("/submitOrder",isLoggedIn, function(req, res){
     var messages = []
     var orderArray = req.body.orderArray
-	console.log('Order Array: ' + orderArray)
 
     orderArray.forEach(function(order, index){
 		//if (index) {
-		console.log('i is: ')
-		console.log(index)
+
         var username = order.username
         var itemName = order.itemName
         var quantity = order.quantity
@@ -459,10 +454,6 @@ app.post("/submitOrder",isLoggedIn, function(req, res){
          return res.status(200).send({message : messages}); 
 		}
 		} else {
-        
-        // STUCK HERE until i have access to internet + prize model. need to find item based on itemname
-        // ALSO if there exists a continue inside of a forEach, i've gotta figure out a way to break the forEach loop ??
-        // Some for eaches dont need to be here
 		
 		
         var totalcost = 0
@@ -475,12 +466,9 @@ app.post("/submitOrder",isLoggedIn, function(req, res){
          return res.status(200).send({message : messages}); 
 		}
                     } else if (prize === null) {
-						console.log('here')
                         var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s). This item could not be found, please check the spelling and try again!'
                         messages.push(message)
-						console.log('second i is: ')
-						console.log(index)
-						console.log(orderArray.length)
+
 						if (index === orderArray.length-1) {
          return res.status(200).send({message : messages}); 
 		}
@@ -500,11 +488,21 @@ app.post("/submitOrder",isLoggedIn, function(req, res){
 			prize.invamount = (parseInt(prize.invamount) - parseInt(quantity)).toString();
 						prize.quantity = (parseInt(prize.quantity) + parseInt(quantity)).toString();
 						prize.save()
+			var date = new Date()
 
 			var item = {
 				quantity: quantity,
-				prizeName: itemName
+				prizeName: itemName,
 			}
+
+			var transaction = new Transaction({
+				studentName: foundUser.firstname + ' ' + foundUser.lastname,
+				prizeName: itemName,
+				quantity: quantity,
+				date: date
+	})
+	
+			
 						foundUser.prizes.push(item);
 						foundUser.totalpts = (parseInt(foundUser.totalpts) - parseInt(prize.prizepoints)).toString();
 						Student.update({username: req.body.username}, {
@@ -512,6 +510,11 @@ app.post("/submitOrder",isLoggedIn, function(req, res){
                             totalpts: foundUser.totalpts,
                             shoppingCart: []
 						}, function(err, numberAffected, rawResponse) {
+							transaction.save(function(err){
+      if(err){
+           console.log(err);
+      }
+});
                             var orderString = ''+foundUser.firstname+' '+foundUser.lastname+' has ordered the following:'
 		
 				orderString += '\n \n \n \n Prize: '+itemName+' \n \n Quantity: '+quantity+''
@@ -543,7 +546,7 @@ app.post("/submitOrder",isLoggedIn, function(req, res){
             if (error) {
               console.log(error);
             } else {
-              console.log('Email sent: ' + info.response);
+          
               var message = 'Success: '+foundUser.firstname+' '+foundUser.lastname+' has successfully ordered '+quantity+' item ' +itemName+ '(s)!'
               messages.push(message)
 				if (index === orderArray.length-1) {
@@ -620,15 +623,18 @@ app.post("/orderPrizes", isLoggedIn, function(req,res){
 				Prize.findOne({_id: item.id}, function(err, prize){
 					if (err) {
 			return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
-		}
+		}			
+			
 						prize.invamount = (parseInt(prize.invamount) - item.quantity).toString();
 						prize.quantity = (parseInt(prize.quantity) + item.quantity).toString();
 						prize.save()
 						foundUser.prizes.push(item);
 						foundUser.totalpts = (parseInt(foundUser.totalpts) - parseInt(prize.prizepoints)).toString();
+
 						Student.update({username: req.body.username}, {
 							prizes: foundUser.prizes, 
-							totalpts: foundUser.totalpts
+							totalpts: foundUser.totalpts,
+							carryOverPts: foundUser.totalpts
 						}, function(err, numberAffected, rawResponse) {
 						   if (err) {
 							   return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
@@ -648,14 +654,23 @@ app.post("/orderPrizes", isLoggedIn, function(req,res){
 						   if (err) {
 							   return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: "There has been an error. Please try again"})
 						   }
-		console.log('found user')
-		console.log(foundUser)
+		
+		
+
 		var orderString = '<div><h4>ScholarBucks Order</h4>';
 		orderString += '<p>First Name: ' + foundUser.firstname + '</p>'
 		orderString += '<p>Last Name: ' + foundUser.lastname + '</p>'
 		orderString += '<p>School: ' + foundUser.school + '</p>'
 		orderString += '<p>Grade: ' + foundUser.grade + '</p>'
 			for (i=0; i<shoppingcart.length; i++) {
+				var date = new Date()
+				var transaction = new Transaction({
+				studentName: foundUser.firstname + ' ' + 						foundUser.lastname,
+				prizeName: shoppingcart[i].prizeName,
+				quantity: shoppingcart[i].quantity,
+				date: date
+	})
+					transaction.save()
 				orderString += '<p>Prize: '+shoppingcart[i].prizeName+' </p><p>Quantity: '+shoppingcart[i].quantity+'</p>'
 				if (i === shoppingcart.length-1) {
 					orderString += '</div>'
@@ -688,7 +703,6 @@ app.post("/orderPrizes", isLoggedIn, function(req,res){
             if (error) {
               console.log(error);
             } else {
-              console.log('Email sent: ' + info.response);
              return res.redirect('/orderconfirmed')
             }
           });
@@ -754,7 +768,6 @@ app.get("/prizes/new", isLoggedIn, function(req, res){
 //CREATE ROUTE
 
 app.post("/students", isLoggedIn, function(req, res){
-	console.log(req.body)
 	var totalpts = parseInt(req.body.student.mathpts) + parseInt(req.body.student.readingpts)
 	//create blog
 	var newstudent = new Student({
@@ -771,7 +784,9 @@ app.post("/students", isLoggedIn, function(req, res){
 		mathteacher: req.body.student.mathteacher,
 		totalpts: totalpts.toString(),
 		shoppingCart: [],
-		prizes: []
+		prizes: [],
+		carryOverPts : '0',
+		startingPts: '0'
 	})
 	//totalpts: req.body.mathpts + req.body.readingpts,
 	
@@ -801,7 +816,6 @@ app.post("/students", isLoggedIn, function(req, res){
 	});
 
 app.post("/prizes", isLoggedIn, function(req, res){
-	console.log(req.body.prize)
 	//create blog
 	Prize.create(req.body.prize, function(err, newPrize){
 		if(err){
@@ -838,6 +852,39 @@ app.get("/students/:id", isLoggedIn, function(req, res){
        }
    })
 });
+app.get("/students/reset/:id", isLoggedIn, function(req, res){
+	
+   Student.findById(req.params.id, function(err, foundStudent){
+       if(err){
+           res.redirect("/students");
+       } else {
+		   foundStudent.prizes = []
+		   foundStudent.totalpts= (parseInt(foundStudent.mathpts) + parseInt(foundStudent.readingpts)).toString()
+		   foundStudent.save((err, saved) => {
+			 if(err){
+           res.redirect("/students");
+       }
+			   if (req.user.accounttype === 'teacher') {
+		Student.find({$or: [{'mathteacher': req.user.firstname + ' ' + req.user.lastname}, {'readingteacher': req.user.firstname + ' ' + req.user.lastname}]}, function(err, students){
+		// if(err){
+		// 	console.log("ERROR!");
+		// } else {
+			res.render("index", {students:students, accounttype:req.user.accounttype, firstname: req.user.firstname, lastname: req.user.lastname});
+		//}
+	});
+	} else {
+			Student.find({}, function(err, students){
+		// if(err){
+		// 	console.log("ERROR!");
+		// } else {
+			res.render("index", {students:students, accounttype:req.user.accounttype, firstname: req.user.firstname, lastname: req.user.lastname});
+		//}
+	});
+		}
+		   })
+       }
+   })
+});
 
 app.get("/prizes/:id", isLoggedIn, function(req, res){
 	
@@ -862,7 +909,6 @@ app.get("/students/:id/edit", isLoggedIn, function(req, res){
 })
 
 app.get("/prizes/:id/edit", isLoggedIn, function(req, res){
-	console.log(req.params)
     Prize.findById(req.params.id, function(err, foundPrize){
         if(err){
             res.redirect("/prizes");
@@ -931,7 +977,6 @@ app.delete("/students/:id", function(req, res){
 app.get("/prizes/:id/delete", function(req, res){
    //destroy blog
    Prize.findByIdAndRemove(req.params.id, function(err){
-	   console.log('deleted')
        if(err){
            res.redirect("/prizes");
        } else {
@@ -944,7 +989,6 @@ app.get("/prizes/:id/delete", function(req, res){
 app.get("/students/:id/delete", function(req, res){
    //destroy blog
    Student.findByIdAndRemove(req.params.id, function(err){
-	   console.log('deleted')
        if(err){
            res.redirect("/students");
        } else {

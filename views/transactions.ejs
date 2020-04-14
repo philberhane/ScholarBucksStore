@@ -1,0 +1,28 @@
+<% include ./partials/header %>
+<div id = "body" class = "ui container">
+	<h1>
+		Transactions
+	</h1>
+	<table id="studenttable" class="ui sortable celled table">
+  <thead>
+    <tr>
+		<th>Student Name</th>
+		<th>Prize Name</th>
+		<th>Quantity</th>
+    <th>Date</th>
+  </tr></thead>
+  <tbody>
+	  <% for (i=0; i<transactions.length; i++){ %>
+	 <tr>
+		 <td data-label="Student Name"><%= transactions[i].studentName %></td>
+      <td data-label="Prize Name"><%= transactions[i].prizeName %></td>
+		 <td data-label="Quantity"><%= transactions[i].quantity %></td>
+		<td data-label="Date"><%=transactions[i].date%></td>
+		</tr>
+	  <% }%>  
+  
+  </tbody>
+</table>
+</div>	
+<script>console.log("<{{ students }}")</script>
+<% include ./partials/footer %>

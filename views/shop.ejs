@@ -14,7 +14,7 @@
 		points
 	</h4>
 	<p>
-		Prizes with the *  may vary from the pictures
+		(Prizes with the * symbol may vary from the pictures)
 	</p>
 	<div class="row">
 	<% var count = 1 %>
@@ -24,6 +24,19 @@
   <img src="<%=prize.prizeimage%>" class="card-img-top" alt="...">
   <div class="card-body" style="text-align: center">
     <h5 class="card-title"><%=prize.prizename%></h5>
+	<%if (typeof prize.gradeLevel !== 'undefined') {%>
+	  <%if (prize.gradeLevel.length > 0) {%>
+		<p>
+			Grade Level: <%=prize.gradeLevel%>
+	  </p>
+	  <p>
+			Type of Book: <%=prize.type%>
+	  </p>
+	  <p>
+			Gender: <%=prize.gender%>
+	  </p>
+	  <%}%>
+	  <%}%>
     <div class="meta">
         			<span class="cinema"><%=prize.prizepoints%> Points</span>
       				</div>
