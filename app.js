@@ -866,7 +866,7 @@ app.get("/students/reset/:id", isLoggedIn, function(req, res){
            res.redirect("/students");
        } else {
 		   foundStudent.prizes = []
-		   foundStudent.totalpts= foundUser.startingPts
+		   foundStudent.totalpts= foundStudent.startingPts
 		   foundStudent.save((err, saved) => {
 			 if(err){
            res.redirect("/students");
