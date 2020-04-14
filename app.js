@@ -263,7 +263,14 @@ app.post('/edittable', isLoggedIn, function(req, res) {
 		readingpts = parseInt(req.body.readingpts)
 	}
 	var totalpts = readingpts + mathpts + parseInt(foundUser.totalpts)
-	Student.findOneAndUpdate({ "username": req.body.username }, { "$set": { "mathpts": req.body.mathpts, "readingpts": req.body.readingpts, "totalpts": totalpts.toString(), "startingPts": totalpts.toString(), "carryOverPts": '0', "grade": req.body.grade,"mathteacher": req.body.mathteacher, "readingteacher": req.body.readingteacher}}, function(err, book){
+	var carryOver
+	if (foundUser.carryOverPts === '0') {
+		carryOver = '0'
+	} else {
+		carryOver = foundUser.carryOverPts
+	}
+	
+	Student.findOneAndUpdate({ "username": req.body.username }, { "$set": { "mathpts": req.body.mathpts, "readingpts": req.body.readingpts, "totalpts": totalpts.toString(), "startingPts": totalpts.toString(), "carryOverPts": carryOver, "grade": req.body.grade,"mathteacher": req.body.mathteacher, "readingteacher": req.body.readingteacher}}, function(err, book){
             res.redirect('/students')
 })
 	})
