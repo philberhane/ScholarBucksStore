@@ -21,7 +21,7 @@
 	<% prizes.forEach(function(prize){ %>
 	<div class="col-md-4 col-sm-6 col-xs-12">
 	<div class="card" style="width: 18rem;">
-  <img src="<%=prize.prizeimage%>" class="card-img-top" alt="...">
+  <img style="max-width: 252px" src="<%=prize.prizeimage%>" class="card-img-top" alt="...">
   <div class="card-body" style="text-align: center">
     <h5 class="card-title"><%=prize.prizename%></h5>
 	<%if (typeof prize.gradeLevel !== 'undefined') {%>

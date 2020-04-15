@@ -6,7 +6,9 @@
 	<table id="studenttable" class="ui sortable celled table">
   <thead>
     <tr>
+		<th>School</th>
 		<th>Student Name</th>
+		<th>Grade</th>
 		<th>Prize Name</th>
 		<th>Quantity</th>
     <th>Date</th>
@@ -14,7 +16,9 @@
   <tbody>
 	  <% for (i=0; i<transactions.length; i++){ %>
 	 <tr>
+		 <td data-label="Student School"><%= transactions[i].school %>
 		 <td data-label="Student Name"><%= transactions[i].studentName %></td>
+		 <td data-label="Student Grade"><%= transactions[i].grade %>
       <td data-label="Prize Name"><%= transactions[i].prizeName %></td>
 		 <td data-label="Quantity"><%= transactions[i].quantity %></td>
 		<td data-label="Date"><%=transactions[i].date%></td>

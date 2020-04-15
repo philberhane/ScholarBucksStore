@@ -4,7 +4,9 @@ var transactionSchema = new mongoose.Schema({
 	prizeName: String,
 	studentName: String,
 	quantity: String,
-	date: String
+	date: String,
+	school: String,
+	grade: String
 });
 
 
