@@ -887,6 +887,7 @@ app.get("/students/:id", isLoggedIn, function(req, res){
        }
    })
 });
+
 app.get("/students/reset/:id", isLoggedIn, function(req, res){
 	
    Student.findById(req.params.id, function(err, foundStudent){
@@ -895,6 +896,8 @@ app.get("/students/reset/:id", isLoggedIn, function(req, res){
        } else {
 		   foundStudent.prizes = []
 		   foundStudent.totalpts= foundStudent.startingPts
+		   foundStudent.carryOverPts = '0'
+		   // set carryover to 0
 		   foundStudent.save((err, saved) => {
 			 if(err){
            res.redirect("/students");
@@ -922,6 +925,7 @@ app.get("/students/reset/:id", isLoggedIn, function(req, res){
 });
 
 app.get("/prizes/:id", isLoggedIn, function(req, res){
+	console.log('prize')
 	
    Prize.findById(req.params.id, function(err, foundPrize){
        if(err){
@@ -1038,6 +1042,19 @@ app.get("/logout", function(req, res){
     req.logout();
     res.redirect("/");
 });
+
+app.post("/students/resetAll", isLoggedIn, function(req, res){
+	console.log('route reset')
+	 Student.updateMany({}, {"$set":{"prizes": []}},
+      function(err, result) {
+        if (err) {
+			console.log(err)
+          return res.status(500).send({message : 'Error'})
+        } else {
+			 return res.status(200).send({message : 'Success'});
+        }
+	 })
+})
 
 
 function isLoggedIn(req, res, next){

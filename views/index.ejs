@@ -29,6 +29,9 @@
 		Export Data
 	</button>
 		</div>
+<button class="ui floated tiny button" style="margin-bottom: 15px" onclick="myFunction()">
+	Reset All Orders
+	</button>
 
 <table id="studenttable" class="ui sortable celled table">
   <thead>
@@ -103,6 +106,12 @@
   </tbody>
 </table>
 </div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js">
+</script>
 <script>
 	if (typeof sessionStorage.download === 'undefined') {
 		$(document).ready(function() {
@@ -189,6 +198,28 @@ function exportTableToCSV(filename) {
 
     // Download CSV file
     downloadCSV(csv.join("\n"), filename);
+}
+	function myFunction() {
+  if (confirm("Please confirm you'd like to reset all orders")) {
+    // hit up reset route
+	  console.log('attempting api call')
+	  var input = {}
+	    fetch('/students/resetAll', {
+                            method: 'POST',
+                            body: JSON.stringify(input),
+                            headers: { "Content-Type": "application/json"}
+                        }).then(function(response) {
+                            return response.json();
+                        }).then(function(data) {
+                            if (data.success === true) {
+                              location.reload()
+                            } else {
+								alert('There has been an error! Please try again')
+							}
+                        })
+  } else {
+    
+  }
 }
 
 </script>
