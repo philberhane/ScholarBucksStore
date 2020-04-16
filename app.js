@@ -713,7 +713,7 @@ app.post("/orderPrizes", isLoggedIn, function(req,res){
 		//wecare@innovativescholars.net
         var mailOptions = {
             from: 'scholarbucks@outlook.com',
-            to: 'philberhane@outlook.com',
+            to: 'wecare@innovativescholars.net',
             subject: "New ScholarBucks Order!",
             html: orderString
           };
