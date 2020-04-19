@@ -206,6 +206,38 @@ app.post("/login", passport.authenticate("local"//, {
 				res.redirect("/adminlanding");
 			}
 });
+
+app.post("/forgotPassword", function(req, res) {
+	var email = req.body.email2
+	
+})
+
+app.get("/forgotPasswordLink/5de9d73ff16dcc001790ed5e", function(req, res) {
+	res.render("resetpassword", {code: "5de9d73ff16dcc001790ed5e", message: ''})
+})
+app.get("/forgotPasswordLink/5defeb2b03d8930017c51a95", function(req, res) {
+	res.render("resetpassword", {code: "5defeb2b03d8930017c51a95", message: ''})
+})
+
+app.post("/resetPassword", function(req,res) {
+	var password1 = req.body.password1
+	var password2 = req.body.password2
+	var code = req.body.code
+	if (password1 === password2) {
+		User.findOne({_id: code}, function(err, user) {
+			user.setPassword(password1, function(err, user){
+
+      user.save(function(err) {
+
+        res.render("resetpassword", {code: code, message: "Password has been reset!"})
+      })
+    })
+		})
+	} else {
+		res.render("resetpassword", {code: code, message: "Passwords do not match!"})
+	}
+})
+
 app.post("/loginthestudent", passport.authenticate("local-student", {
     successRedirect: "/studentlanding",
     failureRedirect: "/studentlogin"
