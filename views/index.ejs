@@ -57,8 +57,8 @@
       <td data-label="Name" class="td"><%=student.firstname%> <%=student.lastname%></td>
       <input name="username" value="<%= student.username%>" type="hidden">
       <td data-label="Passcode"><%=student.password%></td>
-		<td data-label="Math Points"><input name="mathpts" style="width: 50%" value="<%=student.mathpts%>" ></td>
-		<td data-label="Reading Points"><input name="readingpts" style="width: 50%" value="<%=student.readingpts%>" ></td>
+		<td data-label="Math Points"><input name="mathpts" type="number" style="width: 50%" value="<%=student.mathpts%>" ></td>
+		<td data-label="Reading Points"><input name="readingpts" type="number" style="width: 50%" value="<%=student.readingpts%>" ></td>
 		<td data-label="School" class="td"><input name="school" value="<%=student.school%>" ></td>
 		<td data-label="Grade" class="td"><input name="grade" style="width: 50%" value="<%=student.grade%>"/></td>
 		<td data-label="Math Teacher" class="td"><input name="mathteacher"  value="<%=student.mathteacher%>" style="width: 100%" /></td>

@@ -297,7 +297,7 @@ app.post('/edittable', isLoggedIn, function(req, res) {
 		readingpts = parseInt(req.body.readingpts)
 	}
 		var carryOver
-	if (foundUser.carryOverPts === '0') {
+	if (foundUser.carryOverPts === '0' || foundUser.carryOverPts === '') {
 		carryOver = 0
 	} else {
 		carryOver = parseInt(foundUser.carryOverPts)
