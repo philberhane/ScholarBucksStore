@@ -34,6 +34,9 @@
 <button class="ui floated tiny button" style="margin-bottom: 15px" onclick="myFunction()">
 	Reset All Orders
 	</button>
+		<button class="ui floated tiny button" style="margin-bottom: 15px" onclick="saveAll()">
+	Save All
+	</button>
 		</div>
 	<p id="loading">
 		
@@ -43,16 +46,16 @@
   <thead>
     <tr><th class="th">Name</th>
     
-    <th>Passcode</th>
+    <th>Username</th>
 		<th>Math Pts.</th>
 		<th>Reading Pts.</th>
 		<th class="th">School</th>
 		<th class="th">Grade</th>
 		<th class="th">Math Teacher</th>
 		<th class="th">Reading Teacher</th>
-		<th>Current Points</th>
-		<th>Starting Balance</th>
-		<th>CarryOver Points</th>
+		<th class="th">Current Points</th>
+		<th class="th">Starting Balance</th>
+		<th class="th">CarryOver Points</th>
 		<th class="th">Orders</th>
 		<th>Update-Delete</th>
   </tr></thead>
@@ -62,28 +65,28 @@
 		<form action="/edittable" method="POST">
       <td data-label="Name" class="td"><%=student.firstname%> <%=student.lastname%></td>
       <input name="username" value="<%= student.username%>" type="hidden">
-      <td data-label="Passcode"><%=student.password%></td>
+      <td data-label="Passcode"><%=student.username%></td>
 		<td data-label="Math Points"><input name="mathpts" type="number" style="width: 50%" value="<%=student.mathpts%>" ></td>
 		<td data-label="Reading Points"><input name="readingpts" type="number" style="width: 50%" value="<%=student.readingpts%>" ></td>
 		<td data-label="School" class="td"><input name="school" value="<%=student.school%>" ></td>
 		<td data-label="Grade" class="td"><input name="grade" style="width: 50%" value="<%=student.grade%>"/></td>
 		<td data-label="Math Teacher" class="td"><input name="mathteacher"  value="<%=student.mathteacher%>" style="width: 100%" /></td>
 		<td data-label="Reading Teacher" class="td"><input name="readingteacher" value="<%=student.readingteacher%>"/></td>
-		<td data-label="Current Points">
+		<td data-label="Current Points" class="td">
 			<% if (student.totalpts === ''){%>
 			<%=Number(student.mathpts) + Number(student.readingpts)%>
 			<%} else {%>
 			<%= student.totalpts%>
 			<%}%>
 		</td>
-			<td data-label="Starting Points">
+			<td data-label="Starting Points" class="td">
 			<% if (student.startingPts === ''){%>
 			0
 			<%} else {%>
 			<%= student.startingPts%>
 			<%}%>
 		</td>
-			<td data-label="Carry Over Points">
+			<td data-label="Carry Over Points" class="td">
 			<% if (student.carryOverPts === ''){%>
 			0
 			<%} else {%>
@@ -119,11 +122,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js">
 </script>
 <script>
-	if (typeof sessionStorage.download === 'undefined') {
+	if (typeof sessionStorage.download === 'undefined' && typeof sessionStorage.save === 'undefined') {
 		$(document).ready(function() {
     $('#studenttable').DataTable();
 } );
-} else {
+}else {
 	$(document).ready(function() {
     $('#studenttable').DataTable({
 		"paging": false
@@ -136,6 +139,10 @@
 		
 	function sessionAndReload() {
 		sessionStorage.download = 'download'
+		location.reload()
+	}
+	function sessionAndSave() {
+		sessionStorage.save = 'save'
 		location.reload()
 	}
 	
@@ -303,6 +310,55 @@ function exportTableToCSV(filename) {
 					};
 			};
 		};
+	
+	 function saveAll() {
+		document.getElementById('loading').innerText = 'Saving all student data. Please wait..'
+		var table = $('#studenttable')
+
+		  table.DataTable().destroy()
+		 
+		 var tableRows = document.querySelectorAll('tr')
+		 console.log(tableRows)
+	
+		 
+
+		tableRows.forEach(function(tr, index) {
+			if (index > 0) {
+			var input = {
+				username: tr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.innerText,
+				mathpts: tr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value,
+				readingpts: tr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value,
+				school: tr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value,
+				grade: tr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value,
+				mathteacher: tr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value,
+				readingteacher: tr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value	
+			}
+			
+			fetch('/edittableAll', {
+						method: 'POST',
+						body: JSON.stringify(input),
+						headers: { "Content-Type": "application/json"}
+						}).then(function(response) {
+						return response.json();
+						}).then(function(data) {
+						if (data.success === true) {
+								if (index === tableRows.length-1) {
+									if (alert("You have successfully saved all of the student data!")) {
+										
+									  } else {
+										location.reload()
+									  }
+								}
+						} else {
+								return alert('There has been an error! Please try again')
+							}
+						})
+		}
+		})
+		
+		
+
+	}
 	
 
 </script>

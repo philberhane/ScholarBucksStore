@@ -310,6 +310,35 @@ app.post('/edittable', isLoggedIn, function(req, res) {
 	})
 })
 
+app.post('/edittableAll', isLoggedIn, function(req, res) {
+	Student.findOne({username: req.body.username}, function(err, foundUser){
+	
+	var mathpts
+	var readingpts
+	if (req.body.mathpts.length === 0) {
+		mathpts = 0
+	} else {
+		mathpts = parseInt(req.body.mathpts)
+	}
+	if (req.body.readingpts.length === 0) {
+		readingpts = 0
+	} else {
+		readingpts = parseInt(req.body.readingpts)
+	}
+		var carryOver
+	if (foundUser.carryOverPts === '0' || foundUser.carryOverPts === '') {
+		carryOver = 0
+	} else {
+		carryOver = parseInt(foundUser.carryOverPts)
+	}
+	var totalpts = readingpts + mathpts + carryOver
+	
+	Student.findOneAndUpdate({ "username": req.body.username }, { "$set": { "mathpts": mathpts.toString(), "readingpts": readingpts.toString(), "totalpts": totalpts.toString(), "startingPts": totalpts.toString(), "grade": req.body.grade,"school": req.body.school,"mathteacher": req.body.mathteacher, "readingteacher": req.body.readingteacher}}, function(err, book){
+            return res.send({success: true})
+})
+	})
+})
+
 app.post('/edittableUpload', isLoggedIn, function(req, res) {
 	Student.findOne({username: req.body.username}, function(err, foundUser){
 		console.log(req.body)
@@ -405,7 +434,8 @@ app.get("/students", isLoggedIn, function(req, res){
 app.get("/shop", isLoggedIn, function(req, res){
 
 			Prize.find({}, function(err, prizes){
-			prizes.sort((a, b) => (a.prizepoints < b.prizepoints) ? 1 : -1)	
+			prizes.sort((a, b) => (parseInt(a.prizepoints) < parseInt(b.prizepoints)) ? -1 : 1)	
+				console.log(prizes)
 			res.render("shop", {prizes:prizes, totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart});
 	});
 		
