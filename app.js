@@ -304,9 +304,81 @@ app.post('/edittable', isLoggedIn, function(req, res) {
 	}
 	var totalpts = readingpts + mathpts + carryOver
 	
-	Student.findOneAndUpdate({ "username": req.body.username }, { "$set": { "mathpts": mathpts.toString(), "readingpts": readingpts.toString(), "totalpts": totalpts.toString(), "startingPts": totalpts.toString(), "grade": req.body.grade,"mathteacher": req.body.mathteacher, "readingteacher": req.body.readingteacher}}, function(err, book){
+	Student.findOneAndUpdate({ "username": req.body.username }, { "$set": { "mathpts": mathpts.toString(), "readingpts": readingpts.toString(), "totalpts": totalpts.toString(), "startingPts": totalpts.toString(), "grade": req.body.grade,"school": req.body.school,"mathteacher": req.body.mathteacher, "readingteacher": req.body.readingteacher}}, function(err, book){
             res.redirect('/students')
 })
+	})
+})
+
+app.post('/edittableUpload', isLoggedIn, function(req, res) {
+	Student.findOne({username: req.body.username}, function(err, foundUser){
+		console.log(req.body)
+	if (!foundUser) {
+		var mathpts
+	var readingpts
+	if (req.body.mathpts === '') {
+		mathpts = '0'
+	} else {
+		mathpts = req.body.mathpts
+	}
+	if (req.body.readingpts === '') {
+		readingpts = '0'
+	} else {
+		readingpts = req.body.readingpts
+	}
+	var totalpts = parseInt(mathpts) + parseInt(readingpts)
+	totalpts = totalpts.toString()
+	//create blog
+	var newstudent = new Student({
+		studentid: req.body.studentid,
+		username: req.body.username,
+		firstname: req.body.firstname,
+		lastname: req.body.lastname,
+		password: req.body.password,
+		mathpts: req.body.mathpts,
+		readingpts: req.body.readingpts,
+		school: req.body.school,
+		grade: req.body.grade,
+		readingteacher: req.body.readingteacher,
+		mathteacher: req.body.mathteacher,
+		totalpts: totalpts,
+		startingPts: totalpts,
+		shoppingCart: [],
+		prizes: [],
+		carryOverPts : '0',
+	})
+	//totalpts: req.body.mathpts + req.body.readingpts,
+	
+	
+	newstudent.save(function (err) {
+	if (err) return handleError(err);
+	return res.send({success: true});     
+	})
+	} else {
+	var mathpts
+	var readingpts
+	if (req.body.mathpts.length === 0) {
+		mathpts = 0
+	} else {
+		mathpts = parseInt(req.body.mathpts)
+	}
+	if (req.body.readingpts.length === 0) {
+		readingpts = 0
+	} else {
+		readingpts = parseInt(req.body.readingpts)
+	}
+		var carryOver
+	if (foundUser.carryOverPts === '0' || foundUser.carryOverPts === '') {
+		carryOver = 0
+	} else {
+		carryOver = parseInt(foundUser.carryOverPts)
+	}
+	var totalpts = readingpts + mathpts + carryOver
+	
+	Student.findOneAndUpdate({ "username": req.body.username }, { "$set": { "mathpts": mathpts.toString(), "readingpts": readingpts.toString(), "totalpts": totalpts.toString(), "startingPts": totalpts.toString(), "grade": req.body.grade,"school": req.body.school,"mathteacher": req.body.mathteacher, "readingteacher": req.body.readingteacher}}, function(err, book){
+            return res.send({success: true})
+})
+		}
 	})
 })
 
@@ -660,6 +732,7 @@ app.post("/orderPrizes", isLoggedIn, function(req,res){
 		 })
 		if (parseInt(foundUser.totalpts) >= totalcost) {
 			//proceed
+			var temp = foundUser.totalpts
 			// foundUser.totalpts = (parseInt(foundUser.totalpts) - totalcost).toString()
 			var shoppingCart = foundUser.shoppingCart
 			foundUser.shoppingCart.forEach(function(item, index){
@@ -685,12 +758,7 @@ app.post("/orderPrizes", isLoggedIn, function(req,res){
 						})
 				})
 			})
-
-		} else {
-			return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: 'You do not have enough points for all of these prizes!'})
-		}
-	})
-	var shoppingcart = req.user.shoppingCart
+			var shoppingcart = req.user.shoppingCart
 	Student.findOneAndUpdate({username: req.user.username}, {
 							shoppingCart: []
 						}, function(err, foundUser) {
@@ -707,6 +775,8 @@ app.post("/orderPrizes", isLoggedIn, function(req,res){
 		orderString += '<p>Grade: ' + foundUser.grade + '</p>'
 		orderString += '<p>Math Teacher: ' + foundUser.mathteacher + '</p>'
 		orderString += '<p>Reading Teacher: ' + foundUser.readingteacher + '</p>'
+		orderString += '<p>Student Balance (before purchase): ' + temp + '</p>'
+		orderString += '<p>Total cost of prizes: ' + totalcost + '</p>'
 		// orderString += '</div>'
 		// orderString += '<div id="brain" style="width:50%; float: right"><img style="max-width: 200px" src="https://i.imgur.com/gQUipzr.jpg"/></div></div>'
 		orderString += '<br/>'
@@ -761,6 +831,12 @@ app.post("/orderPrizes", isLoggedIn, function(req,res){
           });
 					
 						})
+
+		} else {
+			return res.render('shoppingcart', {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, error: 'You do not have enough points for all of these prizes!'})
+		}
+	})
+	
 	// deduct cost from total points
 	// empty shopping cart
 	// deduct quantities from prize objects
@@ -853,7 +929,6 @@ app.post("/students", isLoggedIn, function(req, res){
 		shoppingCart: [],
 		prizes: [],
 		carryOverPts : '0',
-		startingPts: '0'
 	})
 	//totalpts: req.body.mathpts + req.body.readingpts,
 	

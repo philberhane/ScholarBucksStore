@@ -25,13 +25,19 @@
             </div>
           </div> -->
 	<div style="padding-bottom: 25px">
+	<div style="display: inline-block">
 	<button class="saveAsExcel ui floated tiny button" onclick="sessionAndReload()">
 		Export Data
 	</button>
 		</div>
+		<input class="ui floated tiny button" type="file" name="File Upload" id="txtFileUpload" accept=".csv, .xlsx" data-buttonText="Import Data" />
 <button class="ui floated tiny button" style="margin-bottom: 15px" onclick="myFunction()">
 	Reset All Orders
 	</button>
+		</div>
+	<p id="loading">
+		
+	</p>
 
 <table id="studenttable" class="ui sortable celled table">
   <thead>
@@ -221,6 +227,83 @@ function exportTableToCSV(filename) {
     
   }
 }
+	
+	var editTableArray = []
+			// The event listener for the file upload
+		document.getElementById('txtFileUpload').addEventListener('change', upload, false);
+	
+		// Method that checks that the browser supports the HTML5 File API
+		function browserSupportFileUpload() {
+			var isCompatible = false;
+			if (window.File && window.FileReader && window.FileList && window.Blob) {
+				isCompatible = true;
+			}
+
+			return isCompatible;
+		};
+
+		function upload(evt) {
+			if (!browserSupportFileUpload()) {
+				alert('The File APIs are not fully supported in this browser!');
+			} else {
+                var data = null;
+				var file = evt.target.files[0];
+				var reader = new FileReader();
+				reader.readAsText(file);
+                reader.onload = function(event) {
+						var csvData = event.target.result; //alert(csvData);
+                        var data2 = csvData.split("\n"); 
+					console.log(data2)
+						document.getElementById('loading').innerText = 'Importing the data. Please wait..'
+                        var i;
+					for (i = 1; i < data2.length; ++i) {
+						if (data2[i].split(',')[5].length > 0) {
+						var studentObj = {
+							username: data2[i].split(',')[5],
+							mathpts: data2[i].split(',')[6],
+							readingpts: data2[i].split(',')[7],
+							readingteacher: data2[i].split(',')[11],
+							mathteacher: data2[i].split(',')[10],
+							school: data2[i].split(',')[8],
+							grade: data2[i].split(',')[9],
+							password: 'scholars20',
+							studentid: data2[i].split(',')[1],
+							firstname: data2[i].split(',')[3],
+							lastname: data2[i].split(',')[4]
+							
+							}
+						editTableArray.push(studentObj)
+							}
+					}
+					console.log(editTableArray)
+							editTableArray.forEach(function(input, index) {
+							fetch('/edittableUpload', {
+						method: 'POST',
+						body: JSON.stringify(input),
+						headers: { "Content-Type": "application/json"}
+						}).then(function(response) {
+						return response.json();
+						}).then(function(data) {
+						if (data.success === true) {
+								if (index === editTableArray.length-1) {
+									if (alert("You have successfully imported the data!")) {
+										
+									  } else {
+										location.reload()
+									  }
+								}
+						} else {
+								return alert('There has been an error! Please try again')
+							}
+						})
+						})
+					};
+					reader.onerror = function() {
+						 alert('Unable to read ' + file.fileName);
+					};
+			};
+		};
+	
 
 </script>
 <% include ./partials/footer %>
