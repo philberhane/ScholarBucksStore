@@ -86,7 +86,19 @@ app.use(methodOverride("_method"));
 
 
 
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated() && req.usedStrategy === 'local'){
+        return next();
+    }
+    res.redirect("/");
+}
 
+function isLoggedInStudent(req, res, next){
+    if(req.isAuthenticated() && req.usedStrategy === 'local-student'){
+        return next();
+    }
+    res.redirect("/");
+}
 
 
 // MONGOOSE/MODEL CONFIG
@@ -136,7 +148,7 @@ app.get("/uploadOrder",isLoggedIn, function(req, res){
    res.render("uploadOrder", {accounttype:req.user.accounttype}); 
 });
 
-app.get("/studentlanding", isLoggedIn, function(req, res){
+app.get("/studentlanding", isLoggedInStudent, function(req, res){
    res.render("studentlanding", {firstname:req.user.firstname, totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart}); 
 });
 
@@ -411,7 +423,7 @@ app.post('/edittableUpload', isLoggedIn, function(req, res) {
 	})
 })
 
-app.get("/students", isLoggedIn, function(req, res){
+app.get("/students", isLoggedInStudent, function(req, res){
 	if (req.user.accounttype === 'teacher') {
 		Student.find({$or: [{'mathteacher': req.user.firstname + ' ' + req.user.lastname}, {'readingteacher': req.user.firstname + ' ' + req.user.lastname}]}, function(err, students){
 		// if(err){
@@ -431,7 +443,7 @@ app.get("/students", isLoggedIn, function(req, res){
 		}
 	})
 
-app.get("/shop", isLoggedIn, function(req, res){
+app.get("/shop", isLoggedInStudent, function(req, res){
 
 			Prize.find({}, function(err, prizes){
 			prizes.sort((a, b) => (parseInt(a.prizepoints) < parseInt(b.prizepoints)) ? -1 : 1)	
@@ -441,21 +453,21 @@ app.get("/shop", isLoggedIn, function(req, res){
 		
 	})
 
-app.get("/shoppingcart", isLoggedIn, function(req, res){
+app.get("/shoppingcart", isLoggedInStudent, function(req, res){
 			Prize.find({}, function(err, prizes){
 			res.render("shoppingcart", {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart, username: req.user.username});
 	});
 		
 	})
 
-app.get("/shoppingcartquantity", isLoggedIn, function(req, res){
+app.get("/shoppingcartquantity", isLoggedInStudent, function(req, res){
 			Prize.find({}, function(err, prizes){
 			res.render("shoppingcartquantity", {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart});
 	});
 		
 	})
 
-app.post("/addToCart", isLoggedIn, function(req,res) {
+app.post("/addToCart", isLoggedInStudent, function(req,res) {
 	// console.log(req.body)
 	// console.log(req.user)
 	// res.send({message : 'Success'})
@@ -501,7 +513,7 @@ app.post("/addToCart", isLoggedIn, function(req,res) {
 			});
 	});
 })
-	app.get("/increaseQuantity/:id", isLoggedIn, function(req,res) {
+	app.get("/increaseQuantity/:id", isLoggedInStudent, function(req,res) {
 		Prize.findOne({_id: req.params.id}, function(err, prize){
 			Student.findOne({username: req.user.username}, function(err, foundUser){
 				var previousQuantity
@@ -530,7 +542,7 @@ app.post("/addToCart", isLoggedIn, function(req,res) {
 		
 	})
 
-app.get("/decreaseQuantity/:id", isLoggedIn, function(req,res) {
+app.get("/decreaseQuantity/:id", isLoggedInStudent, function(req,res) {
 		Prize.findOne({_id: req.params.id}, function(err, prize){
 			Student.findOne({username: req.user.username}, function(err, foundUser){
 				var previousQuantity
@@ -721,7 +733,7 @@ app.get("/reviews", isLoggedIn, function(req,res){
 // 	}) 
 //  });
 
-app.post("/orderPrizes", isLoggedIn, function(req,res){
+app.post("/orderPrizes", isLoggedInStudent, function(req,res){
 	/* Steps from here:
 	1) instead of req.user.username do req.body.username
 	2) create a model in the DB called ratings that saves the user's first name, last name, and the three questions / ratings
@@ -874,7 +886,7 @@ app.post("/orderPrizes", isLoggedIn, function(req,res){
 	// res.redirect confirmation page
 })
 
-app.get('/orderconfirmed', isLoggedIn, function(req, res) {
+app.get('/orderconfirmed', isLoggedInStudent, function(req, res) {
 	return res.render("orderconfirmed", {totalpts: req.user.totalpts, shoppingCart: req.user.shoppingCart})
 })
 	
@@ -1194,12 +1206,7 @@ app.post("/students/resetAll", isLoggedIn, function(req, res){
 })
 
 
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/");
-}
+
 
 
 
