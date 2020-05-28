@@ -1,0 +1,32 @@
+<% include ./partials/header %>
+
+<div class = "ui main text container segment">
+	<div class = "ui huge header">New Staff</div>
+	<form class = "ui form" action = "/newStaff" method = "POST">
+		<div class = "field">
+			<label>Username</label>
+			<input type = "text" name = "username" placeholder = "Username">
+		</div>
+			<div class = "field">
+			<label>First Name</label>
+			<input type = "text" name = "firstname" placeholder = "First Name">
+		</div>
+			<div class = "field">
+			<label>Last Name</label>
+			<input type = "text" name = "lastname" placeholder = "Last Name">
+		</div>
+			<div class = "field">
+			<label>Account Type</label>
+          <!-- <div class="ui left icon input"> -->
+              <select name="accounttype">
+			  <option value="teacher">Teacher</option>
+			  <option value="admin">Admin</option>
+			</select>
+		</div>
+		
+			
+		<input class="ui primary button" type = "submit"  >
+	</form>
+</div>
+
+<% include ./partials/footer %>

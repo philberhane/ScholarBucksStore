@@ -87,14 +87,15 @@ app.use(methodOverride("_method"));
 
 
 function isLoggedIn(req, res, next){
-    if(req.isAuthenticated() && req.usedStrategy === 'local'){
+    if(req.isAuthenticated() && req.user.accounttype){
         return next();
     }
     res.redirect("/");
 }
 
 function isLoggedInStudent(req, res, next){
-    if(req.isAuthenticated() && req.usedStrategy === 'local-student'){
+	console.log(req)
+    if(req.isAuthenticated() && req.user.studentid){
         return next();
     }
     res.redirect("/");
@@ -184,7 +185,9 @@ app.get("/register", function(req, res){
 //handling user sign up
 
 app.post("/register", function(req, res){
-    User.register(new User({username: req.body.username, firstname: req.body.firstname, lastname: req.body.lastname, accounttype: req.body.accounttype}), req.body.password, function(err, user){
+	User.findOneAndDelete({username: req.body.username,firstname: req.body.firstname, lastname: req.body.lastname}).then(deletedDocument => {
+    if(deletedDocument) {
+      User.register(new User({username: req.body.username, firstname: req.body.firstname, lastname: req.body.lastname, accounttype: req.body.accounttype}), req.body.password, function(err, user){
         if(err){
             console.log(err);
             return res.render('register');
@@ -197,7 +200,26 @@ app.post("/register", function(req, res){
 			}
         });
     });
+    } else {
+      res.render("register");
+    }
+		 })
+
 });
+app.get('/newStaff', isLoggedIn, function(req,res){
+	res.render("newStaff", {accounttype:req.user.accounttype});
+})
+app.post('/newStaff', isLoggedIn, function(req,res){
+	var staff = new User({
+		username: req.body.username,
+		firstname: req.body.firstname,
+		lastname: req.body.lastname,
+		accounttype: req.body.accounttype
+})
+	staff.save(function(err) {
+		res.render("newStaff", {accounttype:req.user.accounttype});
+	})
+})
 
 // LOGIN ROUTES
 //render login form
@@ -423,7 +445,7 @@ app.post('/edittableUpload', isLoggedIn, function(req, res) {
 	})
 })
 
-app.get("/students", isLoggedInStudent, function(req, res){
+app.get("/students", isLoggedIn, function(req, res){
 	if (req.user.accounttype === 'teacher') {
 		Student.find({$or: [{'mathteacher': req.user.firstname + ' ' + req.user.lastname}, {'readingteacher': req.user.firstname + ' ' + req.user.lastname}]}, function(err, students){
 		// if(err){
