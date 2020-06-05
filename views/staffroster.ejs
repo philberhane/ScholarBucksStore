@@ -1,0 +1,141 @@
+<% include ./partials/header %>
+<div id = "body" class = "ui container">
+	<h1>
+			   <%= firstname%> <%= lastname%> 
+		 Staff Roster
+	</h1>
+	<!-- <input class="ui primary button" value="Quick Add">
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Candidates</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div id="modalBody" class="modal-body" style="text-align: center">
+					<form>
+                  <input placeholder="username"/>
+					</form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div> -->
+	<button class="ui floated tiny button" style="margin-bottom: 15px" onclick="saveAll()">
+	Save All
+	</button>
+
+	<p id="loading">
+		
+	</p>
+
+<table id="stafftable" class="ui sortable celled table">
+  <thead>
+    <tr><th class="th">Name</th>
+    
+    <th>Username</th>
+		<th>Account Type</th>
+		<th>Update-Delete</th>
+  </tr></thead>
+  <tbody>
+	  <% staffmembers.forEach(function(staff){ %>
+    <tr>
+		<form action="/editstaff" method="POST">
+      <td data-label="Name" class="td">
+		  <input name="name" value="<%=staff.firstname%> <%=staff.lastname%>" type ="text" style="width: 50%"/> </td>
+			<input name="initialusername" value="<%= staff.username%>" type="hidden"/>
+      <td data-label="Username">
+      	<input name="username" value="<%=staff.username%>" type ="text" style="width: 50%"/>
+      </td>
+		<td data-label="Account Type">
+			<select name="accounttype">
+				<% if (staff.accounttype ==='admin') {%>
+				<option value="admin">Admin</option>
+				<option value="teacher">Teacher</option>
+				<% } else { %>
+				<option value="teacher">Teacher</option>
+				<option value="admin">Admin</option>
+				<%}%>
+			</select>
+		</td>
+		
+		<td data-label="Update-Delete">
+			<button type="submit" class="ui floated tiny orange button">Save Changes</button>
+
+			</form>
+		</tr>
+		  <% }) %> 
+  
+  </tbody>
+</table>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js">
+</script>
+<script>
+$(document).ready(function() {
+    $('#stafftable').DataTable({
+	
+		'lengthMenu': [ [10, 100, -1], [10, 100, "All"] ],
+    'pageLength': 10
+	});
+} );
+	 function saveAll() {
+		document.getElementById('loading').innerText = 'Saving all staff data. Please wait..'
+		var table = $('#stafftable')
+
+		  table.DataTable().destroy()
+		 
+		 var tableRows = document.querySelectorAll('tr')
+		 console.log(tableRows)
+	
+		 
+
+		tableRows.forEach(function(tr, index) {
+			if (index > 0) {
+			var input = {
+				name: tr.firstElementChild.nextElementSibling.firstElementChild.value,
+				accounttype: tr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value,
+				initialusername: tr.firstElementChild.nextElementSibling.nextElementSibling.value,
+				username: tr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value
+				
+			}
+			
+			console.log(input)
+			
+			fetch('/editstaffAll', {
+						method: 'POST',
+						body: JSON.stringify(input),
+						headers: { "Content-Type": "application/json"}
+						}).then(function(response) {
+						return response.json();
+						}).then(function(data) {
+						if (data.success === true) {
+								if (index === tableRows.length-1) {
+									if (alert("You have successfully saved all of the staff data!")) {
+										
+									  } else {
+										location.reload()
+									  }
+								}
+						} else {
+								return alert('There has been an error! Please try again')
+							}
+						})
+		}
+		})
+		
+		
+
+	}
+	
+
+</script>
+<% include ./partials/footer %>
+

@@ -124,7 +124,11 @@
 <script>
 	if (typeof sessionStorage.download === 'undefined' && typeof sessionStorage.save === 'undefined') {
 		$(document).ready(function() {
-    $('#studenttable').DataTable();
+    $('#studenttable').DataTable({
+	
+		'lengthMenu': [ [10, 100, -1], [10, 100, "All"] ],
+    'pageLength': 10
+	});
 } );
 }else {
 	$(document).ready(function() {

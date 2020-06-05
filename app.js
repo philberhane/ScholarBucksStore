@@ -201,6 +201,7 @@ app.post("/register", function(req, res){
         });
     });
     } else {
+		console.log('not found')
       res.render("register");
     }
 		 })
@@ -314,6 +315,23 @@ app.get('/transactions', isLoggedIn, function(req, res) {
 			res.render("transactions", {transactions: transactions.reverse(), accounttype: req.user.accounttype});
 	});
 })
+
+app.post('/editstaff', isLoggedIn, function(req, res) {
+	console.log('body')
+	console.log(req.body)
+	User.findOneAndUpdate({ "username": req.body.initialusername }, { "$set": { "username": req.body.username, "firstname": req.body.name.split(' ')[0], "lastname": req.body.name.split(' ')[1], "accounttype": req.body.accounttype}}, function(err, book){
+            res.redirect('/staffroster')
+})
+	})
+
+app.post('/editstaffAll', isLoggedIn, function(req, res) {
+	console.log('body')
+	console.log(req.body)
+	User.findOneAndUpdate({ "username": req.body.initialusername }, { "$set": { "username": req.body.username, "firstname": req.body.name.split(' ')[0], "lastname": req.body.name.split(' ')[1], "accounttype": req.body.accounttype}}, function(err, book){
+            return res.send({success: true})
+})
+	})
+
 
 app.post('/edittable', isLoggedIn, function(req, res) {
 	Student.findOne({username: req.body.username}, function(err, foundUser){
@@ -465,6 +483,17 @@ app.get("/students", isLoggedIn, function(req, res){
 		}
 	})
 
+app.get("/staffroster", isLoggedIn, function(req, res){
+			User.find({}, function(err, users){
+		// if(err){
+		// 	console.log("ERROR!");
+		// } else {
+			res.render("staffroster", {staffmembers:users, accounttype:req.user.accounttype, firstname: req.user.firstname, lastname: req.user.lastname});
+		//}
+	});
+		
+	})
+
 app.get("/shop", isLoggedInStudent, function(req, res){
 
 			Prize.find({}, function(err, prizes){
@@ -600,160 +629,174 @@ app.get("/reviews", isLoggedIn, function(req,res){
 	});
 })
 
-// app.post("/submitOrder",isLoggedIn, function(req, res){
-//     var messages = []
-//     var orderArray = req.body.orderArray
+app.post("/submitOrder",isLoggedIn, function(req, res){
+    var messages = []
+    var orderArray = req.body.orderArray
 
-//     orderArray.forEach(function(order, index){
-// 		//if (index) {
+    orderArray.forEach(function(order, index){
+		//if (index) {
 
-//         var username = order.username
-//         var itemName = order.itemName
-//         var quantity = order.quantity
-//     // var message will be an object of username and message => message will be success or error
-//     // actually maybe just a string
-//     // Loop through array sent from client and perform the below route's order function
-//     // Replace necessary values
-//     // Review the functionality: are the shopping cart shit part of the req.user or student.find?
-//     // -important because the teacher won't have same session info as student
+        var username = order.username
+        var itemName = order.itemName
+        var quantity = order.quantity
+    // var message will be an object of username and message => message will be success or error
+    // actually maybe just a string
+    // Loop through array sent from client and perform the below route's order function
+    // Replace necessary values
+    // Review the functionality: are the shopping cart shit part of the req.user or student.find?
+    // -important because the teacher won't have same session info as student
 
-//     Student.findOne({username: username}, function(err, foundUser){
-// 		if (err) {
-//             var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s). Username could not be found, please check the spelling and try again.'
-//             messages.push(message)
-// 			if (index === orderArray.length-1) {
-//          return res.status(200).send({message : messages}); 
-// 		}
-// 		} else if (foundUser === null) {
-//             var message = 'Error: User ' +username+ ' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s). Username could not be found, please check the spelling and try again.'
-//             messages.push(message)
-// 			if (index === orderArray.length-1) {
-//          return res.status(200).send({message : messages}); 
-// 		}
-// 		} else {
+    Student.findOne({username: username}, function(err, foundUser){
+		if (err) {
+            var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s). Username could not be found, please check the spelling and try again.'
+            messages.push(message)
+			if (index === orderArray.length-1) {
+         return res.status(200).send({message : messages}); 
+		}
+		} else if (foundUser === null) {
+            var message = 'Error: User ' +username+ ' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s). Username could not be found, please check the spelling and try again.'
+            messages.push(message)
+			if (index === orderArray.length-1) {
+         return res.status(200).send({message : messages}); 
+		}
+		} else {
 		
 		
-//         var totalcost = 0
-//     //    totalcost += parseInt(item.price)*item.quantity
-// 		Prize.findOne({prizename: itemName}, function(err, prize){
-// 					if (err) {
-//                         var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s). This item could not be found, please check the spelling and try again!'
-//                         messages.push(message)
-// 						if (index === orderArray.length-1) {
-//          return res.status(200).send({message : messages}); 
-// 		}
-//                     } else if (prize === null) {
-//                         var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s). This item could not be found, please check the spelling and try again!'
-//                         messages.push(message)
+        var totalcost = 0
+    //    totalcost += parseInt(item.price)*item.quantity
+		Prize.findOne({prizename: itemName}, function(err, prize){
+					if (err) {
+                        var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s). This item could not be found, please check the spelling and try again!'
+                        messages.push(message)
+						if (index === orderArray.length-1) {
+         return res.status(200).send({message : messages}); 
+		}
+                    } else if (prize === null) {
+                        var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s). This item could not be found, please check the spelling and try again!'
+                        messages.push(message)
 
-// 						if (index === orderArray.length-1) {
-//          return res.status(200).send({message : messages}); 
-// 		}
+						if (index === orderArray.length-1) {
+         return res.status(200).send({message : messages}); 
+		}
                  
-// 		// } else if (parseInt(quantity) > parseInt(prize.invamount)) {
-// 		// 				var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s) due to insufficient inventory amount.'
-// 		// messages.push(message)
-// 		// 				if (index === orderArray.length-1) {
-// 		// return res.status(200).send({message : messages}); 
-// 		// }
-// 		// 			} else {
+		// } else if (parseInt(quantity) > parseInt(prize.invamount)) {
+		// 				var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsuccessfully ordered '+quantity+' ' +itemName+ '(s) due to insufficient inventory amount.'
+		// messages.push(message)
+		// 				if (index === orderArray.length-1) {
+		// return res.status(200).send({message : messages}); 
+		// }
+		// 			} else {
 		
 		 
-// 		if (parseInt(foundUser.totalpts) >= totalcost) {
-// 			//proceed
-// 			// foundUser.totalpts = (parseInt(foundUser.totalpts) - totalcost).toString()
-// 			prize.invamount = (parseInt(prize.invamount) - parseInt(quantity)).toString();
-// 						prize.quantity = (parseInt(prize.quantity) + parseInt(quantity)).toString();
-// 						prize.save()
-// 			var date = new Date()
+		if (parseInt(foundUser.totalpts) >= totalcost) {
+			var temp = foundUser.totalpts
+			//proceed
+			// foundUser.totalpts = (parseInt(foundUser.totalpts) - totalcost).toString()
+			prize.invamount = (parseInt(prize.invamount) - parseInt(quantity)).toString();
+						prize.quantity = (parseInt(prize.quantity) + parseInt(quantity)).toString();
+						prize.save()
+			var date = new Date()
 
-// 			var item = {
-// 				quantity: quantity,
-// 				prizeName: itemName,
-// 			}
+			var item = {
+				quantity: quantity,
+				prizeName: itemName,
+			}
 
-// 			var transaction = new Transaction({
-// 				school: foundUser.school,
-// 				studentName: foundUser.firstname + ' ' + foundUser.lastname,
-// 				grade: foundUser.grade,
-// 				prizeName: itemName,
-// 				quantity: quantity,
-// 				date: date
-// 	})
+			var transaction = new Transaction({
+				school: foundUser.school,
+				studentName: foundUser.firstname + ' ' + foundUser.lastname,
+				grade: foundUser.grade,
+				prizeName: itemName,
+				quantity: quantity,
+				date: date
+	})
 	
 			
-// 						foundUser.prizes.push(item);
-// 						foundUser.totalpts = (parseInt(foundUser.totalpts) - parseInt(prize.prizepoints)).toString();
-// 						Student.update({username: req.body.username}, {
-// 							prizes: foundUser.prizes, 
-//                             totalpts: foundUser.totalpts,
-//                             shoppingCart: []
-// 						}, function(err, numberAffected, rawResponse) {
-// 							transaction.save(function(err){
-//       if(err){
-//            console.log(err);
-//       }
-// });
-//                             var orderString = ''+foundUser.firstname+' '+foundUser.lastname+' has ordered the following:'
-		
-// 				orderString += '\n \n \n \n Prize: '+itemName+' \n \n Quantity: '+quantity+''
+						foundUser.prizes.push(item);
+						foundUser.totalpts = (parseInt(foundUser.totalpts) - parseInt(prize.prizepoints)).toString();
+						Student.update({username: req.body.username}, {
+							prizes: foundUser.prizes, 
+                            totalpts: foundUser.totalpts,
+                            shoppingCart: []
+						}, function(err, numberAffected, rawResponse) {
+							transaction.save(function(err){
+      if(err){
+           console.log(err);
+      }
+});
+                            var orderString = '<div><div style="width: 100%"><h2 style="text-align:center">Your ScholarBucks Prize(s) have arrived!</h2><div style="width: 50%; float:left">';
+		orderString += '<p>First Name: ' + foundUser.firstname + '</p>'
+		orderString += '<p>Last Name: ' + foundUser.lastname + '</p>'
+		orderString += '<p>School: ' + foundUser.school + '</p>'
+		orderString += '<p>Grade: ' + foundUser.grade + '</p>'
+		orderString += '<p>Math Teacher: ' + foundUser.mathteacher + '</p>'
+		orderString += '<p>Reading Teacher: ' + foundUser.readingteacher + '</p>'
+		orderString += '<p>Student Balance (before purchase): ' + temp + '</p>'
+		orderString += '<p>Total cost of prizes: ' + totalcost + '</p>'
+		// orderString += '</div>'
+		// orderString += '<div id="brain" style="width:50%; float: right"><img style="max-width: 200px" src="https://i.imgur.com/gQUipzr.jpg"/></div></div>'
+		orderString += '<br/>'
+				orderString += '<p>Prize: '+itemName+'</p><p>Quantity: '+quantity+'</p>'
+							orderString += '</div>'
+					orderString += '<div style="width:50%; float: right;"><img style="max-width: 200px" src="https://i.imgur.com/gQUipzr.jpg"/></div></div>'
+					orderString += '<br/><div style="text-align: center"><img src="https://i.imgur.com/0m3w5LF.jpg" style="visibility:hidden"/><h2>Remember to keep doing your best and earn Scholarbucks for your next Shopping spree!</h2><img src="https://i.imgur.com/0m3w5LF.jpg" /></div></div>'
 			
-// 		var nodemailer = require('nodemailer');
-//         var transporter = nodemailer.createTransport({
-//             host: "smtp-mail.outlook.com", // hostname
-//             secureConnection: false, // TLS requires secureConnection to be false
-//             port: 587, // port for secure SMTP
-//             auth: {
-//                 user: "scholarbucks@outlook.com",
-//                 pass: "BucksScholar1"
-//             },
-//             tls: {
-//                 ciphers:'SSLv3'
-//             }
-//         });
-// 		//wecare@innovativescholars.net
-//         var mailOptions = {
-//             from: 'scholarbucks@outlook.com',
-//             to: 'philberhane@outlook.com',
-//             subject: "New ScholarBucks Order!",
-//             html: orderString
-//           };
-// 		// Dynamically render what they ordered ? How to loop
-// 		// and do this
+		var nodemailer = require('nodemailer');
+        var transporter = nodemailer.createTransport({
+            host: "smtp-mail.outlook.com", // hostname
+            secureConnection: false, // TLS requires secureConnection to be false
+            port: 587, // port for secure SMTP
+            auth: {
+                user: "scholarbucks@outlook.com",
+                pass: "BucksScholar1"
+            },
+            tls: {
+                ciphers:'SSLv3'
+            }
+        });
+		//wecare@innovativescholars.net
+        var mailOptions = {
+            from: 'scholarbucks@outlook.com',
+            to: 'philberhane@outlook.com',
+            subject: "New ScholarBucks Order!",
+            html: orderString
+          };
+		// Dynamically render what they ordered ? How to loop
+		// and do this
           
-//           transporter.sendMail(mailOptions, function(error, info){
-//             if (error) {
-//               console.log(error);
-//             } else {
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
           
-//               var message = 'Success: '+foundUser.firstname+' '+foundUser.lastname+' has successfully ordered '+quantity+' item ' +itemName+ '(s)!'
-//               messages.push(message)
-// 				if (index === orderArray.length-1) {
-//          return res.status(200).send({message : messages}); 
-// 		}
-//               //return;
-//             }
-//           });
+              var message = 'Success: '+foundUser.firstname+' '+foundUser.lastname+' has successfully ordered '+quantity+' item ' +itemName+ '(s)!'
+              messages.push(message)
+				if (index === orderArray.length-1) {
+         return res.status(200).send({message : messages}); 
+		}
+              //return;
+            }
+          });
 						   
-// 						})
+						})
 			
 		
 
-// 		} else {
-// 			var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsufficient points for '+quantity+' ' +itemName+ '(s).'
-//             messages.push(message)
-// 			if (index === orderArray.length-1) {
-//          return res.status(200).send({message : messages}); 
-// 		}
-//         }
-//     }
-// 	})
+		} else {
+			var message = 'Error: '+foundUser.firstname+' '+foundUser.lastname+' has unsufficient points for '+quantity+' ' +itemName+ '(s).'
+            messages.push(message)
+			if (index === orderArray.length-1) {
+         return res.status(200).send({message : messages}); 
+		}
+        }
+    }
+	})
 
-//             }
-//                         })
-// 	//}                
-// 	}) 
-//  });
+            }
+                        })
+	//}                
+	}) 
+ });
 
 app.post("/orderPrizes", isLoggedInStudent, function(req,res){
 	/* Steps from here:
